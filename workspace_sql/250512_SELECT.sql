@@ -228,11 +228,11 @@ SELECT * FROM EMP WHERE COMM IS NULL AND MGR IS NOT NULL AND JOB IN ('MANAGER', 
 /* 250515 수업 */
 
 select * from emp where deptno = 10 order by empno desc;
-select * from emp where deptno = 20 order by empno asc; -- 이 문장들을 union이나 union all로...
+select * from emp where deptno = 20 order by empno asc; -- 이 문장들을 union이나 union all로,
 
 select * from emp where deptno = 10 order by empno desc
 union all
-select * from emp where deptno = 20 order by empno asc; -- 합치기 불가!
+select * from emp where deptno = 20 order by empno asc; -- 합치기 불가
 
 select job from emp; -- 전체 열 확인용
 select ename from emp; -- 문제 답 확인용
@@ -299,3 +299,15 @@ select to_date('2025-05-15', 'yyyy-mm-dd') - to_date('2025-05-12', 'yyyy-mm-dd')
 select * from emp where hiredate > to_date('1981-06-01', 'yyyy-mm-dd') order by hiredate;
 
 select sal*12 + nvl(comm, 0) as pay from emp;
+
+select empno, rpad(substr(empno, 1, 2), length(empno), '*') as MASKING_EMPNO, ename, rpad(substr(ename, 1, 1), length(ename), '*') as MASKING_ENAME from emp where length(ename) >=5 and length(ename)<6;
+select empno, ename, sal, trunc(sal/172*8, 2) as DAY_PAY, round(sal/172, 1) AS TIME_PAY from emp;
+select empno, ename, hiredate, to_char(add_months(hiredate, 3), 'yyyy-mm-dd') as R_JOB, nvl(to_char(comm), 'N/A') as COMM from emp;
+select empno, ename, mgr,
+    case
+        when mgr is null then '0000'
+        when mgr like '75__' then '5555'
+        when mgr like '76__' then '6666'
+        when mgr like '77__' then '7777'
+        when mgr like '78__' then '8888'
+        
