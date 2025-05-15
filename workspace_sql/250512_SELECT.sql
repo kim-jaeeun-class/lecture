@@ -223,3 +223,50 @@ SELECT EMPNO, ENAME, JOB, SAL, DEPTNO FROM EMP WHERE DEPTNO = 30 AND SAL > 2000;
 SELECT * FROM EMP WHERE SAL<2000 OR SAL>3000;
 SELECT ENAME, EMPNO, SAL, DEPTNO FROM EMP WHERE ENAME LIKE '%E%' AND DEPTNO = 30 AND SAL NOT BETWEEN 1000 AND 2000;
 SELECT * FROM EMP WHERE COMM IS NULL AND MGR IS NOT NULL AND JOB IN ('MANAGER', 'CLERK') AND ENAME NOT LIKE '_L%';
+
+
+/* 250515 수업 */
+
+select * from emp where deptno = 10 order by empno desc;
+select * from emp where deptno = 20 order by empno asc; -- 이 문장들을 union이나 union all로...
+
+select * from emp where deptno = 10 order by empno desc
+union all
+select * from emp where deptno = 20 order by empno asc; -- 합치기 불가!
+
+select job from emp; -- 전체 열 확인용
+select ename from emp; -- 문제 답 확인용
+select job, substr(job, 1, 2), substr(job, 3, 2), substr(job, 5) from emp; --substr
+select substr(job, -4, 2) from emp; -- 오른쪽 기준
+select substr(ename, 2, 3) from emp; -- 사원 이름을 왼쪽 기준 두 번째부터 세 글자만 출력
+select substr(ename, -3) from emp; --이름을 뒤에서부터 3글자만 출력
+select job, substr(job, -length(job)), substr(job, -length(job), 2), substr(job, -3) from emp;
+
+select instr('HELLO, ORACLE!', 'L') AS INSTR_1 from dual; -- L이 첫 번째 항목 문자열의 어디에 있는지 표시
+
+select '010-1234-5678' as replace_before, replace('010-1234-5678', '-', ' ') as replace_1, replace('010-1234-5678', '-') as replace_2 from dual;
+select '가나다' as before, replace('가나다', '나', '👌👌👌') as replace from dual;
+select replace('a-b-c', '-', '*'), replace('a-b-c', '-'), replace('a-b-c', '-', '') from dual;
+select ename, replace(ename, 'E', '-') as re_ename from emp; -- ename의 E를 -로 교체
+select ename, replace(ename, 'LL', '!!!!!') as re_ename from emp;
+
+select lpad(ename, 10, '+') from emp;
+select lpad(ename, 10, ' ') as lp_ename from emp;
+
+select substr(ename, 1, 2) as Q1 from emp; -- 문제1. ename 앞 두 글자만 출력
+
+select concat(substr(ename, 1, 2), '****') as Q2_v1 from emp; --문제2. ename 총 6글자. 앞 두 글자만 원본 출력, 나머지는 *표시. (concat 예습 적용)
+select substr(ename, 1, 2) || '****' as Q2_v1 from emp;
+select rpad(substr(ename, 1, 2), 6, '*') as Q2_v2 from emp; --문제2. ename 총 6글자. 앞 두 글자만 원본 출력, 나머지는 *표시. (concat 이전까지만)
+
+select rpad(substr(ename, 1, 2), length(ename), '*') as Q3 from emp; --문제3. ename 전 자릿수 출력. 앞 두 글자만 원본 출력, 나머지는 *표.
+
+select substr(
+    (substr('          ', 1, 10-(length(job)/2)) || job || substr('          ', 1, (10-length(job)/2))), 1, 20)
+    as TEST from emp; --문제4(심화). job을 총 20자리로 지정해 가운데 정렬(학습내용 이후에 대강 했기 때문에 다른 방식으로 재진행하기.)
+
+select 'ab'||'cd' from dual;
+
+select '  ab c    ', trim('   ab c     ') as 예1, ltrim('   ab c     ') as 예2, rtrim('   ab c     ') as 예3 from dual;
+
+SELECT ROUND(1234.5678) FROM DUAL;
