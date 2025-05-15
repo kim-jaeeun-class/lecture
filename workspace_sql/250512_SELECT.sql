@@ -263,10 +263,39 @@ select rpad(substr(ename, 1, 2), length(ename), '*') as Q3 from emp; --문제3. 
 
 select substr(
     (substr('          ', 1, 10-(length(job)/2)) || job || substr('          ', 1, (10-length(job)/2))), 1, 20)
-    as TEST from emp; --문제4(심화). job을 총 20자리로 지정해 가운데 정렬(학습내용 이후에 대강 했기 때문에 다른 방식으로 재진행하기.)
+    as Q4_v1 from emp; --문제4(심화). job을 총 20자리로 지정해 가운데 정렬(학습내용 이후에 대강 했기 때문에 다른 방식으로 재진행하기.)
+select lpad(rpad(job, 20/2+length(job)/2, ' '), 20) as Q4_v2 from emp;
 
 select 'ab'||'cd' from dual;
 
 select '  ab c    ', trim('   ab c     ') as 예1, ltrim('   ab c     ') as 예2, rtrim('   ab c     ') as 예3 from dual;
 
 SELECT ROUND(1234.5678) FROM DUAL;
+select round(14.46) from dual;
+select round(14.46, 1) from dual;
+select round(14.46, -1) from dual;
+
+select trunc(14.46), trunc(14.46, 1), trunc(14.46, -1), trunc(-14.46) from dual;
+select ceil(3.14), floor(3.14), ceil(-3.14), floor(-3.14) from dual;
+
+select 7/0 from dual; -- 0 나누기는 불가
+select mod(7, 3) from dual;
+select mod(length(job), 2) from emp;
+select mod(6, 3), mod(7, 3), mod(8, 3), mod(9, 3) from dual;
+select mod(684689, 3) from dual;
+select mod(3.1, 3) from dual;
+
+select sysdate from dual;
+
+select empno + 1000 from emp; -- 출력 가능
+select empno + 'a' from emp; -- 타입이 다르므로 에러 표시
+select empno || 'a' from emp; -- 이렇게 하기
+
+select to_char(sysdate, 'yyyy"년" mm"월" dd"일" pm hh12"시":mi"분":ss"초"') as now from dual;
+select to_char(hiredate, 'yyyy"년" mm"월" dd"일"') as HIREDATE from emp;
+
+select to_date('2025-05-15', 'yyyy-mm-dd') - to_date('2025-05-12', 'yyyy-mm-dd') from dual;
+
+select * from emp where hiredate > to_date('1981-06-01', 'yyyy-mm-dd') order by hiredate;
+
+select sal*12 + nvl(comm, 0) as pay from emp;
