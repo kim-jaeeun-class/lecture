@@ -447,17 +447,24 @@ select empno, ename, comm,
     end as comm_text
 from emp;
 
-select empno,
-rpad(substr(empno, 1, 2), 4, '*') as masking_empno,
-ename,
-rpad(substr(ename, 1, 1), length(ename), '*') as masking_ename
+select 
+    empno,
+    rpad(substr(empno, 1, 2), 4, '*') as masking_empno,
+    ename,
+    rpad(substr(ename, 1, 1), length(ename), '*') as masking_ename
 from emp
-where length(ename) >= 5 and length(ename) < 6;-- Q1.
+    where length(ename) >= 5 and length(ename) < 6;-- Q1.
 
-select empno, ename, sal,
-trunc(sal/(21.5*8)*8, 2) as day_pay,
-round(sal/(21.5*8), 1) as time_pay
+select 
+    empno, ename, sal,
+    trunc(sal/(21.5*8)*8, 2) as day_pay,
+    round(sal/(21.5*8), 1) as time_pay
 from emp; -- Q2.
+select 
+    empno, ename, sal,
+    trunc(sal/21.5, 2) as day_pay,
+    round(sal/(21.5*8), 1) as time_pay
+from emp; -- Q2. -- 조금 더 짧게! (풀어 쓰면 어차피 /21.5 /8 *8 = /21.5라)
 
 select empno, ename, hiredate,
     to_char(add_months(hiredate, 3), 'yyyy-mm-dd') as r_job,
@@ -473,4 +480,125 @@ select empno, ename, mgr,
         when comm like '78%' then '8888'
         else to_char(mgr)
     end as chg_mgr
-from emp;-- Q4. 
+from emp;-- Q4.
+select empno, ename, mgr,
+    decode(comm,
+        null, '0000',
+        '75%', '5555',
+        '76%', '6666',
+        '77%', '7777',
+        '78%', '8888',
+        to_char(mgr))
+    as chg_mgr
+from emp; --Q4 decode로 변형
+select empno, ename, mgr,
+    case
+        when mgr is null then '0000'
+        when substr(mgr, 1, 2) = 75 then '5555'
+        when substr(mgr, 1, 2) = 76 then '6666'
+        when substr(mgr, 1, 2) = 77 then '7777'
+        when substr(mgr, 1, 2) = 78 then '8888'
+        else to_char(mgr)
+    end as chg_mgr
+from emp; --Q4. substr 쓸 경우
+select empno, ename, mgr,
+    case
+        when mgr is null then '0000'
+        when mgr is not null then
+            case substr(mgr, 1, 2)
+                when '75' then '5555'
+                when '76' then '6666'
+                when '77' then '7777'
+                when '78' then '8888'
+                else to_char(mgr)
+            end
+    end as chg_mgr
+from emp; -- Q4. substr을 case 2개를 사용 
+select empno, ename, mgr,
+                case substr(mgr, 1, 2)
+                when '75' then '5555'
+                when '76' then '6666'
+                when '77' then '7777'
+                when '78' then '8888'
+                else to_char(nvl(mgr, '0000'))
+                end as chg_mgr
+from emp; -- Q4. substr-2개의 case-nvl 사용
+select
+    case
+        when mgr is null then '0000'
+        when substr(mgr, 2, 1) in ('5', '6', '7', '8')
+            then lpad(substr(mgr, 2, 1), length(mgr), substr(mgr, 2, 1))
+        else '' || mgr
+    end as chg_mgr
+from emp; -- Q4. lpad 안에 다른 함수(substr) 사용
+
+select sum(sal) from emp;
+
+select count(COMM), sum(sal), max(sal), min(sal), min(hiredate), min(comm) from emp;
+
+select count(*) from emp
+    where ename like '%A%';
+    
+select trunc(avg(sal)) from emp 
+    where deptno = 10;
+    
+select trunc(avg(sal)) as avg_sal, deptno, count(*) as no from emp
+    group by deptno;
+    
+select job, count(*) as no from emp
+    group by job;
+    
+select deptno, ename, job, avg(sal) from emp
+    group by deptno, job, ename
+    order by deptno, ename, job;
+    
+select job from emp
+    where deptno in (10, 20)
+    group by job
+    order by job;
+    
+select job, deptno from emp
+    group by deptno, job
+        having deptno = 10;
+
+select job, deptno, avg(sal) from emp
+    group by deptno, job;
+    
+select job, deptno, avg(sal) from emp
+    where avg(sal) >= 2000
+    group by deptno, job; -- 불가
+    
+select job, deptno, avg(sal) from emp
+    group by deptno, job
+    having avg(sal) > 2000;  -- 위에서 의도한 내용 출력 가능
+    
+select job, count(*) as cnt from emp
+    where sal > 1000 -- cnt > 3이나 count(*) > 3 불가
+    group by job
+    having count(*) > 3
+    order by cnt;
+    
+select 
+    deptno,
+    trunc(avg(sal)) as avg_sal,
+    max(sal) as max_sal,
+    min(sal) as min_sal,
+    count(*) as cnt from emp
+    group by deptno; -- Q1.
+    
+select 
+    job,
+    count(*) from emp
+    group by job
+        having count(*) >= 3; -- Q2.
+    
+select 
+    to_char(hiredate, 'yyyy') as hire_year,
+    deptno,
+    count(*) as cnt from emp
+    group by to_char(hiredate, 'yyyy'), deptno; -- Q3.
+    
+select 
+    nvl2(comm, 'X', 'O') as exist_comm,
+    count(*) as cnt from emp
+    group by nvl2(comm, 'X', 'O'); -- Q4.
