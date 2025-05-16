@@ -473,4 +473,4 @@ select empno, ename, mgr,
         when comm like '78%' then '8888'
         else to_char(mgr)
     end as chg_mgr
-from emp;-- Q4.
+from emp;-- Q4. 
