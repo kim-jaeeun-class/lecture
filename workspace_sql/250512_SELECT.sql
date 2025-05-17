@@ -520,7 +520,7 @@ select empno, ename, mgr,
                 when '76' then '6666'
                 when '77' then '7777'
                 when '78' then '8888'
-                else to_char(nvl(mgr, '0000'))
+                else '0000'
                 end as chg_mgr
 from emp; -- Q4. substr-2개의 case-nvl 사용
 select
@@ -601,4 +601,15 @@ select
 select 
     nvl2(comm, 'X', 'O') as exist_comm,
     count(*) as cnt from emp
-    group by nvl2(comm, 'X', 'O'); -- Q4.
+    group by nvl2(comm, 'X', 'O'); -- Q4. nvl2로. 이게 가장 깔끔해 보인다.
+select
+    case
+        when comm is null then 'O'
+        else 'X'
+    end as exist_comm,
+    count(*) as cnt
+from emp
+group by case
+        when comm is null then 'O'
+        else 'X'
+    end; -- Q4. case로도 가능할까 싶어서...? 근데 너무 길다.
