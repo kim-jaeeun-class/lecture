@@ -724,15 +724,13 @@ where d.deptno = e1.deptno(+)
     and e1.sal >= s.losal(+) 
     and e1.sal <= s.hisal(+)
 order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. 
--- 마지막의 e1.sal에 between 연산자 쓰면 목표한 대로 출력 불가. left, right 적용이 안 됨!!
--- 현재 emp 테이블에는 deptno = 40인 행이 존재하지 않음. 고로 d.deptno를 기준으로 뒀을 때 empno부터 전부 null로 뜸!
 select 
     d.deptno, d.dname, 
     e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
     s.losal, s.hisal, s.grade,
     e2.empno as mgr_empno, e2.ename as mgr_ename
 from dept d, emp e1, emp e2, salgrade s
-where d.deptno = e1.deptno
-    and e1.mgr = e2.empno(+)
-    and e1.sal between s.losal and s.hisal
-order by d.deptno, e1.empno; -- 14개?
+where d.deptno = e1.deptno(+) -- 이곳은 left 적용 필요. 없을 시 deptno = 40인 경우가 출력되지 않음.
+    and e1.mgr = e2.empno(+) -- left 적용 필요. 이곳에만 left가 없으면 king과 deptno = 40이 출력되지 않음.
+    and e1.sal between s.losal(+) and s.hisal(+) -- losal이랑 hisal 양쪽에 (+)를 넣으니 between이 적용됨. 한쪽에만 넣으면 (+) 적용이 제대로 안 됨.
+order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. between 사용.
