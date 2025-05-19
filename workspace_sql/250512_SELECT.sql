@@ -609,7 +609,130 @@ select
     end as exist_comm,
     count(*) as cnt
 from emp
-group by case
+group by 
+    case
         when comm is null then 'O'
         else 'X'
     end; -- Q4. case로도 가능할까 싶어서...? 근데 너무 길다.
+    
+
+/* 250519 수업 */
+
+select * from dept;
+select * from emp, dept order by empno;
+select * from emp, dept 
+    where emp.deptno = dept.deptno
+    order by empno;
+    
+select * from emp E, dept D 
+    where E.deptno = D.deptno
+    order by empno;
+    
+select deptno from emp E, dept D 
+    where E.deptno = D.deptno
+    order by empno; -- 오류 발생
+select ename from emp E, dept D 
+    where E.deptno = D.deptno
+    order by empno; -- 오류 X.
+    
+select * from salgrade;
+
+select * from emp, salgrade
+    where emp.sal between salgrade.losal and salgrade.hisal;
+    
+select grade, e.* -- salgrade에서는 grade만, emp에서는 모든 칼럼(*)을 띄우고 싶을 때 앞에 '테이블.' 사용.
+from emp e, salgrade s
+    where e.sal between s.losal and s.hisal;
+
+select * from emp e1, emp e2
+    where e1.mgr = e2.empno;
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename from emp e1, emp e2
+    where e1.mgr = e2.empno(+); -- left 조인 시 상사가 없는 사람도 출력. right는 부하 직원이 없는 사람을 출력.
+    
+select * from emp join dept using (deptno); -- join using
+select * from emp join dept on (emp.deptno = dept.deptno); --join on. 위의 join using이랑 동일.
+select empno, ename, deptno
+from emp e join dept d using(deptno)
+where sal >= 3000;
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename 
+from emp e1 left outer join emp e2 on (E1.mgr = E2.empno); -- left outer join by sql-99
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename 
+from emp e1 full outer join emp e2 on (E1.mgr = E2.empno);
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename 
+from emp e1 right outer join emp e2 on (E1.mgr = E2.empno);
+
+select d.deptno, d.dname, e.empno, e.ename, e.sal
+    from dept d left outer join emp e on (d.deptno = e.deptno)
+    where e.sal >=2000; -- Q1(SQL-99)
+select d.deptno, d.dname, e.empno, e.ename, e.sal
+    from dept d, emp e
+    where e.sal >=2000
+        and d.deptno = e.deptno(+); -- Q1.(SQL-99 이전)
+
+select 
+    d.deptno, d.dname,
+    trunc(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from dept d, emp e
+    where d.deptno = e.deptno
+    group by d.deptno, d.dname; -- Q2. SQL-99 이전 (group by 적용시키기!!!)
+select 
+    d.deptno, d.dname,
+    trunc(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from dept d join emp e on (d.deptno = e.deptno)
+    group by d.deptno, d.dname; -- Q2. SQL-99
+
+select 
+    d.deptno, d.dname,
+    e.empno, e.ename, e.job, e.sal
+from dept d, emp e
+    where d.deptno = e.deptno(+)
+    order by d.deptno, e.ename; -- Q3. sql-99 이전
+select 
+    d.deptno, d.dname,
+    e.empno, e.ename, e.job, e.sal
+from dept d left outer join emp e on (d.deptno = e.deptno)
+    order by d.deptno, e.ename;-- Q3. sql-99
+
+select 
+    d.deptno, d.dname, 
+    e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
+    s.losal, s.hisal, s.grade,
+    e2.empno as mgr_empno, e2.ename as mgr_ename
+from dept d left outer join emp e1 on (d.deptno = e1.deptno)
+    left outer join emp e2 on (e1.mgr = e2.empno)
+    left outer join salgrade s on (e1.sal between s.losal and s.hisal) 
+    -- 위 between 행의 e1.sal을 e2.sal로 바꾸니 salgrade 테이블 쪽에 null이 뜸. 
+    -- 왜냐하면 king의 상사는 없기 때문에! 다른 행도 다 상사 기준으로 salgrade가 재설정됨!
+order by d.deptno, e1.empno; -- Q4. SQL-99 방식. 
+
+select 
+    d.deptno, d.dname, 
+    e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
+    s.losal, s.hisal, s.grade,
+    e2.empno as mgr_empno, e2.ename as mgr_ename
+from dept d, emp e1, emp e2, salgrade s
+where d.deptno = e1.deptno(+)
+    and e1.mgr = e2.empno(+)
+    and e1.sal >= s.losal(+) 
+    and e1.sal <= s.hisal(+)
+order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. 
+-- 마지막의 e1.sal에 between 연산자 쓰면 목표한 대로 출력 불가. left, right 적용이 안 됨!!
+-- 현재 emp 테이블에는 deptno = 40인 행이 존재하지 않음. 고로 d.deptno를 기준으로 뒀을 때 empno부터 전부 null로 뜸!
+select 
+    d.deptno, d.dname, 
+    e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
+    s.losal, s.hisal, s.grade,
+    e2.empno as mgr_empno, e2.ename as mgr_ename
+from dept d, emp e1, emp e2, salgrade s
+where d.deptno = e1.deptno
+    and e1.mgr = e2.empno(+)
+    and e1.sal between s.losal and s.hisal
+order by d.deptno, e1.empno; -- 14개?
