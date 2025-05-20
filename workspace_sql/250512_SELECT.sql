@@ -1124,11 +1124,50 @@ select *
     where sal > (select *
                     from(
                         select sal
-                            from (select 
+                            from (
+                                  select 
                                     sal, rownum as rn
                                   from emp
                                   where job = 'SALESMAN')
                             where rn = 1
                             order by rn))
     order by empno;                           
--- Q4. 다중행 함수 미사용... 일단 원래 이렇게 안 하는 건 잘 알겠다. <질문검색 2>
+-- Q4. 다중행 함수 미사용... 일단 원래 이렇게 안 하는 건 잘 알겠다.
+select *
+    from (
+        select 
+            e.empno, 
+            e.ename, 
+            e.sal,
+            s.grade
+        from emp e 
+            join salgrade s 
+            on e.sal >= s.losal and e.sal <= s.hisal
+          )
+    where sal > (
+                 select max(sal)
+                 from emp
+                 where job = 'SALESMAN' -- 생각해보니 굳이 서브쿼리로 안 감싸도 max는 뜬다.
+                 )
+order by empno; -- Q4. 다중행 함수 사용(간략화)
+select *
+from (
+    select 
+        e.empno, e.ename, e.sal,
+        s.grade
+    from emp e 
+    join salgrade s 
+        on (e.sal >= s.losal and e.sal <= s.hisal)
+     )
+where sal > (
+            select sal  -- 어차피 아래 from절의 서브쿼리에서 sal만 나오니까... 이왕이면 where절의 서브쿼리에서도 sal로? 실제 사용에서는 * 잘 안 쓴다고 하니까.
+            from (
+                select sal
+                from emp
+                where job = 'SALESMAN'
+                order by sal desc   -- 처음 버전은 1/6의 도박이 성공했지만, 생각해보면 sal desc 안 해줄 경우 salesman의 max_sal이 출력 안 될 가능성이 있음. 바꿔주기.
+                  )
+            where rownum = 1 -- 그러므로 from절에서 먼저 급여순 맞춰주고, where절에 별칭 없이 따로 rownum 써주기. 수업에서 where절에 바로 rownum 쓰면 따로 작업된다 했으니 될지도? -> 된다!
+            )
+order by empno; -- Q4. 다중행 함수 미사용 보완 버전
+
