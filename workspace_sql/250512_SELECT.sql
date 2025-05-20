@@ -594,25 +594,25 @@ select
     
 select 
     to_char(hiredate, 'yyyy') as hire_year,
-    deptno,
+    deptno,00
     count(*) as cnt from emp
     group by to_char(hiredate, 'yyyy'), deptno; -- Q3.
     
 select 
-    nvl2(comm, 'X', 'O') as exist_comm,
+    nvl2(comm, 'O', 'X') as exist_comm,
     count(*) as cnt from emp
-    group by nvl2(comm, 'X', 'O'); -- Q4. nvl2로. 이게 가장 깔끔해 보인다.
+    group by nvl2(comm, 'O', 'X'); -- Q4. nvl2로. 이게 가장 깔끔해 보인다.
 select
     case
-        when comm is null then 'O'
-        else 'X'
+        when comm is null then 'X'
+        else 'O'
     end as exist_comm,
     count(*) as cnt
 from emp
 group by 
     case
-        when comm is null then 'O'
-        else 'X'
+        when comm is null then 'X'
+        else 'O'
     end; -- Q4. case로도 가능할까 싶어서...? 근데 너무 길다.
     
 
@@ -664,30 +664,34 @@ select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename
 from emp e1 right outer join emp e2 on (E1.mgr = E2.empno);
 
 select d.deptno, d.dname, e.empno, e.ename, e.sal
-    from dept d left outer join emp e on (d.deptno = e.deptno)
-    where e.sal >=2000; -- Q1(SQL-99)
+    from dept d join emp e on (d.deptno = e.deptno)
+    where e.sal >=2000
+    order by d.deptno; -- Q1. SQL-99. 굳이 outer 쓸 필요 없음.
 select d.deptno, d.dname, e.empno, e.ename, e.sal
     from dept d, emp e
     where e.sal >=2000
-        and d.deptno = e.deptno(+); -- Q1.(SQL-99 이전)
+        and d.deptno = e.deptno
+    order by d.deptno, d.dname; -- Q1. SQL-99 이전(순서 맞춰봄)
 
 select 
     d.deptno, d.dname,
-    trunc(avg(e.sal)) as avg_sal,
+    floor(avg(e.sal)) as avg_sal, -- trunc는 oracle에서만 있기 때문에 조건이 있지 않은 한 가급적 floor로 써주기.
     max(e.sal) as max_sal,
     min(e.sal) as min_sal,
     count(*) as cnt
 from dept d, emp e
     where d.deptno = e.deptno
-    group by d.deptno, d.dname; -- Q2. SQL-99 이전 (group by 적용시키기!!!)
+    group by d.deptno, d.dname
+    order by d.deptno; -- Q2. SQL-99 이전 (group by 적용시키기!!!)
 select 
     d.deptno, d.dname,
-    trunc(avg(e.sal)) as avg_sal,
+    floor(avg(e.sal)) as avg_sal, 
     max(e.sal) as max_sal,
     min(e.sal) as min_sal,
     count(*) as cnt
 from dept d join emp e on (d.deptno = e.deptno)
-    group by d.deptno, d.dname; -- Q2. SQL-99
+    group by d.deptno, d.dname
+    order by d.deptno; -- Q2. SQL-99
 
 select 
     d.deptno, d.dname,
@@ -707,11 +711,11 @@ select
     s.losal, s.hisal, s.grade,
     e2.empno as mgr_empno, e2.ename as mgr_ename
 from dept d left outer join emp e1 on (d.deptno = e1.deptno)
-    left outer join emp e2 on (e1.mgr = e2.empno)
-    left outer join salgrade s on (e1.sal between s.losal and s.hisal) 
+            left outer join emp e2 on (e1.mgr = e2.empno)
+            left outer join salgrade s on (e1.sal between s.losal and s.hisal) 
     -- 위 between 행의 e1.sal을 e2.sal로 바꾸니 salgrade 테이블 쪽에 null이 뜸. 
     -- 왜냐하면 king의 상사는 없기 때문에! 다른 행도 다 상사 기준으로 salgrade가 재설정됨!
-order by d.deptno, e1.empno; -- Q4. SQL-99 방식. 
+    order by d.deptno, e1.empno; -- Q4. SQL-99 방식. 
 
 select 
     d.deptno, d.dname, 
@@ -720,17 +724,411 @@ select
     e2.empno as mgr_empno, e2.ename as mgr_ename
 from dept d, emp e1, emp e2, salgrade s
 where d.deptno = e1.deptno(+)
-    and e1.mgr = e2.empno(+)
-    and e1.sal >= s.losal(+) 
-    and e1.sal <= s.hisal(+)
-order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. 
+        and e1.mgr = e2.empno(+)
+        and e1.sal >= s.losal(+) 
+        and e1.sal <= s.hisal(+)
+    order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. 
 select 
     d.deptno, d.dname, 
     e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
     s.losal, s.hisal, s.grade,
     e2.empno as mgr_empno, e2.ename as mgr_ename
 from dept d, emp e1, emp e2, salgrade s
-where d.deptno = e1.deptno(+) -- 이곳은 left 적용 필요. 없을 시 deptno = 40인 경우가 출력되지 않음.
-    and e1.mgr = e2.empno(+) -- left 적용 필요. 이곳에만 left가 없으면 king과 deptno = 40이 출력되지 않음.
-    and e1.sal between s.losal(+) and s.hisal(+) -- losal이랑 hisal 양쪽에 (+)를 넣으니 between이 적용됨. 한쪽에만 넣으면 (+) 적용이 제대로 안 됨.
-order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. between 사용.
+where d.deptno = e1.deptno(+) -- d.deptno 기준. left 적용 필요. 없으면 deptno = 40인 경우가 출력되지 않음.
+        and e1.mgr = e2.empno(+) -- e1.mgr 기준. left 적용 필요. 없으면 상사가 없는 king과 deptno = 40인 두 행이 출력되지 않음.
+        and e1.sal between s.losal(+) and s.hisal(+) -- e1.sal 기준. losal이랑 hisal 양쪽에 (+)를 넣으니 between이 적용됨. 없을 시 deptno = 40인 행이 출력되지 않음. 40인 행에는 salgrade 테이블이 모두 null이어서.
+    order by d.deptno, e1.empno; -- Q4. SQL-99 이전 방식. between 사용.
+
+/* 250519 복습용 문제 다시 풀이 */
+-- 문제 풀이 자체는 모두 ok. 1번만 한 번 생각해보기.
+
+--Q1. 조건 적용 잊지 말기!!! 근데 첫 번째에서 group by 쓰면 안 된다면서 오류 나더라... 안 되는 이유 생각해보기. -> ename이 다르니까!!!!!! 당연히 묶일 수가 없다...
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.sal
+    from dept d, emp e
+    where d.deptno = e.deptno
+        and e.sal >= 2000;
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.sal
+    from dept d join emp e on (d.deptno = e.deptno)
+    where e.sal >= 2000;
+    
+-- Q2.
+select
+    d.deptno, d.dname,
+    trunc(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from dept d, emp e
+    where d.deptno = e.deptno
+group by d.deptno, d.dname
+order by deptno;
+select
+    d.deptno, d.dname,
+    trunc(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from dept d join emp e on (d.deptno = e.deptno)
+group by d.deptno, d.dname
+order by deptno;
+    
+-- Q3.
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.job, e.sal
+from dept d, emp e
+    where d.deptno = e.deptno(+)
+order by d.deptno, e.ename;
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.job, e.sal
+from dept d left outer join emp e 
+    on (d.deptno = e.deptno)
+order by d.deptno, e.ename;
+
+--Q4.
+
+select
+    d.deptno, d.dname,
+    e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
+    s.losal, s.hisal, s.grade,
+    e2.empno as mgr_empno,
+    e2.ename as mgr_ename
+from dept d, emp e1, salgrade s, emp e2
+    where d.deptno = e1.deptno(+)
+        and e1.mgr = e2.empno(+)
+        and e1.sal between s.losal(+) and s.hisal(+)
+order by d.deptno, e1.empno;
+select
+    d.deptno, d.dname,
+    e1.empno, e1.ename, e1.mgr, e1.sal, e1.deptno,
+    s.losal, s.hisal, s.grade,
+    e2.empno as mgr_empno,
+    e2.ename as mgr_ename
+from dept d 
+    left outer join emp e1
+        on (d.deptno = e1.deptno)
+    left outer join salgrade s
+        on (e1.sal between s.losal and s.hisal)
+    left outer join emp e2
+        on (e1.mgr = e2.empno)
+order by d.deptno, e1.empno;
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.sal, e.deptno as deptno_1, 
+    s.losal, s.hisal, s.grade, 
+    e2.empno as mgr_empno, 
+    e2.ename as mgr_ename
+from dept d
+    left outer join emp e 
+        on (d.deptno = e.deptno)
+    left outer join salgrade s 
+        on (e.sal >= s.losal and e.sal <= s.hisal)
+    left outer join emp e2 
+        on (e.mgr = e2.empno)
+order by d.deptno, e.empno; -- 수업 중 진행한 방식. 큰 차이는 없지만 실제로 더 많이 쓰는 방식이 적용돼 있으니 참고.
+        
+/* 250520 */
+
+-- Q. 각 부서별로 급여가 가장 높은 사원, 가장 낮은 사원의 급여 차이.
+
+select deptno, max(sal), min(sal), max(sal)-min(sal)
+    from emp
+    group by deptno
+    order by deptno; -- 이쪽은 가독성 목적. 필수 X.
+    
+select * from emp
+    where sal > (select sal from emp
+                        where ename ='JONES'); -- 서브쿼리
+select * from emp
+    where hiredate < (select hiredate from emp
+                             where ename = 'SCOTT');
+                            
+select 
+    e.empno, e.ename, e.job, e.sal,
+    d.deptno, d.dname, d.loc
+from emp e, dept d
+    where e.deptno = d.deptno
+    and e.sal > (select avg(sal) from emp); -- avg(e.sal)로는 출력값 없음.
+
+select * from emp
+    where sal in (
+                select max(sal) from emp
+                group by deptno);
+ 
+select * from emp
+    where sal in (2850, 3000, 5000); -- 이 코드를...
+select * from emp
+    where sal in (
+                select max(sal) from emp
+                group by deptno); -- 이런 다중행 서브쿼리로 표현 가능.
+select * from emp
+    where sal = some (
+                select max(sal) from emp
+                group by deptno); -- IN과 출력값 차이 없음. (동일 기능 수행)
+select * from emp
+    where sal = any (
+                select max(sal) from emp
+                group by deptno); -- IN과 출력값 차이 없음(2) (동일 기능 수행)
+
+select * from emp
+	where (deptno, sal) in (select deptno, max(sal)
+							from emp
+							group by deptno);
+
+select * from emp, dept
+    where emp.deptno = dept.deptno;
+    
+select
+	e10.empno, e10.ename, e10.deptno,
+	d.dname, d.loc
+from (select * from emp where deptno = 10) e10,
+      dept d
+where e10.deptno = d.deptno;
+with
+e10 as (select * from emp where deptno = 10),
+d as (select * from dept) -- 여기는 d as dept가 안 됨. dept는 select문이 아니기 때문에.
+select
+    e10.empno, e10.ename, e10.deptno,
+	d.dname, d.loc
+from e10, d
+where e10.deptno = d.deptno; -- 위 코드와 아래 코드는 같은 출력값을 보여줌.
+
+-- job별로 직책이 3명 이상인 것만.
+select job, count(*)
+from emp
+group by job
+having count(*) >= 3; -- A1. having을 사용한 방식
+select *
+from (select job, count(*) cnt
+      from emp
+      group by job)
+where cnt >= 3; -- A2. 서브쿼리를 사용한 방식. 이 경우 다중행함수를 where 절에 사용 가능.
+
+select
+    rownum, emp.*
+from emp; -- 이 상태로는 rownum에 조건 달기 불가
+select *
+from (select
+      rownum rn, emp.*
+      from emp)
+where rn >=2 and rn <=4; -- 서브쿼리로 감싸 조건 설정이 가능하게 만듦.
+select rownum rn, emp.*
+from emp;
+
+select * 
+from (select 
+           rownum rn, e.*
+      from (select 
+                  emp.*
+            from emp
+            order by sal desc
+            ) e
+      )
+where rn >= 2 or rn <= 3; -- 위 코드의 응용. 이쪽에서 rn 조건을 조정해 월급 순위 확인 가능.
+
+with e1 as (
+    with e as (
+        select emp.* from emp order by sal desc
+    )
+    select rownum rn, e.*
+    from e)
+select * from e1
+where rn >= 2 or rn <= 3; -- 위 코드 with로 바꾸려고 했는데 이렇게는 안 됨...  <질문검색 1>
+
+
+with e10 as (
+    select * from emp where deptno = 10
+)
+select ename from e10;
+
+select
+	empno, ename, job, sal,
+	(select grade
+	 from salgrade
+	 where e.sal between losal and hisal) as salgrade,
+	deptno,
+	(select dname
+	 from dept
+	 where e.deptno = dept.deptno) as dname
+from emp e; -- select절에 사용하는 서브쿼리
+
+/* Q1 */
+select
+    e.job, e.empno, e.ename, e.sal, e.deptno,
+    d.dname
+from (select * 
+      from emp
+      where ename = 'ALLEN') e, dept d;
+
+/* Q2. 풀이 과정 */
+select
+    e.empno, e.ename,
+    d.dname,
+    e.hiredate,
+    d.loc,
+    e.sal,
+    s.grade
+from emp e 
+    join dept d on (e.deptno = d.deptno)
+    join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal); -- 조인 먼저(성공!)
+
+select e.*
+    from (
+        select
+            e.empno, e.ename,
+            d.dname,
+            e.hiredate,
+            d.loc,
+            e.sal,
+            s.grade
+        from emp e 
+            join dept d on (e.deptno = d.deptno)
+            join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+         ) e
+order by sal desc, empno; -- 조인+정렬까지 성공
+
+select *
+    from (select e.*
+            from (
+                select
+                    e.empno, e.ename,
+                    d.dname,
+                    e.hiredate,
+                    d.loc,
+                    e.sal,
+                    s.grade
+                from emp e 
+                    join dept d on (e.deptno = d.deptno)
+                    join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+                 ) e
+          order by sal desc, empno); -- 우선 서브쿼리로 감쌈. CLERK 아랫부분이 다 잘려야 하는데...
+          
+select avg(sal) from emp; -- 평균 급여
+
+select *
+    from (select e.*
+            from (
+                select
+                    e.empno, e.ename,
+                    d.dname,
+                    e.hiredate,
+                    d.loc,
+                    e.sal,
+                    s.grade
+                from emp e 
+                    join dept d on (e.deptno = d.deptno)
+                    join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+                 ) e
+          order by sal desc, empno)
+    where sal > (select avg(sal) from emp); -- 최종 출력(조인 사용). 평균 급여 select문 만들어서 메인 쿼리 where절에 적용.
+
+select
+    e.empno, e.ename,
+    d.dname,
+    e.hiredate,
+    d.loc,
+    e.sal,
+    s.grade
+from emp e 
+    join dept d on (e.deptno = d.deptno)
+    join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal); -- 이걸 서브쿼리로 바꿔서 위 최종 출력에 대체해놔야.
+
+select
+    e.empno, e.ename,
+    d.dname,
+    e.hiredate,
+    d.loc,
+    e.sal,
+    s.grade
+from
+    (select empno, ename, hiredate, deptno, sal from emp) e,
+    (select dname, loc, deptno from dept) d,
+    (select grade, losal, hisal from salgrade) s
+where e.sal >= s.losal and e.sal <= s.hisal
+    and  e.deptno = d.deptno;
+
+select *
+    from (select e.*
+            from (
+                select
+                    e.empno, e.ename,
+                    d.dname,
+                    e.hiredate,
+                    d.loc,
+                    e.sal,
+                    s.grade
+                from
+                    (select empno, ename, hiredate, deptno, sal from emp) e,
+                    (select dname, loc, deptno from dept) d,
+                    (select grade, losal, hisal from salgrade) s
+                where e.sal >= s.losal and e.sal <= s.hisal
+                and  e.deptno = d.deptno) e
+          order by sal desc, empno)
+    where sal > (select avg(sal) from emp); -- <질문 검색 3)> 이건 SQL-99 이전 조인이지 서브쿼리라고 할 수 없지 않나?
+
+/* Q3. 풀이 과정 */
+
+select *
+    from (
+        select
+            e.empno, e.ename, e.job, e.deptno,
+            d.dname, d.loc
+        from emp e join dept d on (e.deptno = d.deptno)
+        where e.deptno = 10)
+where job not in (select job from emp where deptno = 30);
+
+/* Q4. */
+
+select 
+    e.empno, e.ename, e.sal,
+    s.grade
+from emp e join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal); -- 조인 성공
+
+select max(sal) from (select sal from emp
+    where job = 'SALESMAN'); -- salesman의 max(sal). 다중행 함수 사용해서 표현.
+    
+select sal
+    from (select sal, rownum as rn
+            from emp
+            where job = 'SALESMAN')
+    where rn = 1
+    order by rn; -- salesman의 max(sal). 다중행 함수 미사용... 꼼수 같다.
+
+select *
+    from (
+        select 
+            e.empno, e.ename, e.sal,
+            s.grade
+        from emp e 
+            join salgrade s 
+                on (e.sal >= s.losal and e.sal <= s.hisal))
+    where sal > (select max(sal) 
+                    from (select sal 
+                            from emp
+                            where job = 'SALESMAN'))
+    order by empno; -- Q4. 다중행 함수 사용
+
+select *
+    from (
+        select 
+            e.empno, e.ename, e.sal,
+            s.grade
+        from emp e 
+            join salgrade s 
+                on (e.sal >= s.losal and e.sal <= s.hisal))
+    where sal > (select *
+                    from(
+                        select sal
+                            from (select 
+                                    sal, rownum as rn
+                                  from emp
+                                  where job = 'SALESMAN')
+                            where rn = 1
+                            order by rn))
+    order by empno;                           
+-- Q4. 다중행 함수 미사용... 일단 원래 이렇게 안 하는 건 잘 알겠다. <질문검색 2>
