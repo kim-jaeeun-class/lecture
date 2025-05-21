@@ -1068,8 +1068,8 @@ select *
                     (select grade, losal, hisal from salgrade) s
                 where e.sal >= s.losal and e.sal <= s.hisal
                 and  e.deptno = d.deptno) e
-          order by sal desc, empno)
-    where sal > (select avg(sal) from emp); -- <질문 검색 3)> 이건 SQL-99 이전 조인이지 서브쿼리라고 할 수 없지 않나?
+          order by sal desc, empno asc)
+    where sal > (select avg(sal) from emp);
 
 /* Q3. 풀이 과정 */
 
@@ -1128,7 +1128,8 @@ select *
                                   select 
                                     sal, rownum as rn
                                   from emp
-                                  where job = 'SALESMAN')
+                                  where job = 'SALESMAN'
+                                  order by sal)
                             where rn = 1
                             order by rn))
     order by empno;                           
@@ -1167,7 +1168,480 @@ where sal > (
                 where job = 'SALESMAN'
                 order by sal desc   -- 처음 버전은 1/6의 도박이 성공했지만, 생각해보면 sal desc 안 해줄 경우 salesman의 max_sal이 출력 안 될 가능성이 있음. 바꿔주기.
                   )
-            where rownum = 1 -- 그러므로 from절에서 먼저 급여순 맞춰주고, where절에 별칭 없이 따로 rownum 써주기. 수업에서 where절에 바로 rownum 쓰면 따로 작업된다 했으니 될지도? -> 된다!
+            where rownum = 1 -- 그러므로 from절에서 먼저 급여순 맞춰주고, where절에 별칭 없이 따로 rownum 써주기. 수업에서 where절에 바로 rownum 쓰면 따로 작업된다 했으니 될지도? -> 된다! -> 2 쓰면 안 된다...
             )
 order by empno; -- Q4. 다중행 함수 미사용 보완 버전
 
+/* 250521 */
+
+-- 수업 전 다시 한 번 되새김문제 풀이 -> 모두 완. 조건 자꾸 하나씩 깜빡하는 부분 주의!!!
+
+-- Q1. ALLEN과 동일 직책인 사원의 사원 정보, 부서 정보. (O)
+
+select
+    e.job, e.empno, e.ename, e.sal, 
+    d.deptno, d.dname
+from emp e join dept d on (e.deptno = d.deptno)
+where job = (select job 
+             from emp
+             where ename = 'ALLEN')
+order by e.sal desc;
+
+-- Q2. 평균 급여보다 많이 받는 사원의 사원 정보, 부서 정보, 급여 등급 정보. 급여 많은 순, 사원 번호 오름차순. (O)
+
+select
+    e.empno, e.ename, d.dname, e.hiredate, d.loc, e.sal, s.grade
+from 
+    emp e join dept d on (e.deptno = d.deptno)
+    join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+order by sal desc, e.empno asc; -- 조인 먼저 진행
+
+select
+    empno, ename, dname, hiredate, loc, sal, grade
+from (
+    select
+        e.empno, e.ename, d.dname, e.hiredate, d.loc, e.sal, s.grade
+    from 
+        emp e join dept d on (e.deptno = d.deptno)
+        join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+    order by sal desc, e.empno asc)
+where sal > (select avg(sal) from emp); -- where에 avg 바로 넣기는 힘들지만... select 지정 열 이름에는 넣을 수 있다는 점 잊지 말기!
+            
+            
+-- Q3. 10번 부서 근무 사원(단, 30번 부서에 없는 직책인 사원). 사원 정보, 부서 정보. (O)
+
+select
+    e.empno, e.ename, e.job,
+    d.deptno, d.dname, d.loc
+from emp e left outer join dept d on (e.deptno = d.deptno)
+where d.deptno = 10; -- 10번 부서인 사람들의 조인.
+
+select
+    empno, ename, job,
+    deptno, dname, loc
+from (
+    select
+        e.empno, e.ename, e.job,
+        d.deptno, d.dname, d.loc
+    from emp e left outer join dept d on (e.deptno = d.deptno)
+    where d.deptno = 10)
+where job not in (select job from emp where deptno = 30);
+
+select 
+    empno, ename, job,
+    deptno, dname, loc
+from emp e left outer join dept d using (deptno)
+where
+    deptno = 10
+    and job not in (select job
+                    from emp
+                    where deptno = 30); -- 다른 방식으로 풀이.
+
+-- Q4. '급여 > SALESMAN의 최고 급여'인 사람의 사원 정보, 급여 등급 정보. 출력은 두 가지 방식으로 : 다중행 함수 활용, 다중행 함수 미활용. (o)
+
+select
+    e.empno, e.ename, e.sal, s.grade
+from emp e join salgrade s
+    on (e.sal >= s.losal and e.sal <= s.hisal); -- emp와 salgrade 조인.
+    
+select max(sal) from emp where job = 'SALESMAN'; -- salesman의 최고 급여(다중행 함수)
+
+select
+    sal
+from emp 
+where job = 'SALESMAN'
+order by sal desc; -- 다중행 함수 없이 salesman의 최고 급여 구하기 1 - sal 내림차순
+
+select
+    sal
+from (
+    select sal
+    from emp
+    where job = 'SALESMAN'
+    order by sal desc)
+where rownum = 1; -- 다중행 함수 없이 salesman의 최고 급여 구하기 2-1(X). rownum 2면 작동 안 됨...
+
+select
+    sal
+from (
+    select sal, rownum as rn
+    from emp
+    where job = 'SALESMAN'
+    order by sal desc)
+where rn = 1; ---- 다중행 함수 없이 salesman의 최고 급여 구하기 2-2(O). 별칭 쓰는 게 맞다.
+
+select
+    empno, ename, sal, grade
+from (
+    select
+        e.empno, e.ename, e.sal, s.grade
+    from emp e join salgrade s
+        on (e.sal >= s.losal and e.sal <= s.hisal))
+where sal > (
+            select max(sal) from emp where job = 'SALESMAN'
+            )
+order by empno asc; -- 다중행 함수 사용 버전.
+
+select
+    empno, ename, sal, grade
+from (
+    select
+        e.empno, e.ename, e.sal, s.grade
+    from emp e join salgrade s
+        on (e.sal >= s.losal and e.sal <= s.hisal))
+where sal > (
+            select
+                sal
+            from (
+                select sal, rownum as rn
+                from emp
+                where job = 'SALESMAN'
+                order by sal desc)
+            where rn = 1;
+            )
+order by empno asc; -- 다중행 함수 미사용 버전. 그런데 RN이 아니라 ALL 써서도 되는 듯.
+
+select
+    empno, ename, sal, grade
+from emp e left outer join salgrade s
+           on (e.sal >= s.losal and e.sal <= s.hisal)
+where sal > (select max(sal) from emp where job = 'SALESMAN'); -- 이렇게도 가능.
+
+
+-- Q. 수업 전 문제 풀이 (OOOO)
+
+-- Q1. COMM IS null. SAL ASC.
+select *
+from emp
+where comm is null
+order by sal asc;
+
+-- Q2. GRADE 별 CNT. GRADE ASC.
+select
+    s.grade, e.empno
+from salgrade s left outer join emp e
+                on (e.sal >= s.losal and e.sal <= s.hisal)
+order by s.grade asc; -- 우선 등급이랑 사원 번호 한 번 출력.
+
+select
+    grade, count(*) as cnt
+from (
+    select
+        s.grade, e.empno
+    from salgrade s left outer join emp e
+                    on (e.sal >= s.losal and e.sal <= s.hisal)
+    )
+group by grade
+order by grade asc; -- 서브쿼리 사용 버전.
+
+select
+    s.grade, count(*) as cnt
+from 
+    emp e, salgrade s
+where 
+    e.sal between s.losal and s.hisal
+group by s.grade
+order by s.grade; -- 서브쿼리 미사용 버전.
+
+-- Q3. ENAME, SAL, GRADE, DNAME. GRADE >= 3. GRADE DESC, SAL DESC.
+
+select
+    e.ename, e.sal, s.grade, d.dname
+from 
+    emp e left outer join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+          left outer join dept d on (e.deptno = d.deptno);  -- 기본 테이블 조인.
+          
+select
+    ename, sal, grade, dname
+from (
+    select
+        e.ename, e.sal, s.grade, d.dname
+    from 
+        emp e left outer join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+              left outer join dept d on (e.deptno = d.deptno))
+where grade >= 3
+order by grade desc, sal desc; -- 원래 썼던 답.
+
+select
+    e.ename, e.sal, s.grade, d.dname
+from emp e, salgrade s, dept d
+where e.sal >= s.losal and e.sal <= s.hisal
+      and e.deptno = d.deptno
+      and s.grade >= 3
+order by grade desc, sal desc; -- 이렇게도 가능.
+
+
+-- Q4. DNAME = 'SALES'. GRADE IN (2, 3). SAL DESC.
+
+select 
+    d.dname, e.empno, e.ename, e.sal, s.grade
+from dept d left outer join emp e on (d.deptno = e.deptno)
+            left outer join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal)
+where d.dname = 'SALES'
+      and s.grade in (2, 3)
+order by e.sal desc;
+
+-- 데이터 정의어(DDL)
+
+desc emp; -- 구조 설명
+
+create table emp_ddl (
+                        empno       number(4),
+                        ename       varchar2(10),
+                        job         varchar2(9),
+                        mgr         number(4),
+                        hiredate    date,
+                        sal         number(7,2),
+                        comm        number(7,2),
+                        deptno      number(2)
+                    );
+                    
+select * from emp_ddl;
+desc emp_ddl;
+
+create table dept_ddl
+    as select * from dept;
+desc dept_ddl;
+select * from dept_ddl;
+
+create table emp_ddl_30
+    as select * from emp where deptno = 30;
+select * from emp_ddl_30;
+
+create table empdept_ddl
+    as select e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, d.deptno, d.dname, d.loc
+       from emp e, dept d
+       where 1 <> 1;
+select * from empdept_ddl;
+desc empdept_ddl;
+
+create table emp_alter
+    as select * from emp;
+
+select * from emp_alter;
+
+alter table emp_alter
+add hp varchar2(20);
+select * from emp_alter;
+desc emp_alter;
+
+alter table emp_alter
+add age number(3) default 1;
+select * from emp_alter;
+
+alter table emp_alter
+rename column hp to tel;
+
+alter table emp_alter
+modify empno number(5);
+desc emp_alter;
+
+alter table emp_alter
+drop column tel;
+
+rename emp_alter to emp_rename;
+desc emp_rename;
+select * from emp_rename;
+
+truncate table emp_rename;
+
+drop table emp_rename;
+
+-- 데이터 조작어(DML)
+
+create table dept_temp
+as select * from dept;
+select * from dept_temp;
+
+insert into dept_temp (deptno, dname, loc)
+            values ('50', 'DATABASE', 'SEOUL');
+            
+insert into dept_temp
+            values ('60', 'NETWORK', 'BUSAN');
+
+insert into dept_temp
+            values ('70', 'WEB', null);
+            
+insert into dept_temp
+            values ('80', 'MOBILE', '');
+
+insert into dept_temp (deptno, loc)
+            values ('90', 'INCHEON');
+            
+create table emp_temp
+    as select * from emp where 1 <> 1;
+
+select * from emp_temp;
+
+insert into emp_temp (empno, ename, hiredate)
+            values (2111, '이순신', to_date('2025-05-21', 'yyyy-mm-dd'));
+
+insert into emp_temp (empno, ename, hiredate)
+            values (3111, '심청이', sysdate);
+            
+insert into emp_temp
+select * from emp where deptno = 10;
+
+create table dept_temp2
+as select * from dept;
+
+select * from dept_temp2;
+
+update dept_temp2
+       set loc = 'SEOUL';
+
+update dept_temp2
+set dname = 'DATABASE',
+    loc = 'SEOUL2'
+where deptno = 40;
+
+create table emp_tmp
+as select * from emp;
+select * from emp_tmp;
+
+-- 연봉이 1000 미만인 경우만 조회.
+select sal, sal*1.03 from emp_tmp
+where sal < 1000;
+-- 위 조건에 속한 이의 연봉을 10% 인상.
+update emp_tmp
+set sal = sal * 1.03
+where sal < 1000;
+
+create table emp_temp2
+as select * from emp;
+select * from emp_temp2;
+
+commit;
+delete from emp_temp2;
+rollback;
+
+delete from emp_temp2
+where deptno = 10;
+
+
+-- 12단원 되새김 문제
+
+create table emp_hw (
+                    empno     number(4),
+                    ename     varchar2(10),
+                    job       varchar(9),
+                    mgr       number(4),
+                    hiredate  date,
+                    sal       number(7, 2),
+                    comm      number(7, 2),
+                    deptno    number(2));
+desc emp_hw;
+select * from emp_hw;
+
+alter table emp_hw
+add bigo varchar2(20);
+
+alter table emp_hw
+modify bigo varchar2(30);
+
+alter table emp_hw
+rename column bigo to remark;
+
+insert into emp_hw (empno, ename, job, mgr, hiredate, sal, comm, deptno, remark)
+select empno, ename, job, mgr, hiredate, sal, comm, deptno, null from emp; -- insert의 서브쿼리에서 칼럼 목록에 null 넣어도 되는 듯
+
+drop table emp_hw;
+
+-- 10단원 되새김 문제
+create table chap10hw_emp as select * from emp;
+create table chap10hw_dept as select * from dept;
+create table chap10hw_salgrade as select * from salgrade;
+
+desc chap10hw_emp;
+desc chap10hw_dept;
+desc chap10hw_salgrade;
+
+select * from chap10hw_emp order by deptno;
+select * from chap10hw_dept;
+select * from chap10hw_salgrade;
+
+insert into chap10hw_dept (DEPTNO, DNAME, LOC)
+values (50, 'ORACLE', 'BUSAN');
+insert into chap10hw_dept (DEPTNO, DNAME, LOC)
+values (60, 'SQL', 'ILSAN');
+insert into chap10hw_dept (DEPTNO, DNAME, LOC)
+values (70, 'SELECT', 'INCHEON');
+insert into chap10hw_dept (DEPTNO, DNAME, LOC)
+values (80, 'DML', 'BUNDANG');
+
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7201, 'TEST_USER1', 'MANAGER', 7788, to_date('16/02/21', 'yy/mm/dd'), 4500, null, 50);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7202, 'TEST_USER2', 'CLERK', 7788, to_date('16/02/21', 'yy/mm/dd'), 1800, null, 50);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7203, 'TEST_USER3', 'ANALYST', 7201, to_date('16/04/11', 'yy/mm/dd'), 3400, null, 60);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7204, 'TEST_USER4', 'SALESMAN', 7201, to_date('16/05/31', 'yy/mm/dd'), 2700, 300, 50);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7205, 'TEST_USER5', 'CLERK', 7201, to_date('16/07/20', 'yy/mm/dd'), 2600, null, 70);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7206, 'TEST_USER6', 'CLERK', 7201, to_date('16/09/08', 'yy/mm/dd'), 2600, null, 70);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7207, 'TEST_USER7', 'LECTURER', 7201, to_date('16/10/28', 'yy/mm/dd'), 2300, null, 80);
+insert into chap10hw_emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+values (7208, 'TEST_USER8', 'STUDENT', 7201, to_date('18/03/09', 'yy/mm/dd'), 1200, null, 80);
+
+update chap10hw_emp
+set mgr = 7201
+where empno = 7202;
+select * from chap10hw_emp where empno = 7202;
+update chap10hw_emp
+set hiredate = '16/01/02'
+where empno = 7202;
+update chap10hw_emp
+set deptno = 60
+where empno = 7204;
+
+select avg(sal) from chap10hw_emp where deptno = 50; -- 50번 부서 근무자의 평균 급여
+select * from chap10hw_emp 
+where sal > (select avg(sal) from chap10hw_emp where deptno = 50); -- 50번의 평균보다 많이 받는 사람들
+
+update chap10hw_emp
+set deptno = 70
+where (sal > (select avg(sal) from chap10hw_emp where deptno = 50));
+
+select c.*, rownum as rm from chap10hw_emp c
+where deptno = 60
+order by hiredate; -- 60번 소속을 입사 빠른 순으로
+
+select hiredate
+from
+    (select c.*, rownum as rn from chap10hw_emp c
+     where deptno = 60
+     order by hiredate)
+where rn = 1;  -- 60번 부서에서 입사일이 가장 이른 사람의 입사일.
+
+select * from chap10hw_emp
+where hiredate < (select hiredate
+                    from
+                        (select c.*, rownum as rn from chap10hw_emp c
+                         where deptno = 60
+                         order by hiredate)
+                    where rn = 1);  -- 더 이른 사람들
+                    
+update chap10hw_emp
+set sal = sal * 1.1
+where hiredate < (select hiredate
+                    from
+                        (select c.*, rownum as rn from chap10hw_emp c
+                         where deptno = 60
+                         order by hiredate)
+                    where rn = 1);  -- 급여 10% 인상
+                    
+update chap10hw_emp
+set deptno = 80
+where  hiredate < (select hiredate
+                    from
+                        (select c.*, rownum as rn from chap10hw_emp c
+                         where deptno = 60
+                         order by hiredate)
+                    where rn = 1); -- 부서 이동
+                    
+-- 4번 문제 자체는 틀리지 않은 것 같은데... 아마 2번에서 데이터 입력 자체를 잘못한 듯.
+
+select * from chap10hw_salgrade where grade = 5;  - 급여등급 5 조회
