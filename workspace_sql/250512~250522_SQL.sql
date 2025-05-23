@@ -1841,3 +1841,208 @@ insert into deptseq (deptno, dname, loc)
 values (d_seq.nextval, 'WEB', 'BUSAN');
 insert into deptseq (deptno, dname, loc)
 values (d_seq.nextval, 'MOBILE', 'ILSAN'); -- 시퀀스를 사용한 데이터 추가
+
+
+/* 250523 - 진도 마무리 겸 전체 단원 복습용 자체 문제 풀이*/
+
+-- 04-2
+
+select distinct job from emp;
+
+-- 04-3
+
+select
+    empno as employee_no,
+    ename as employee_name,
+    job,
+    mgr as manager,
+    hiredate,
+    sal as salary,
+    comm as commission,
+    deptno as department_no
+from emp
+order by deptno desc, ename asc;
+
+-- 05-1
+
+select * from emp
+where ename like '%S';
+
+-- 05-2
+
+select 
+    empno, ename, job, sal, deptno
+from emp
+where
+    deptno = 30
+    and job = 'SALESMAN';
+    
+-- 05-3
+
+select
+    empno, ename, job, sal, deptno
+from emp
+where
+    deptno in (20,30)
+    and sal > 2000; -- 집합연산자 X
+    
+select
+    empno, ename, job, sal, deptno
+from emp
+where
+    deptno = 20
+    and sal > 2000
+union all
+select
+    empno, ename, job, sal, deptno
+from emp
+where
+    deptno = 30
+    and sal > 2000; -- 집합연산자 O
+
+-- 05-4
+
+select * from emp
+where sal < 2000 or sal > 3000;
+
+-- 05-5
+
+select
+    ename, empno, sal, deptno
+from emp
+where
+    ename like '%E%'
+    and deptno = 30
+    and sal not between 1000 and 2000;
+    
+05-6
+
+select * from emp
+where
+    comm is null
+    and mgr is not null
+    and job in ('MANAGER', 'CLERK')
+    and ename not like '_L%';
+
+-- 06-1
+
+select 
+    empno,
+    rpad(substr(empno, 1, 2), 4, '*') as masking_empno,
+    ename,
+    rpad(substr(ename, 1, 2), length(ename), '*') as masking_ename
+from emp
+where
+    length(ename) >= 5 and length(ename) <6;
+
+-- 06-2
+
+select
+    empno, ename, sal,
+    trunc((sal / 21.5), 2) as day_pay,
+    round((sal / 21.5 / 8), 1) as time_pay
+from emp;
+
+-- 06-3
+
+select
+    empno, ename, hiredate,
+    to_char(add_months(hiredate, 3), 'yyyy-mm-dd') as r_job,
+    nvl(to_char(comm), 'N/A') as comm
+from emp;
+
+--06-4
+
+select
+    empno, ename, mgr,
+    case
+    when substr(mgr, 1, 2) is null then '0000'
+    when substr(mgr, 1, 2) = 75 then '5555'
+    when substr(mgr, 1, 2) = 76 then '6666'
+    when substr(mgr, 1, 2) = 77 then '7777'
+    when substr(mgr, 1, 2) = 78 then '8888'
+    else to_char(mgr)
+    end as chg_chr
+from emp;
+
+-- 07-1
+
+select
+    deptno,
+    floor(avg(sal)) as avg_sal,
+    max(sal) as max_sal,
+    min(sal) as min_sal,
+    count(*)
+from emp
+group by deptno;
+
+-- 07-2
+
+select
+    job, count(*)
+from emp
+group by job
+having count(*) >= 3;
+
+-- 07-3
+
+select
+    to_char(hiredate, 'yyyy') as hire_year,
+    deptno
+from emp
+group by to_char(hiredate, 'yyyy'), deptno
+order by to_char(hiredate, 'yyyy');
+    
+-- 07-4
+
+select
+    nvl2(comm, 'O', 'X') as exist_comm
+from emp;
+
+select
+    nvl2(comm, 'O', 'X') as exist_comm,
+    count(*) as cnt
+from emp
+group by nvl2(comm, 'O', 'X');
+
+-- 08-1
+
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.sal
+from dept d, emp e
+where
+    d.deptno = e.deptno
+    and e.sal > 2000
+order by deptno;
+
+select
+    d.deptno, d.dname,
+    e.empno, e.ename, e.sal
+from dept d left outer join emp e 
+                       on (d.deptno = e.deptno)
+where e.sal > 2000
+order by deptno;
+
+-- 08-2
+
+select
+    floor(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from emp e;
+
+select
+    deptno, dname
+from dept;
+
+select
+    deptno, dname,
+    floor(avg(e.sal)) as avg_sal,
+    max(e.sal) as max_sal,
+    min(e.sal) as min_sal,
+    count(*) as cnt
+from dept d , emp e
+where e.deptno = d.deptno
+group by d.deptno;
