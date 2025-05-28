@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class KeyCodeExam {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		{
 			//print
