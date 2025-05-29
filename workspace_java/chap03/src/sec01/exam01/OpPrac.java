@@ -2,8 +2,6 @@
 
 package sec01.exam01;
 
-import java.util.Scanner;
-
 public class OpPrac {
 
 	public static void main(String[] args) {
@@ -121,7 +119,62 @@ public class OpPrac {
 			System.out.println("원의 넓이 : " + var4);
 			
 		}
-
+		
+		{
+			// Q11. "id : java, pw : 12345" : 로그인 성공
+			//      그 외 : 로그인 실패
+			
+//			Scanner scanner = new Scanner(System.in);
+//			
+//			System.out.print("아이디 : ");
+//			String name = Scanner.nextLine(); // 코드 그대로 썼는데......
+//			
+//			System.out.print("패스워드 : ");
+//			String strPassword = scanner.nextLine();
+//			int password = Integer.parseInt(strPassword);
+//			
+//			if(name == "java") {
+//				if(strPassword == "12345") {
+//					System.out.println("로그인 성공");
+//				}
+//				else {
+//					System.out.println("로그인 실패 : 패스워드가 틀림");
+//				}
+//			} else {
+//				System.out.println("로그인 실패 : 아이디가 존재하지 않음");
+//			}
+		}
+		
+		{
+			// Q12. 연산자 출력 결과
+			
+			int x = 10;
+			int y = 5;
+			System.out.println( (x > 7) && (y <= 5)); // true
+			System.out.println( (x%3 == 2) || (y%2 != 1) ); // false || false. 고로 false.
+		}
+		
+		{
+			// Q13. 대입연산자 하나로 구성된 실행문으로 변경
+			
+			int value = 0;
+			
+			value += 10;
+			value -= 10;
+			value *= 10;
+			value /= 10;
+			
+			System.out.println("Q13 : " + value);
+		}
+		
+		{
+			// Q14. 코드 실행 시 출력 결과
+			
+			int score = 85;
+			String result = ( !(score > 90) ) ?  "가" : "나"; // 90 초과의 반대. 즉 90 이하. true이므로 가 출력.
+			System.out.println(result);
+		}
+			
 	}
-	
+
 }

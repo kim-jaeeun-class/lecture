@@ -99,10 +99,137 @@ public class IfExam {
 			System.out.println("dice : " + dice);
 			
 			int num = (int) (Math.random() * 45) + 1;
-			System.out.println("lotto : " + num);
+			int num2 = ((int) (Math.random() * 10000)) % 45 + 1;
+			System.out.println("lotto1 : " + num);
+			System.out.println("lotto2 : " + num2);
 		}
 		
+		{
+			int dice = (int) (Math.random() * 5) + 1;
+			
+			if (dice == 1) {
+				System.out.println("1번이 나왔습니다.");
+			}
+			else if(dice == 2) {
+				System.out.println("2번이 나왔습니다.");
+			}
+			else if(dice == 3) {
+				System.out.println("3번이 나왔습니다.");
+			}
+			else if(dice == 4) {
+				System.out.println("4번이 나왔습니다.");
+			}
+			else if(dice == 5) {
+				System.out.println("5번이 나왔습니다.");
+			}
+			else {
+				System.out.println("6번이 나왔습니다.");
+			}
+		}
+		
+		{
+			int dice = (int) (Math.random() * 5) + 1;
+			switch(dice) {
+				case 1 :
+					System.out.println("1번이 나왔습니다.");
+					break;
+				case 2 :
+					System.out.println("2번이 나왔습니다.");
+					break;
+				case 3 :
+					System.out.println("3번이 나왔습니다.");
+					break;
+				case 4 :
+					System.out.println("4번이 나왔습니다.");
+					break;
+				case 5 :
+					System.out.println("5번이 나왔습니다.");
+					break;
+				default :
+					System.out.println("6번이 나왔습니다.");
+				}
+			}
+		
+		{
+			int num = 1;
+			if ( num == 1 ) {
+				System.out.println("num은 1입니다.");
+			}
+			else if ( num == 2 ) {
+				System.out.println("num은 2입니다.");
+			}
+			else {
+				System.out.println("num은 1과 2가 아닙니다.");
+			}
+			
+			switch(num) {
+			case 1 :
+				System.out.println("num은 1입니다.");
+				break;
+			case 2 :
+				System.out.println("num은 2입니다.");
+				break;
+			default :
+				System.out.println("num은 1과 2가 아닙니다.");
+				break;
+			}
+		}
+		
+		{
+			// 여기서 계절은 3월부터 3개월씩으로 잡기.
+			int month = 13;
+			
+			if ( month < 1 || month >12 ) {
+				System.out.println("Not Valid Value");
+			}			
+			else if (month >= 3 && month <= 5) {
+				System.out.println("Season : Spring");
+			}
+			else if (month >= 6 && month <= 8) {
+				System.out.println("Season : Summer");
+			}
+			else if (month >= 9 && month <= 11) {
+				System.out.println("Season : Fall");
+			}
+			else {
+				System.out.println("Season : Winter");
+			}
+			
+			// 위 코드를 switch를 쓰면... case 값에 해당 안 되면 어차피 통과되니 이렇게 사용 가능.
+			// 가독성을 위해 사용하는 경우.
+			
+			switch(month) {
+			case 3 : 
+			case 4 : 
+			case 5 : 
+				System.out.println("Season : Spring");
+				break;
+				
+			case 6 : 
+			case 7 : 
+			case 8 : 
+				System.out.println("Season : Summer");
+				break;
+				
+			case 9 : 
+			case 10 :
+			case 11 : 
+				System.out.println("Season : Fall");
+				break;
+				
+			case 12 : 
+			case 1 : 
+			case 2 : 
+				System.out.println("Season : Winter");
+				break;
+			
+			default :
+				System.out.println("Not Valid Value");
+				break;
+			}
+			
+		}
+			
+		} // public 블럭
 		
 	}
-
-}
