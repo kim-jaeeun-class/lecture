@@ -62,8 +62,11 @@ public class IfPrac {
 		
 		{
 			// Q1. int에 임의의 수 할당. 그 수가 양수, 0, 음수인지의 여부를 구분해 출력.
+			System.out.println("Q1");
+			
 			String num1 = scan.nextLine(); // 엔터 입력 후 적은 모든 것을 보임
-			double num = Double.parseDouble(num1);
+			System.out.println("임의 정수 입력");
+			int num = Integer.parseInt(num1);
 			
 			if (num > 0) {
 				System.out.println(num+ "은(는) 양수입니다.");
@@ -78,10 +81,13 @@ public class IfPrac {
 		
 		{
 			// Q2. a와 b 두 수 중에서 큰 수 입력.
-						
-			String numA = scan.nextLine();
-			String numB = scan.nextLine();
+			System.out.println("Q2");		
 			
+			System.out.println("a");
+			String numA = scan.nextLine();
+			System.out.println("b");
+			String numB = scan.nextLine();
+						
 			double a = Double.parseDouble(numA);
 			double b = Double.parseDouble(numB);
 			
@@ -98,7 +104,7 @@ public class IfPrac {
 		
 		{
 			// Q3. 시간과 분이 있을 때, 35분이 지난 시간 출력.
-			
+			System.out.println("Q3");
 			/*
 			 * if문 배우기 이전... 24시간 기준이고, 범위 외의 값 출력 시 문제 있음.
 			 * int h = 12; // 현재 시간
@@ -117,7 +123,7 @@ public class IfPrac {
 //				if ( total < 1440 ) { // 추가 분까지 합쳐도 24시 미만일 때
 //					System.out.println(plusM + "분을 더한 시간은" + (total / 60) + "시 " + (total % 60) + "분입니다.");
 //				}
-//				else if (total == 1440) { // 추가 분까지 합쳐서 정확하게 24시 일 때
+//				else if (total == (24 * 60)) { // 추가 분까지 합쳐서 정확하게 24시 일 때
 //					System.out.println(plusM + "분을 더한 시간은 0시 00분입니다.");
 //				}
 //				else { // 추가 분을 합치면 24시를 초과할 때
@@ -134,7 +140,9 @@ public class IfPrac {
 			String m1 = scan.nextLine();
 			
 			int plusM = 35;
+			System.out.println("현재 시간");
 			int h = Integer.parseInt(h1);
+			System.out.println("현재 분");
 			int m = Integer.parseInt(m1);
 			
 			
@@ -153,7 +161,10 @@ public class IfPrac {
 		
 		{
 			// Q4. 어떤 수가 15와 20 사이에 포함되는지의 여부.
+			System.out.println("Q4");
+			
 			String num1 = scan.nextLine();
+			System.out.println("임의 실수 입력");
 			double num = Double.parseDouble(num1);
 			
 			if (num >= 15 && num <= 20) {
@@ -167,15 +178,17 @@ public class IfPrac {
 		{
 			// Q5. 통장 잔액 = 10000. 출금액에 따라 다음 세 가지를 출력.
 			// 잔액이 부족합니다. 얼마 출금했고 얼마 남았습니다. 정확히 입력해주세요.
+			System.out.println("Q5");
 			
 			int money = 10000;
 			
+			System.out.println("출금액 입력");
 			String money2 = scan.nextLine();
 			
 			int left = money - Integer.parseInt(money2);
 			
 			if (left >= 0) {
-				System.out.println(money2 + "원 을(를) 출금했고," + left + "이(가) 남았습니다.");
+				System.out.println(money2 + "원을 출금했고," + left + "원이 남았습니다.");
 			}
 			else {
 				System.out.println("잔액이 부족합니다.");
@@ -185,8 +198,10 @@ public class IfPrac {
 		{
 			// Q6. 입력한 수에 따라 다음을 출력.
 			// 100보다 큰 수이며, 양수이고, 홀수입니다.
+			System.out.println("Q6");
 			
 			String num1 = scan.nextLine();
+			System.out.println("임의 정수 입력");
 			int num = Integer.parseInt(num1);
 			
 			if (num >= 100) {
@@ -221,10 +236,14 @@ public class IfPrac {
 		{
 			// Q7. 변수 : 어제 온도, 오늘 온도
 			// "오늘 온도는 영하 3도입니다. 어제보다 5도 낮습니다." 식으로 출력
+			System.out.println("Q7");
+			
 			String y1 = scan.nextLine();
 			String t1 = scan.nextLine();
 			
+			System.out.println("어제 기온 입력");
 			double y = Double.parseDouble(y1);
+			System.out.println("오늘 기온 입력");
 			double t = Double.parseDouble(t1);
 			
 			if (t > 0) {
@@ -260,11 +279,51 @@ public class IfPrac {
 					System.out.println("오늘 온도는 영하" + -t + "도입니다." + "어제보다 " + (t-y) + "도 높습니다.");
 				}
 			}
+			
+			// 이렇게도 할 수 있지 않나 하는 마음에 한 번 : if 블록 내부에서 변수 지정하기
+			System.out.println("Q7-1");
+			
+			String y2 = scan.nextLine();
+			String t2 = scan.nextLine();
+			
+			System.out.println("어제 기온 입력");
+			double y3 = Double.parseDouble(y2);
+			System.out.println("오늘 기온 입력");
+			double t3 = Double.parseDouble(t2);
+			
+			String data1;
+			String data2;
+			
+			if (t3 > 0) {
+				data1 = "영상" + t3;
+			}
+			else if (t3 == 0) {
+				data1 = "" + t3;
+			}
+			else {
+				data1 = "영하" + -(t3);
+			}
+			
+			if ((y3-t3) > 0) {
+				data2 = "보다 " + (y3-t3) + "도 낮습니다.";
+			}
+			else if ((y3-t3) == 0) {
+				data2 = "와 같습니다." ;
+			}
+			else {
+				data2 = "보다 " + -(y3-t3) + "도 높습니다.";
+			}
+			
+			System.out.println("오늘 온도는 " + data1 + "도입니다. 어제" + data2);
+			
 		}
 		
 		{
 			// Q8. 변수에 두 자리 숫자가 존재 시,
 			// 10의 자리와 1의 자리의 수가 같은지 판단.
+			System.out.println("Q8");
+			
+			System.out.println("두 자리 양수 입력");
 			String n1 = scan.nextLine();
 						
 			int n = Integer.parseInt(n1);
@@ -284,15 +343,21 @@ public class IfPrac {
 			// Q9. 사각형의 한 쪽 모서리 : x1 = 10, y1 = 20
 			// 대각선의 모서리(반대 좌표) : x2 = 90, y2 = 100
 			// 이 때, 새로운 점 x3와 y3는 사각형에 포함되는가?
-			String x3_1 = scan.nextLine();
-			String y3_1 = scan.nextLine();
+			System.out.println("Q9");
+			
+			System.out.println("x 좌표 입력");
+			String xIn = scan.nextLine();
+			System.out.println("y 좌표 입력");
+			String yIn = scan.nextLine();
 			
 			int x1 = 10;
 			int y1 = 20;
+			
 			int x2 = 90;
 			int y2 = 100;
-			int x3 = Integer.parseInt(x3_1);
-			int y3 = Integer.parseInt(y3_1);
+			
+			int x3 = Integer.parseInt(xIn);
+			int y3 = Integer.parseInt(yIn);
 			
 			if (((x3 >= x1) && (x3 <= x2)) && ((y3 >= y1) && (y3 <= y2))) {
 				System.out.println("이 좌표는 사각형에 포함됩니다.");
@@ -302,7 +367,7 @@ public class IfPrac {
 			}
 		}
 		
-		scan.close(); // scanner 경고는 이렇게 닫아서 없앨 수 있다고 검색에서 나오는데... 써도 되나?
+		scan.close(); // scanner 경고는 sc.close() 이렇게 닫아서 없앨 수 있다고 검색에서 나오는데... 써도 되나? > OKOK
 		
 	}
 

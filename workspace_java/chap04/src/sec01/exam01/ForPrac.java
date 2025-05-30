@@ -1,6 +1,6 @@
 package sec01.exam01;
 
-public class forPrac {
+public class ForPrac {
 
 	public static void main(String[] args) {
 		
