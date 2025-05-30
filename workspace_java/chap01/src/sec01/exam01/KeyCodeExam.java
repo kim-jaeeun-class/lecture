@@ -57,7 +57,10 @@ public class KeyCodeExam {
 			
 			int input2 = scan.nextInt();
 			System.out.print("입력한 x값: " + input2);
+			
+			scan.close();
 		}
+	
 	}
-
+	
 }
