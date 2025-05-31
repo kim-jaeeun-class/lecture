@@ -68,6 +68,18 @@ public class ForPrac02 {
 			System.out.println();
 		}
 		
+		System.out.println("4단계 : 행/열 개수 달라도 나오도록.");
+		
+		int r1 = 5; // 행
+		int c1 = 8; // 열
+		
+		for(int i1 = 1; i1 <= r1; i1++) {
+			for(int i2 = 1; i2 <= c1; i2++) {
+				System.out.print(i1);
+			}
+			System.out.println();
+		}
+		
 		// 5단계. 최대 행 수 및 열 수= n6. 1행에는 1이 1개, 2행에는 2가 2개, 3행에는 3이 3개... 식으로 출력.
 		
 		System.out.println("5단계");
@@ -81,7 +93,7 @@ public class ForPrac02 {
 			System.out.println();
 			}
 		
-		// 6단계. 최대 행 수 및 열 수 = n7. 5단계와 비슷하나, 출력값을 그 행의 위치값이 아니라 +가 나오도록.
+		// 6단계. 최대 행 수 및 열 수 = n7. 5단계와 비슷하나, 출력값이 그 행의 위치값이 아닌 +로 나오도록.
 		
 		System.out.println("6단계");
 		
@@ -101,7 +113,7 @@ public class ForPrac02 {
 		int n8 = 5;
 		
 		for(int i1 = 1; i1 <= n8; i1++) {
-			for(int i2 = 1; i2 <= (n8 - (i1 + 1)); i2++) { // n8 - 0, n8 - 1... 을 구현하기 위한 조건.
+			for(int i2 = 1; i2 <= (n8 - i1 + 1); i2++) { // n8 - 0, n8 - 1... 을 구현하기 위한 조건.
 					System.out.print(i1);
 				}
 			System.out.println();
@@ -117,7 +129,7 @@ public class ForPrac02 {
 			for(int i2 = 1; i2 <= i1; i2++) {
 					System.out.print("+");
 			}
-			for(int i3 = 1; i3 <= (n8 - i1); i3++) {
+			for(int i3 = 1; i3 <= (n9 - i1); i3++) {
 				System.out.print(".");
 			}
 			System.out.println();
@@ -176,7 +188,7 @@ public class ForPrac02 {
 		
 		// 12단계. 입력받은 줄 수대로 11단계의 구조 출력.
 		
-		System.out.println("11단계");
+		System.out.println("12단계");
 		
 		System.out.println("출력하길 원하는 행 수를 입력하세요.");
 		
