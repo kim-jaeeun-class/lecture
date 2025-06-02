@@ -54,12 +54,12 @@ public class ForExam02 {
 		
 		System.out.println("Q3. 각 합 별 조합의 수 출력");
 		
-		for(int i = 2; i <= dice*2; i++) {
-			int count = 0;
+		for(int i = 2; i <= dice * 2; i++) {	// 합의 최솟값(2)부터 최댓값(2개를 더하는 거니 개당 최댓값 * 2로 처리.)
+			int count = 0;	// 숫자 세기용
 			System.out.print("합" + i + " : ");
-			for(int i1 = 1; i1 <= dice; i1++) {
-					for(int i2 = 1; i2 <= dice; i2++) {
-						if (i1 + i2 == i) {
+			for(int i1 = 1; i1 <= dice; i1++) {		// 다이스1
+					for(int i2 = 1; i2 <= dice; i2++) {		// 다이스2
+						if (i1 + i2 == i) {		// 두 주사위의 값이 합n이면 아래를 출력 후 count에 1 더하기.
 							System.out.print("[" + i1 + "," + i2 + "]" + " ");
 							count++;
 						}	
@@ -74,13 +74,11 @@ public class ForExam02 {
 		
 		System.out.println("Q4. 조합의 중복을 제거해 출력");
 		
-		// 아래는 3번 카피
-		
-		for(int i = 2; i <= dice*2; i++) {
+		for(int i = 2; i <= dice * 2; i++) {
 			System.out.print("합" + i + " : ");
 			for(int i1 = 1; i1 <= dice; i1++) {
 					for(int i2 = 1; i2 <= dice; i2++) {
-						if (i1 + i2 == i) {
+						if (i1 + i2 == i && i1 <= i2) { // [1, 2]랑 [2, 1]이 있으면 [1, 2]만 출력되도록.
 							System.out.print("[" + i1 + "," + i2 + "]" + " ");
 						}	
 					}
