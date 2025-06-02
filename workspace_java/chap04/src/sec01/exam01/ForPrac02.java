@@ -6,6 +6,8 @@ public class ForPrac02 {
 
 	public static void main(String[] args) {
 		
+		String mark = "+";
+		
 		// 0단계. 행 수(n)대로 +를 1개씩 줄마다 출력.
 		
 		System.out.println("0단계");
@@ -13,7 +15,7 @@ public class ForPrac02 {
 		int n = 5; // 높이 지정
 		
 		for(int i = 1; i <= n; i++) {
-			System.out.println("+");
+			System.out.println(mark);
 		}
 		
 		// 1단계. 열 수(n1)대로 +를 1개씩 한 줄에 출력.
@@ -23,7 +25,7 @@ public class ForPrac02 {
 		int n1 = 5;
 		
 		for(int i = 1; i <= n1; i++) {
-			System.out.print("+");
+			System.out.print(mark);
 		}
 		
 		System.out.println();
@@ -35,7 +37,7 @@ public class ForPrac02 {
 		int n2 = 5;
 		
 		for(int i = 1; i <= n2; i++) {
-			System.out.print("+");
+			System.out.print(mark);
 			System.out.print(".");
 		}
 		
@@ -48,9 +50,9 @@ public class ForPrac02 {
 		int n3 = 3;
 		int n4 = 5;
 		
-		for(int i1 = 1; i1 <= n3; i1++) {	// 감싸진 for문이 다 작동되면 행갈이+재시작 되도록 println 삽입.
+		for(int i1 = 1; i1 <= n3; i1++) {	// 내부 for문이 다 작동되면 '행갈이+재시작' 되도록 println 삽입.
 			for(int i2 = 1; i2 <= n4; i2++) {	// 1단계 for문 적용
-				System.out.print("+");
+				System.out.print(mark);
 			}
 			System.out.println();
 		}
@@ -101,7 +103,7 @@ public class ForPrac02 {
 		
 		for(int i1 = 1; i1 <= n7; i1++) {
 			for(int i2 = 1; i2 <= i1; i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 				}
 			System.out.println();
 		}
@@ -127,7 +129,7 @@ public class ForPrac02 {
 		
 		for(int i1 = 1; i1 <= n9; i1++) {
 			for(int i2 = 1; i2 <= i1; i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 			}
 			for(int i3 = 1; i3 <= (n9 - i1); i3++) {
 				System.out.print(".");
@@ -146,12 +148,12 @@ public class ForPrac02 {
 				System.out.print(".");
 			}
 			for(int i2 = 1; i2 <= i1; i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 			}
 			System.out.println();
 		}
 		
-		// 10단계. 총 행 수 = n11. (열 수는 다름!) .은 행 수 -1, +는 행수 +=2로.
+		// 10단계. 총 행 수 = n11. (열 수는 다름!) .은 행 수 -1(역순), +는 행 수 += 2로.
 		
 		System.out.println("10단계");
 		
@@ -162,10 +164,28 @@ public class ForPrac02 {
 				System.out.print(".");
 			}
 			for(int i2 = 1; i2 <= ((i1 * 2) - 1); i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 			}
 			System.out.println();
 		}
+		
+		System.out.println("10단계 - 다른 방식 : 삼각형을 한 번 더 쪼갬.");
+		
+		int an11 = 5;
+		
+		for(int i1 = 1; i1 <= an11; i1++) {
+			for(int i3 = 1; i3 <= (an11 - i1); i3++) {
+				System.out.print(".");
+			}
+			for(int i2 = 1; i2 <= i1; i2++) {
+				System.out.print(mark);
+			}
+			for(int i3 = 1; i3 <= (i1 - 1); i3++) {
+				System.out.print(mark);
+			}
+			System.out.println();
+		}
+		
 		
 		// 11단계. 총 행 수 = n12. 10단계의 +를 중간에 옮기기. 10단계의 .은 양 옆에 뜨도록.
 		
@@ -178,7 +198,7 @@ public class ForPrac02 {
 				System.out.print(".");
 			}
 			for(int i2 = 1; i2 <= ((i1 * 2) - 1); i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 			}
 			for(int i3 = 1; i3 <= (n12 - i1); i3++) {
 				System.out.print(".");
@@ -201,7 +221,7 @@ public class ForPrac02 {
 				System.out.print(".");
 			}
 			for(int i2 = 1; i2 <= ((i1 * 2) - 1); i2++) {
-					System.out.print("+");
+					System.out.print(mark);
 			}
 			for(int i3 = 1; i3 <= (lineNum - i1); i3++) {
 				System.out.print(".");

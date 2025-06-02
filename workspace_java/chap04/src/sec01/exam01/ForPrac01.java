@@ -104,7 +104,7 @@ public class ForPrac01 {
         min = 2; // 단 수
         int mul = 9; // 단에 얼마까지 곱할지
 
-        for (int i = 1; i <= mul; i++) { // 특정 단을 * (1 ~ 9). 9보다 더 높은 수까지 곱하기 가능.
+        for (int i = 1; i <= mul; i++) { // 특정 단 * (1 ~ 9). 9보다 더 높은 수까지 곱하기 가능.
             System.out.println(min + " X " + i + " = " + (min * i));
         }
 
@@ -182,6 +182,20 @@ public class ForPrac01 {
                         System.out.println();
                     }
                 }
+                
+                System.out.println("1 ~ 10을 3열로 출력 - 다른 수로 바꿔도 되도록 03");
+                
+                int start1 = 1; // 시작 값
+                int finish1 = 10; // 종료 값
+                int column1 = 3; // 열 개수
+                
+                for (int i = start1; i <= finish1; i++) { // 시작 값부터 끝 값까지 반복문으로 출력
+                    System.out.print(i + " "); // 각 값 뒤에 띄어쓰기
+                    if (((i - start1) + 1) % column1 == 0) { // 처음은 i = 시작값이니 (i-start)+1로 뭔 수가 시작값이든 그 수가 첫 번째 위치라고 표시. +1 안 하면 0을 나누는 거라 나머지가 없어서 시작부터 줄바꿈 된다.
+                        System.out.println();
+                    }
+                }
+                System.out.println(); // 굳이 if에 조건 걸 필요 없이 여기에 println해도 ok
 
         // Q. 1~100(n)까지 홀수 개수
         
