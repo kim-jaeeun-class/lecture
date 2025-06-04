@@ -77,7 +77,7 @@ public class ForExam02 {
 		for(int i = 2; i <= dice * 2; i++) {
 			System.out.print("합" + i + " : ");
 			for(int i1 = 1; i1 <= dice; i1++) {
-					for(int i2 = 1; i2 <= dice; i2++) {
+					for(int i2 = 1; i2 <= dice; i2++) { // int i2 = i1 식으로도 가능(나중에 써보기)
 						if (i1 + i2 == i && i1 <= i2) { // [1, 2]랑 [2, 1]이 있으면 [1, 2]만 출력되도록.
 							System.out.print("[" + i1 + "," + i2 + "]" + " ");
 						}	
@@ -101,7 +101,7 @@ public class ForExam02 {
 		 * 30 31 32 33
 		 */
 		
-		System.out.println("Q5. 입력받은 정수에 따라 (n-1)까지의 숫자를 2개의 정사각형 조합으로 출력");
+		System.out.println("Q5. 입력받은 정수에 따라 (n-1)까지의 숫자를 2개의 조합으로 한 요소를 배치해 정사각형 모양 출력");
 		
 		int row = 5;
 		
@@ -109,14 +109,14 @@ public class ForExam02 {
 		System.out.println("행갈이 확인");
 		}
 		
-		for(int i1 = 0; i1 < row; i1++) {
-			System.out.print(i1);
+		for(int i = 0; i < row; i++) {
+			System.out.print(i);
 		} // 0, 1, 2 표시
 		
 		System.out.println();
 		
-		for(int i2 = 0; i2 < row; i2++) {
-			System.out.print(i2 + " ");
+		for(int i = 0; i < row; i++) {
+			System.out.print(i + " ");
 		} //
 		
 		System.out.println();

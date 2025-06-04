@@ -187,7 +187,7 @@ public class BreakConPrac {
 				g = false;
 			}
 			else { // 실제 게임은 else에서
-				System.out.println("상대의 수 : " + bot); // 여기는 겹치니까... 뺄 수 있을 듯.
+				System.out.println("상대의 수 : " + bot); // 이 부분은 겹치니까... 여기로 뺄 수 있을 듯.
 				
 				if (game == bot) { // 같으면 비김
 					System.out.println("비겼습니다.");
