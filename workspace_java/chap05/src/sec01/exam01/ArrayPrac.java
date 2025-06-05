@@ -14,7 +14,7 @@ public class ArrayPrac {
 			q1B[i] = q1A[(q1A.length - (i + 1))];
 		}
 		for(int i = 0; i < q1A.length; i++) {
-			if (i == q1A.length) {
+			if (i == (q1A.length - 1)) {
 				System.out.print("q1B[" + i + "] : " + q1B[i]);
 			}
 			else {
@@ -30,8 +30,7 @@ public class ArrayPrac {
 		int count = 0;
 		
 		for(int i = 0; i < q2A.length ; i++) {
-			int a = q2A[i];
-			if (a % 2 != 0) {
+			if (q2A[i] % 2 != 0) {
 				count++;
 			}
 		}
@@ -43,8 +42,7 @@ public class ArrayPrac {
 		int count1 = 0;
 		
 		for(int i = 0; i < q2A.length ; i++) {
-			int a = q2A[i];
-			if (a > 4) {
+			if (q2A[i] > 4) {
 				count1++;
 			}
 		}
@@ -54,47 +52,81 @@ public class ArrayPrac {
 		// Q4. 최대값 구하기
 		
 		System.out.print("Q4. 배열 : ");
-		int[] q4A = new int[q2A.length];
+//		int[] q4A = new int[q2A.length];
+//		
+//		for(int i = 0; i < q4A.length ; i++) {
+//			q4A[i] = q2A[i]; // 우선 q4A 배열 내부 값 지정
+//		}
+//		
+//		for(int i = 0; i < q4A.length ; i++) { // 이건 각 배열 위치에 넣으려면 있어야 함.
+//			for(int j = i; j < q4A.length; j++) { // 이 쪽 부분을 조정... > 완료!!!
+//				if(q4A[i] > q4A[j]) { // 교환하는 정렬 방식 써보고 싶었는데... 이 위에 뭔가 더 있어야 할 듯.
+//					int temp = q4A[i];
+//					q4A[i] = q4A[j];
+//					q4A[j] = temp;
+//				}
+//			}
+//			System.out.print(q4A[i] + " ");
+//		}
+//		System.out.println();
+//		System.out.println("max는 " + q4A[q4A.length - 1]);
+//		개선안 : 정렬 외의 다른 방법(첫 번쨰 값이랑 비교?)도 있다고 하니 한 번 시도해보기.
 		
-		for(int i = 0; i < q4A.length ; i++) {
-			q4A[i] = q2A[i]; // 우선 q4A 배열 내부 값 지정
+		for (int i = 0; i < q2A.length; i++) {
+		    System.out.print(q2A[i] + " ");
 		}
-		
-		for(int i = 0; i < q4A.length ; i++) { // 이건 각 배열 위치에 넣으려면 있어야 함.
-			for(int j = i; j < q4A.length; j++) { // 이 쪽 부분을 조정... > 완료!!!
-				if(q4A[i] > q4A[j]) { // 교환하는 정렬 방식 써보고 싶었는데... 이 위에 뭔가 더 있어야 할 듯.
-					int temp = q4A[i];
-					q4A[i] = q4A[j];
-					q4A[j] = temp;
-				}
-			}
-			System.out.print(q4A[i]);
+
+		int max = q2A[0]; // 첫 번째 값을 기준점 삼기.
+
+		for (int i = 1; i < q2A.length; i++) {
+		    if (q2A[i] > max) {	// 그 다음값과 비교할 때, 더 크면 원래 max값(0 위치)이랑 바꿔주기.
+		        max = q2A[i];
+		    }
 		}
+
 		System.out.println();
-		System.out.println("max는 " + q4A[q4A.length - 1]);
-		
+		System.out.println("max는 " + max);
 		
 		// Q5. 두 번째로 큰 수 구하기.
 		
-		System.out.print("Q5");
+		System.out.print("Q5 : ");
 		
-		int[] q5A = new int[q2A.length];
+//		int[] q5A = new int[q2A.length];
+//		
+//		for(int i = 0; i < q5A.length ; i++) {
+//			q5A[i] = q2A[i];
+//		}
+//		
+//		for(int i = 0; i < q5A.length ; i++) {
+//			for(int j = i; j < q5A.length; j++) {
+//				if(q5A[i] > q5A[j]) {
+//					int temp = q5A[i];
+//					q5A[i] = q5A[j];
+//					q5A[j] = temp;
+//				}
+//			}
+//		}
+//		System.out.println();
+//		System.out.println("'max - 1'은 " + q5A[q5A.length - 2]);
+//		개선안 : 4번의 다른 방법을 기반으로 시도.
 		
-		for(int i = 0; i < q5A.length ; i++) {
-			q5A[i] = q2A[i];
-		}
+		int secMax = max;
 		
-		for(int i = 0; i < q5A.length ; i++) {
-			for(int j = i; j < q5A.length; j++) {
-				if(q5A[i] > q5A[j]) {
-					int temp = q5A[i];
-					q5A[i] = q5A[j];
-					q5A[j] = temp;
-				}
+		for (int i = 0; i < q2A.length; i++) {
+			if (q2A[i] != max) { // max값이 아니면
+				secMax = q2A[i]; // secMax에 대입시키기. max보다 작기만 하면 ok.
+				break;
 			}
 		}
-		System.out.println();
-		System.out.println("'max - 1'은 " + q4A[q4A.length - 2]);
+		
+		for (int i = 0; i < q2A.length; i++) { // 최댓값 구할 때처럼. 대체하는 식으로.
+			if (q2A[i] != max && q2A[i] > secMax) { // max는 아니지만 secMax보다 크면,
+				secMax = q2A[i]; // 대체하기를 끝 위치까지 반복.
+			}
+		}
+		System.out.println("secMax는 " + secMax);
+		
+		
 		
 		// Q6. 오른쪽으로 배열값을 한 칸씩 밀기. 빈 칸(가장 왼쪽 값)은 초기값 0으로.
 		// 복사 이용해서 하면 될 듯.
@@ -150,7 +182,7 @@ public class ArrayPrac {
 		
 		System.out.print("Q8-1. PW : ");
 		for (int i = 0; i < pwAll.length; i++) {
-			int pw = (int) (Math.random() * 9) + 1;
+			int pw = (int) (Math.random() * 10); // 이번에는 0도 포함되므로 굳이 +1 쓸 필요 없음
 			pwAll[i] = pw;
 			System.out.print(pwAll[i]);
 		}
@@ -163,24 +195,53 @@ public class ArrayPrac {
 		char z = 'z';
 		char A = 'A';
 		char Z = 'Z';
+		char zero = '0';
 		
 		char[] PW2 = new char [pwLength]; // 배열 길이 8로 출력되는 점 확인
 
 		for (int i = 0; i < PW2.length; i++) { // pw 최종 출력용.
-			char pw2 = (char) (a + (Math.random()) * (z-a));
+			char pw2 = (char) (a + (Math.random()) * (z - a +1)); // 처음에 +1 안 했는데 그러니까 z가 안 나온다...
 			PW2[i] = pw2;
 			System.out.print(PW2[i]);
 		}
 		System.out.println();
 		
-		System.out.print("Q8-3. PW : "); // 문제 잘못 봤다!!!!!
+		System.out.print("Q8-3. PW : "); // 문제 잘못 봤다!!!!! 대문자만 아니다!!
 		
 		char[] PW3 = new char[pwLength];
-					
-		for (int i = 0; i < PW3.length; i++) { // pw 최종 출력용.
-			char pw3 = (char) (A + (Math.random()) * (Z-A));
-			PW3[i] = pw3;
-			System.out.print(PW3[i]);
+		
+		// 여기는 필수 조건 지정 파트
+		PW3[0] = (char) (zero + (int)(Math.random() * 10)); // 미리 지정 안 하고 시작부터 랜덤은 도저히 모르겠다...
+		PW3[1] = (char) (zero + (int)(Math.random() * 10)); // 위랑 이건 숫자
+		PW3[2] = (char) (a + (int)(Math.random() * (z - a +1))); // 이건 소문자
+		PW3[3] = (char) (A + (int)(Math.random() * (Z - A +1))); // 이건 대문자
+		
+		// 나머지 부분... 랜덤하게 채우기.
+		
+		for (int i = 4; i < pwLength; i++) {
+			int type = (int)(Math.random() * 3); { // 0이면 숫자, 1은 소문자, 2는 대문자로?
+				if (type == 0) { // 실행문은 위 필수 조건 복붙
+					PW3[i] = (char) (zero + (int)(Math.random() * 10));
+				}
+				else if (type == 1) {
+					PW3[i] = (char) (a + (int)(Math.random() * (z - a +1)));
+				}
+				else {
+					PW3[i] = (char) (A + (int)(Math.random() * (Z - A +1)));
+				}
+			}
+		}
+		
+		// 이걸.... 이제 어떻게 섞냐... 4번 풀었던 걸로 쓰는 거 말곤 생각 안 난다. 일단 가보자.
+		for (int i = pwLength - 1; i > 0; i--) {
+		    int j = (int)(Math.random() * (i + 1));
+		    char temp = PW3[i];
+		    PW3[i] = PW3[j];
+		    PW3[j] = temp;
+		}
+		
+		for (int i = 0; i < pwLength; i++) {
+		    System.out.print(PW3[i]);
 		}
 		System.out.println();
 
@@ -208,17 +269,17 @@ public class ArrayPrac {
 				sys = false;
 			}
 			else if (input == 1) {
-				System.out.println("원하시는 자리의 번호를 입력해주세요.");
+				System.out.println("원하시는 자리의 번호를 입력해주세요. 자리 번호 : 1 ~ " + seatLength);
 				int res = sc.nextInt();
-				if (seat[res] == 0) {
-					System.out.println(res + "번 자리를 예약했습니다.");
-					seat[res] = res;
-				}
-				else if (seat[res] != 0) {
-					System.out.println("이미 선점된 자리입니다.");
-				}
-				else {
+				if (res < 1 || res > seatLength) {
 					System.out.println("존재하지 않는 자리 번호입니다.");
+				}
+				else if (seat[res - 1] == 0) {
+					System.out.println(res + "번 자리를 예약했습니다.");
+					seat[res - 1] = 1;
+				}
+				else { // res는 10까지 뜨니 주의.
+					System.out.println("이미 선점된 자리입니다.");
 				}
 			}
 			else if (input == 2) {
@@ -234,7 +295,7 @@ public class ArrayPrac {
 				System.out.print("현재 남아 있는 자리 번호는 ");
 				for(int i = 0; i < seat.length; i++) {
 					if (seat[i] == 0) {
-						System.out.print(i + " ");
+						System.out.print((i+1) + " ");
 					}
 				}
 				System.out.println("번 입니다.");
@@ -274,25 +335,19 @@ public class ArrayPrac {
 //		}
 		
 		// 랜덤값 출력 : (int) (Math.random() * 45) + 1;
-
-		boolean lottoTF = true;
-		int countTF = 0;
 		
 		for(int i = 0; i < 6; i++) {
-			lotto[0] = (int) (Math.random() * 45) + 1;
-			while(lottoTF) {
-				for(int j = 1; j <= i; j++) {
-					lotto[j] = (int) (Math.random() * 45) + 1;
-					if (lotto[i] == lotto[j-1]) {
-						countTF++;
-					}
-					if (countTF == 0) {
-						break;
-					}
-					else {
-						continue;
-					}
+			int num = (int) (Math.random() * 45) + i;
+			
+			for(int j = 0; j < i; j++) { // 0부터 i 하나 전 위치까지의 수 비교.
+				if(lotto[j] == num) {	// 중복 값 확인.
+					i--;	// 같으면 돌아가게 시키기. 계속계속 뽑기...
+					break; // for문 깨버리기... i가 -1 돼서 이전 과정 다시 반복할 수 있음.
 				}
+			}
+			
+			if (lotto[i] == 0) {
+				lotto[i] = num; // 이전 코드에서 자꾸 0으로 빠지는 문제 있었으니까... 아예 막아버리기.
 			}
 			System.out.print(":: " + lotto[i] + " ");
 		}
