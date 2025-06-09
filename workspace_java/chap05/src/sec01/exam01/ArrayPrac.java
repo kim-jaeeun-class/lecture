@@ -233,7 +233,7 @@ public class ArrayPrac {
 		}
 		
 		// 이걸.... 이제 어떻게 섞냐... 4번 풀었던 걸로 쓰는 거 말곤 생각 안 난다. 일단 가보자.
-		for (int i = pwLength - 1; i > 0; i--) {
+		for (int i = 0; i < pwLength; i++) {
 		    int j = (int)(Math.random() * (i + 1));
 		    char temp = PW3[i];
 		    PW3[i] = PW3[j];

@@ -80,11 +80,11 @@ public class self250608 {
 		
 		/*
 		 * 두 번째로 큰 값도 비슷하게 구할 수 있을 듯.
-		 * 		int N = sc.nextInt();
+		  		int N = sc.nextInt();
 				int num = sc.nextInt(); // 수 입력 받을 변수 만들기.
 
 				int max = num;	// 처음 값으로 초기화
-				int second = -100; // 자연수라고 치고. 그렇지만 정수일 경우에는 다른 방식 생각해보기.
+				int second = -100; // 자연수라고 치고. 그렇지만 정수일 경우에는 int의 범위 끝 값을 넣는 식 등으로 가야.
 		
 				for (int i = 1; i < N; i++) {	// N번 동안 값을 입력받기 위한 반복문
 					num = sc.nextInt();		// 값 입력
