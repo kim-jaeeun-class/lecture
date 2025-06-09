@@ -5,6 +5,22 @@ import java.util.Scanner;
 public class ArrayPrac {
 
 	public static void main(String[] args) {
+		// Q1. 깊은 복사
+		
+		System.out.print("Q0. ");
+		
+		int[] q0A = {1, 2, 3};
+		int[] q0B = new int[q0A.length];
+		
+		for(int i = 0; i < q0A.length; i++) {
+			q0B[i] = q0A[i];
+		}
+		for(int i = 0; i < q0A.length; i++) {
+			System.out.print(q0B[i]);
+		}
+		System.out.println();
+		
+		
 		// Q1. 배열 뒤집기
 		System.out.print("Q1. ");
 		int[] q1A = {1, 2, 3};
