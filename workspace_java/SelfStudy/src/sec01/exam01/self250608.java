@@ -92,7 +92,7 @@ public class self250608 {
 						max = num;		// 그 값으로 max 대체
 					}
 					else if ((num < max) && (num > second) ) {	// 최댓값보단 작지만 두 번째 값보단 클 때
-						second = num;	// num이 두 번쨰 값을 대체하기.
+						second = num;	// num이 두 번째 값을 대체하기.
 					}
 				}
 				System.out.println(max); // 아까우니까 최댓값도 출력해주기.

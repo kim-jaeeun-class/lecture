@@ -222,6 +222,7 @@ public class ArrayPrac {
 		}
 		System.out.println();
 		
+		
 		System.out.print("Q8-3. PW : "); // 문제 잘못 봤다!!!!! 대문자만 아니다!!
 		
 		char[] PW3 = new char[pwLength];
@@ -299,22 +300,32 @@ public class ArrayPrac {
 				}
 			}
 			else if (input == 2) {
-				int count2 = 0;
+				System.out.print("남은 좌석 : ");
 				for(int i = 0; i < seat.length; i++) {
 					if (seat[i] == 0) {
-						count2++;
+						System.out.print((i+1) + "번 ");
 					}
 				}
-				System.out.println("현재 남아있는 자리의 수는 총" + count2 + "자리입니다.");
+				System.out.println();
+				System.out.print("선점된 좌석 : ");
+				for(int i = 0; i < seat.length; i++) {
+					if (seat[i] != 0) {
+						System.out.print((i+1) + "번 ");
+					}
+				}
+				System.out.println();
 			}
 			else if (input == 3) {
 				System.out.print("현재 남아 있는 자리 번호는 ");
+				int count2 = 0;
 				for(int i = 0; i < seat.length; i++) {
 					if (seat[i] == 0) {
 						System.out.print((i+1) + " ");
+						count++;
 					}
 				}
 				System.out.println("번 입니다.");
+				System.out.println("현재 남아있는 자리의 수는 총" + count2 + "자리입니다.");
 			}
 			else {
 				System.out.println("잘못된 번호를 입력했습니다. 다시 입력해주세요.");
@@ -361,14 +372,13 @@ public class ArrayPrac {
 					break; // for문 깨버리기... i가 -1 돼서 이전 과정 다시 반복할 수 있음.
 				}
 			}
-			
-			if (lotto[i] == 0) {
-				lotto[i] = num; // 이전 코드에서 자꾸 0으로 빠지는 문제 있었으니까... 아예 막아버리기.
+			if (lotto[i] == 0) { // 이전 코드에서 자꾸 0으로 빠지는 문제 있었으니까... 아예 막아버리기.
+				lotto[i] = num;  // 근데 0 위치인 값은 그냥 for(j)문 위에 지정해두고 가도 된다.
 			}
 			System.out.print(":: " + lotto[i] + " ");
 		}
-			
-
+		
+		// boolean으로 flag를 드는 방식으로도 출력 가능.
 		
 		
 	}
