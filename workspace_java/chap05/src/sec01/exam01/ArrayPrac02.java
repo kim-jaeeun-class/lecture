@@ -58,7 +58,7 @@ public class ArrayPrac02 {
 			System.out.println("----------------------------------------------------");
 			System.out.print("선택> ");
 			
-			int selectNo = Integer.parseInt(scanner.nextLine()); // nextInt로도 바꿔보기. 
+			int selectNo = scanner.nextInt(); // nextInt로도 바꿔보기. 
 																 // 안 되면 if, else if문 nextInt를 전부 nextLine으로 바꾼 후
 																 // Integer.parseInt();로 감싸기밖에 방법이 없다...
 			
@@ -82,14 +82,13 @@ public class ArrayPrac02 {
 				int count1 = 0;
 				int sum1 = 0;
 				int max1 = scores[0]; 
-				for(int i = 0; i < studentNum; i++) {
-					sum1 += scores[i];
+				for(int i = 0; i < studentNum; i++) {	// for문 자체가 안 돌아간 듯?
 					count++;
+					sum1 += scores[i];
 					if (max1 < scores[i]) {
 						max1 = scores[i];
 					}
 				}
-				
 				double avg1 = (double) sum1 / (double) count1;
 				System.out.println("최고 점수 : " + max1);
 				System.out.println("평균 점수 : " + avg1);
