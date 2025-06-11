@@ -1,9 +1,14 @@
 package sec04.exam03.return00;
 
-public class Car {
+public class Car2 {
 	
 	int gas;
+	int speed;
 	
+	void setSpeed(int s) {
+		speed = s;
+		System.out.println("속도를 " + speed + "로 변경합니다.");
+	}
 	
 	void setGas(int g) {	// gas값 변경
 		gas = g;
@@ -51,6 +56,7 @@ public class Car {
 			if (gas > 0) {
 				System.out.println("달립니다! 잔량 : " + gas);
 				gas--;
+				setSpeed(gas * 10);
 			}
 			else {
 				System.out.println("멈춰! 잔량 : " + gas);

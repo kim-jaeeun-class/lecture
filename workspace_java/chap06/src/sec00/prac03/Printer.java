@@ -1,7 +1,20 @@
 package sec00.prac03;
 
 public class Printer {
-	void printer() {	// 오버로딩 안 배워서 지금 할 수 없음
-		
+	int println(int a) {
+		System.out.println(a);
+		return a;
+	}
+	boolean println(boolean a) {
+		System.out.println(a);
+		return a;
+	}
+	double println(double a) {
+		System.out.println(a);
+		return a;
+	}
+	String println(String a) {
+		System.out.println(a);
+		return a;
 	}
 }
