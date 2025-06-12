@@ -1,4 +1,4 @@
-package sec05.prac01.quiz;
+package sec00.prac01.quiz;
 
 public class Student {
 	// 필드

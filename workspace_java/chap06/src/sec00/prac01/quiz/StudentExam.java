@@ -1,4 +1,4 @@
-package sec05.prac01.quiz;
+package sec00.prac01.quiz;
 
 
 public class StudentExam {
@@ -33,8 +33,10 @@ public class StudentExam {
 //		st1.getInfo("이름4", 30);
 //		
 //		// 이름, 나이 출력
-		st.showInfo();
-		st1.showInfo();
+		System.out.println(st.showInfo()[0]);
+		System.out.println(st.showInfo()[1]);
+		System.out.println(st1.showInfo()[0]);
+		System.out.println(st1.showInfo()[1]);
 
 		
 	}
