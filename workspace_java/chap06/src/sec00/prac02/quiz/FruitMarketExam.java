@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class FruitMarketExam {
 
 	// 오류 발생!!
-	// 구글링 결과 이유...
+	// 구글링 결과 나온 이유...
 	// 입력 버퍼 검사 결과? enter키의 데이터가 남아 있어서??? 그걸 사용했다고 함...
-	// 다음 nextLine, nextInt 작동 전에 scan.nextLine()을 더 쓰면 해결된다고 함.
+	// 다음 nextLine, nextInt 작동 전에 적절하게 scan.nextLine()을 더 쓰면 해결된다고 함.
 	// 일단 돌아가게는 했는데... 재고 차감 처리도 해보고 싶다.
 	
 	public static void main(String[] args) {
@@ -39,11 +39,14 @@ public class FruitMarketExam {
 				int num = sc.nextInt();
 				sc.nextLine();
 				
-				if(market.askPrice(name, num) != 0) {
-					System.out.println("가격은 총" + market.askPrice(name, num) + "원입니다.");
+				if(market.askPrice(name, num) == -1) {
+					System.out.println("말씀하신 상품은 존재하지 않습니다.");
+				}
+				else if (market.askPrice(name, num) <= 0) {	// -1은 어차피 if에서 빠지니까...
+					System.out.println("잘못된 개수를 입력하셨습니다.");
 				}
 				else {
-					System.out.println("말씀하신 상품은 존재하지 않습니다.");
+					System.out.println("가격은 총" + market.askPrice(name, num) + "원입니다.");
 				};
 			}
 			else if (serviceNum == 2) { 	// 전체 목록 출력
@@ -61,17 +64,22 @@ public class FruitMarketExam {
 				int pay = sc.nextInt();
 				sc.nextLine();
 				
-				if (market.change(name, num, pay) < 0) {
-					if (market.change(name, num, pay) == -1) {	// 리턴값 -1은 품목이 없는 경우니까
-						System.out.println("존재하지 않는 상품입니다.");
-					}
-					else {	// 나머지 경우는 마이너스라도 계산은 됐으니까
-						System.out.println("금액이 부족합니다.");
-					}
+				if (num <= 0) {
+					System.out.println("잘못된 개수를 입력했습니다.");
 				}
 				else {
-					System.out.println(":: "+ market.sName + " :: " + "결제가 완료됐습니다.");
-					System.out.println("거스름돈은 " + market.change(name, num, pay) + "원입니다. 감사합니다.");
+					if (market.change(name, num, pay) < 0) {
+						if (market.change(name, num, pay) == -1) {	// 리턴값 -1은 품목이 없는 경우니까
+							System.out.println("존재하지 않는 상품입니다.");
+						}
+						else {	// 나머지 경우는 마이너스라도 계산은 됐으니까
+							System.out.println("금액이 부족합니다.");
+						}
+					}
+					else {
+						System.out.println(":: "+ market.sName + " :: " + "결제가 완료됐습니다.");
+						System.out.println("거스름돈은 " + market.change(name, num, pay) + "원입니다. 감사합니다.");
+					}
 				}
 			}
 			else if (serviceNum == 4) { 	// 성공 여부
@@ -94,7 +102,7 @@ public class FruitMarketExam {
 				System.out.println();
 			}
 			else {
-				System.out.println("잘못된 번호를 입력하셨습니다.");
+				System.out.println("잘못된 번호나 개수를 입력하셨습니다.");
 			}
 		}
 	
