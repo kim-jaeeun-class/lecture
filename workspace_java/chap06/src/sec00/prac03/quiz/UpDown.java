@@ -44,51 +44,43 @@ public class UpDown {
 	// count 넣어서 시도 수 띄우고 그걸로 조건 거는 법도
 	
 	void start (int start, int end) {
-		Scanner s = new Scanner(System.in);
-		
-		int menu = -1;
-		
-		
-		do
-			System.out.println("1. 게임 시작 || 0. 게임 종료");
-			menu = s.nextInt();
-			
-			if ( menu != 1 && menu != 0) {
-				continue;
-			}
-			else {
-				switch(menu) {
-				case 1 : 
-					int answer = getNumber(start, end);
-					
-					boolean ok = false;
-					
-					while(!ok) {
-						System.out.printf("%d ~ %d 중의 값 하나를 골라주세요", start, end);
-						int num = s.nextInt();
-						
-						if (answer == num) {
-							System.out.println("정답!");
-							ok = true;
-						}
-						else if (answer > num) {
-							System.out.println("UP!");
-						}
-						else {
-							System.out.println("DOWN");
-						}
-					}
+	    Scanner s = new Scanner(System.in);
+	    
+	    int menu = -1;
+	    
+	    do {
+	        System.out.println("1. 게임 시작 || 0. 게임 종료");
+	        menu = s.nextInt();
+	        
+	        if (menu != 1 && menu != 0) {
+	            continue;
+	        } else {
+	            switch(menu) {
+	            case 1:
+	                int answer = getNumber(start, end);
+	                boolean ok = false;
 
-				
-				case 0 :
-				}
+	                while (!ok) {
+	                    System.out.printf("%d ~ %d 중의 값 하나를 골라주세요", start, end);
+	                    int num = s.nextInt();
 
-			}
-		
-		while (;;) {
-				
-		}
-		
+	                    if (answer == num) {
+	                        System.out.println("정답!");
+	                        ok = true;
+	                    } else if (answer > num) {
+	                        System.out.println("UP!");
+	                    } else {
+	                        System.out.println("DOWN");
+	                    }
+	                }
+	                break; // case 1 끝에 break 필요!
+	            
+	            case 0:
+	                break; // case 0도 명시적으로 끝내주기
+	            }
+	        }
+	    } while (true); // 세미콜론 필수!
 	}
+
 	
 }
