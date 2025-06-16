@@ -29,7 +29,7 @@ public class EmpTable {
         e0.job = "CLERK";
         e0.mgr = 7902;
         e0.sal = 800;
-        e0.comm = 0;	// 계산 편의상... null값 대신 0으로.
+        e0.comm = 0;	// 계산 편의상... null값 대신 0으로. (Integer로 쓸 수 있음)
         e0.deptno = 20;
         empT.add(e0);
 

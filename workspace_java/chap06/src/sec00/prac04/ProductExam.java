@@ -71,7 +71,7 @@ public class ProductExam {
 
 			    System.out.print("할인율(%) : ");
 			    int rate = sc.nextInt();
-			    sc.nextLine(); // 버퍼 비우기
+			    sc.nextLine(); // 버퍼 비우기...
 
 			    ProInfo newP = new ProInfo();
 			    newP.name = name;
