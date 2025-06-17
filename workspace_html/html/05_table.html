@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border = "10">
+        1 - 기본
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>1-내용1</td>
+            <td>1-내용2</td>
+        </tr>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>2-내용1</td>
+            <td>2-내용2</td>
+        </tr>
+    </table>
+    <hr>
+    <table border = "10">
+        2 - th 사용
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <th>1-내용1</th>
+            <th>1-내용2</th>
+        </tr>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>2-내용1</td>
+            <td>2-내용2</td>
+        </tr>
+    </table>
+    <hr>
+        <table border = "10">
+            3 - 한 행만 열 추가
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <th>1-내용1</th>
+            <th>1-내용2</th>
+        </tr>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>2-내용1</td>
+            <td>2-내용2</td>
+            <td>2-내용3</td>    <!-- 에러는 없음! -->
+        </tr>
+    </table>
+    <hr>
+        <table border = "10">
+            4 - thead
+        <caption>테이블 내용 설명란</caption>
+        <summary>제목1, 제목2</summary>
+        <thead>
+            <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+                <th>제목1</th>
+                <th>제목2</th>
+            </tr>
+        </thead>
+        
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+    </table>
+    <hr>
+        <table border = "10">
+            5 - 테이블 안에 테이블 삽입.
+        <caption>테이블 내용 설명란</caption>
+        <summary>제목1, 제목2</summary>
+        <thead>
+            <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+                <th>제목1</th>
+                <th>제목2</th>
+            </tr>
+        </thead>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>내용1</td>
+            <td>    
+                <table border = "10">
+                <caption>테이블 내용 설명란</caption>
+                <summary>제목1, 제목2</summary>
+                <thead>
+                    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+                        <th>제목1</th>
+                        <th>제목2</th>
+                    </tr>
+                </thead>
+                    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+                        <td>내용1</td>
+                        <td>내용2</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border = 10>
+        6. 너비 조정의 필요성 확인
+        <caption>테이블 내용 설명란</caption>
+        <summary>제목1, 제목2</summary>
+        <thead>
+            <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+                <th>제목1 내용보다 길게 테스트용</th>
+                <th width = "500" height = "300">제목2</th> <!-- 폭을 조정하는 width와 높이 조정의 height-->
+            </tr>
+        </thead>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+    </table>
+    <table border = "10">
+    7 - 셀 병합. 2행의 내용을 셀 병합.
+    <caption>테이블 내용 설명란</caption>
+    <summary>제목1, 제목2</summary>
+    <thead>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <th>제목1</th>
+            <th>제목2</th>
+        </tr>
+    </thead>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td>내용1</td>
+        <td>내용1</td>
+    </tr>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td colspan = "2">내용2</td>
+        <!-- <td>내용2</td> -->
+    </tr>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td>내용3</td>
+        <td>내용3</td>
+    </tr>
+    </table>
+    <table border = "10">
+    8 - 셀 병합. 2행의 내용을 셀 병합.
+    <caption>테이블 내용 설명란</caption>
+    <summary>제목1, 제목2</summary>
+    <thead>
+        <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+            <th>제목1</th>
+            <th>제목2</th>
+        </tr>
+    </thead>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td colspan = "2">내용1</td>
+        <td>내용1</td>
+    </tr>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td>내용2</td>
+        <td>내용2</td>
+    </tr>
+    <tr> <!-- 테이블 생성 시 tr 한 줄 이상 필수-->
+        <td>내용3</td>
+        <td>내용3</td>
+    </tr>
+    </table>
+
+</body>
+</html>
