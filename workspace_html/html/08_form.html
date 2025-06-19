@@ -25,7 +25,8 @@
         checkbox : 
         <input type = "checkbox" value = "1"> 1
         <input type = "checkbox" value = "2"> 2
-        <input type = "checkbox" value = "3" disabled = "disabled"> 3 <br>
+        <input type = "checkbox" value = "3" disabled = "disabled"> 3
+        <input type = "checkbox" value = "4" id = "num"> <label for = "num">4 label</label> <br>
 
         file :
         <input type = "file"> <br>
@@ -43,5 +44,59 @@
         <input type = "text" name = "query">
         <input type = "submit" value = "네이버 검색"> <br>
     </form>
+        <form method = "post" action ="https://search.naver.com/search.naver">
+        <input type = "text" name = "query">
+        <input type = "submit" value = "네이버 검색"> <br>
+    </form>
+    </form>
+        <form method = "get" action ="https://www.google.com/search">
+        <input type = "text" name = "q">
+        <input type = "submit" value = "구글 검색"> <br>
+        hidden : <input type = "hidden" name = "secret" value = "1234">
+        date : <input type = "date" value="2025-06-19"> <br>
+        color : <input type = "color"> <br>
+        number : <input type = "number"> <br>
+        range : <input 
+                    type = "range"
+                    min = "10"
+                    max = "100"
+                    step = "10"
+                > <br>
+
+        required : <input type = "text" required = "required" autocomplete = "off">
+
+        <textarea rows = 10 cols ="50">
+            1줄
+2줄
+        </textarea>
+        select & option : 
+        <select name = "변수명" size = "2">
+            <!--selected로 처음에 선택되는 값 고정-->
+            <option value = "전달값1" selected>선택1 </option> 
+            <option value = "전달값2">선택2 </option>
+            <option value = "전달값3">선택3 </option>
+        </select>
+    </form>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan = 3></td>
+        </tr>
+        <tr>
+            <td colspan = 3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan = 2></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan = 3></td>
+        </tr>
+    </table>
 </body>
 </html>

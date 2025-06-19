@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <style>
+        /* 전체 선택자 */
+        * {
+            color: coral;
+        }
+
+        /* tag 선택자 */
+        h2 {
+            font-size: 400%;
+            color:darksalmon;
+        }
+
+        /* 아이디 선택자 */
+        #a1 {color:cadetblue}
+
+        /* 클래스 선택자 */
+
+        .c1 {background-color: darkslategray;}
+
+        .bigText {
+            font-size: 30px;
+        }
+
+        #div1 {
+            font-size: 30px;
+            font-family: SUIT Variable;
+            background-color: rgba(80, 181, 206, 0.397);
+        }
+        /* 마우스 올렸을 때만 동작 */
+        #div1:hover {
+            background-color: rgba(222, 184, 135, 0.397);
+        }
+        /* 클릭했을 때 */
+        #div1:active {
+            color: white;
+            font-size: 40px;
+        }
+
+        .text1:focus {
+            background-color: cadetblue;
+        }
+        /* 누군가의 첫 번째 자식 */
+        li:first-child {
+            color:goldenrod;
+        }
+
+        ul:first-child {
+            font-size:50px;
+        }
+
+        /* 실제 등장하는 영역 중 첫 번째*/
+        ul:first-of-type {
+            text-decoration: underline;
+        }
+
+        tr:nth-child(2n-1) {
+            background-color: darkorchid;
+        }
+        h3:after {
+            content: "AFTER";
+            font-size: 10px;
+            color: black;
+        }
+        h3:before {
+            content: "Before";
+            font-size: 40px;
+            color: black;
+        }
+        /* 다중 선택자 */
+        li {
+            border : 1px
+            solid : red;
+        }
+        li, h3, #div1 {
+            border : 2px
+            solid : red;
+        }
+        /* > : 바로 아래 자식 요소만. 졸았으므로 나중에 다시 코드 보기... */
+        /* 띄어쓰기는 자손 모두. 이쪽이 보통 더 자주 사용.*/
+        #ol li {
+            color: black;
+        }
+        #ol>li {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1 title = "안녕?">Hello World!</h1>
+    <h2>부제목</h2>
+    <ul>
+        <li class = "c1 bigText">li1</li>
+        <li class = "c1" id = "a1">li2</li>
+        <li>li3</li>
+    </ul>
+    <div id = "div1">
+        hover 연습
+    </div>
+    <input type = "text" class = "text1">
+    <br>
+    <hr>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4
+            <ul>
+                <li>4-1</li>
+                <li>4-2</li>
+                <li>4-3</li>
+            </ul>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam vero odio commodi accusamus. Soluta accusamus distinctio aliquid quae aliquam nobis minus nam temporibus amet eveniet, a illo commodi voluptatum recusandae?</td>
+        </tr>
+        <tr>
+            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, magni. Numquam sunt, modi quam quae, minima optio vero adipisci voluptatibus veniam voluptates aperiam est consequuntur cumque animi. Necessitatibus, eligendi dolores.</td>
+        </tr>
+        <tr>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum, veniam eius porro officiis iure. Quod labore iure, earum, inventore excepturi nesciunt perspiciatis laborum voluptatem distinctio non quaerat, debitis voluptatum!</td>
+        </tr>
+        <tr>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptas, ab, perspiciatis enim exercitationem pariatur velit itaque sunt facere ex architecto deleniti voluptates optio est odio? Aut tempore sequi veritatis!</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table> <br>
+    <h3>before after</h3>
+    <ol id = "ol">
+        <li>1</li>
+        <li>2</li>
+        <li>3 
+            <ul>
+                <ul>1</ul>
+                <ul>2</ul>
+                <ul>3</ul>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>
