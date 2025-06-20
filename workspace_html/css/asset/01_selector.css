@@ -1,0 +1,129 @@
+/* 전체 선택자 */
+* {
+    color: coral;
+}
+
+/* tag 선택자 */
+h2 {
+    font-size: 400%;
+    color:darksalmon;
+}
+
+/* 아이디 선택자 */
+#a1 {color:cadetblue}
+
+/* 클래스 선택자 */
+
+        .c1 {background-color: darkslategray;}
+
+        .bigText {
+            font-size: 30px;
+        }
+
+        #div1 {
+            font-size: 30px;
+            font-family: SUIT Variable;
+            background-color: rgba(80, 181, 206, 0.397);
+        }
+        /* 마우스 올렸을 때만 동작 */
+        #div1:hover {
+            background-color: rgba(222, 184, 135, 0.397);
+        }
+        /* 클릭했을 때 */
+        #div1:active {
+            color: white;
+            font-size: 40px;
+        }
+
+        .text1:focus {
+            background-color: cadetblue;
+        }
+        /* 누군가의 첫 번째 자식 */
+        li:first-child {
+            color:goldenrod;
+        }
+
+        ul:first-child {
+            font-size:50px;
+        }
+
+        /* 실제 등장하는 영역 중 첫 번째*/
+        ul:first-of-type {
+            text-decoration: underline;
+        }
+
+        tr:nth-child(2n-1) {
+            background-color: darkorchid;
+        }
+        h3:after {
+            content: "AFTER";
+            font-size: 10px;
+            color: black;
+        }
+        h3:before {
+            content: "Before";
+            font-size: 40px;
+            color: black;
+        }
+        /* 다중 선택자 */
+        li {
+            border : 1px
+            solid : red;
+        }
+        li, h3, #div1 {
+            border : 2px
+            solid : red;
+        }
+        /* > : 바로 아래 자식 요소만. 졸았으므로 나중에 다시 코드 보기... */
+        /* 띄어쓰기는 자손 모두. 이쪽이 보통 더 자주 사용.*/
+        #ol li {
+            color: black;
+        }
+        #ol>li {
+            border: 1px solid black;
+        }
+        /* 속성 선택자*/
+        [href] {
+            color: black;
+        }
+        /* 속성과 같이 모두 일치하는 요소 */
+        /* 줄임말로 id=naver를 #naver로 사용 가능*/
+        a[id = naver] {
+            font-size: 30px;
+        }
+        /* 특정 값으로 시작하는 속성과 속성값의 요소 */
+        [href^=https] {
+            color: green;
+        }
+        
+        /* 특정 값으로 끝나는 속성과 속성값의 요소 */
+        [href$=https] {
+            color: green;
+        }
+
+        /* 특정 속성과 속성값이 아닌 것의 요소 */
+        :not[href$=https] {
+            color: green;
+        }
+
+        /* 마우스로 드래그 된 것을 바꿈 */
+        ::selection {
+            background-color: aquamarine;
+        }
+
+        /* 체크한 경우 변경 */
+        input[type=checkbox]:checked {
+            width:50px;
+            height:50px;
+        }
+        input[type=checkbox]:checked + span {
+            font-size: 40px;
+        }
+
+        /* 우선순위 - !important */
+        #s1 {
+            background-color: blue;
+        }
+        span {
+            background-color: brown !important;
+        }

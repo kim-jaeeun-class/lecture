@@ -4,92 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS</title>
-    <style>
-        /* 전체 선택자 */
-        * {
-            color: coral;
-        }
-
-        /* tag 선택자 */
-        h2 {
-            font-size: 400%;
-            color:darksalmon;
-        }
-
-        /* 아이디 선택자 */
-        #a1 {color:cadetblue}
-
-        /* 클래스 선택자 */
-
-        .c1 {background-color: darkslategray;}
-
-        .bigText {
-            font-size: 30px;
-        }
-
-        #div1 {
-            font-size: 30px;
-            font-family: SUIT Variable;
-            background-color: rgba(80, 181, 206, 0.397);
-        }
-        /* 마우스 올렸을 때만 동작 */
-        #div1:hover {
-            background-color: rgba(222, 184, 135, 0.397);
-        }
-        /* 클릭했을 때 */
-        #div1:active {
-            color: white;
-            font-size: 40px;
-        }
-
-        .text1:focus {
-            background-color: cadetblue;
-        }
-        /* 누군가의 첫 번째 자식 */
-        li:first-child {
-            color:goldenrod;
-        }
-
-        ul:first-child {
-            font-size:50px;
-        }
-
-        /* 실제 등장하는 영역 중 첫 번째*/
-        ul:first-of-type {
-            text-decoration: underline;
-        }
-
-        tr:nth-child(2n-1) {
-            background-color: darkorchid;
-        }
-        h3:after {
-            content: "AFTER";
-            font-size: 10px;
-            color: black;
-        }
-        h3:before {
-            content: "Before";
-            font-size: 40px;
-            color: black;
-        }
-        /* 다중 선택자 */
-        li {
-            border : 1px
-            solid : red;
-        }
-        li, h3, #div1 {
-            border : 2px
-            solid : red;
-        }
-        /* > : 바로 아래 자식 요소만. 졸았으므로 나중에 다시 코드 보기... */
-        /* 띄어쓰기는 자손 모두. 이쪽이 보통 더 자주 사용.*/
-        #ol li {
-            color: black;
-        }
-        #ol>li {
-            border: 1px solid black;
-        }
-    </style>
+    <link rel = "stylesheet"
+		  href = "./asset/01_selector.css"
+          type ="text/css"
+	>
 </head>
 <body>
     <h1 title = "안녕?">Hello World!</h1>
@@ -117,6 +35,9 @@
             </ul>
         </li>
     </ul>
+        <form method = "get" action ="https://search.naver.com/search.naver">
+        <input type = "text" name = "query" id = "naver">
+        <input type = "submit" value = "네이버 검색"> <br>
     <table>
         <tr>
             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam vero odio commodi accusamus. Soluta accusamus distinctio aliquid quae aliquam nobis minus nam temporibus amet eveniet, a illo commodi voluptatum recusandae?</td>
@@ -146,5 +67,8 @@
             </ul>
         </li>
     </ol>
+    <label><input type = "checkbox">
+    <span>체크</span></label>
+    <span id = "s1">span</span>
 </body>
 </html>
