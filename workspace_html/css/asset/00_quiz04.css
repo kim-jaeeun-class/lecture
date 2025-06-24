@@ -11,5 +11,93 @@
 3. 제목 글씨 : font-family
 4. 이미지 2개 : 아래로 내려가지 않을 크기로
 5. 영상 padding
-
 */
+
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.box {
+    margin : 3% 10%;
+    text-align: center;
+
+    display: inline-block;
+    vertical-align: top;
+
+    word-wrap: break-word;
+}
+
+.col-1 {
+    display: inline-block;
+    vertical-align: top;
+
+    width : 40%;
+    min-width : 400px;
+    margin: 2% 4%;
+}
+.col-2 {
+    display: inline-block;
+    vertical-align: top;
+
+    width : 40%;
+    min-width : 400px;
+    margin-right: 2%;
+}
+
+.title {
+    /* 제목 글씨 */
+    font-family: "Abril Fatface", serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align : left;
+}
+.text1 {
+    /* 일반 글씨 */
+    color: #111111;
+    text-align: left;
+
+    line-height: 1.5em;
+
+    margin: 2% auto 10%;
+    padding-right: 20%;
+}
+.img {
+    background-image: url('https://images01.nicepage.com/bb/1d/bb1d2e5cabdda9d7e02aaf1f96309f50.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 270px;
+}
+.quote {
+    /* 인용 글씨 */
+    color: #111111;
+    border-left: 5px solid #73a3de;
+    text-align: left;
+    font-style: italic;
+    word-wrap: break-word;
+
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-right: 6%;
+}
+.video {
+    /* 영상 */
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    display: block; 
+}
+.text2 {
+    /* 일반 글씨 */
+    color: #111111;
+    text-align: left;
+
+    line-height: 1.5em;
+
+    margin-top: 10%;
+    padding-left: 10%;
+    min-width: 300px;
+}

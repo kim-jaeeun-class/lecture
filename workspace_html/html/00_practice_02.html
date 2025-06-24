@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>회원 정보</h1>
-    <hr><hr>
-    <form>
-        <fieldset style="width: 500px;">
-            <legend>인적사항</legend>
-                이름 : <input type = "text" style="width: 100px;" placeholder="ID 입력요망">
-                주민번호 : <input type = "text" style="width: 100px;" maxlength="7" minlength="7"> - <input type = "password" style="width: 100px;" maxlength="7" minlength="7"> <br>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>회원 정보</h1>
+        <hr><hr>
+        <form>
+            <fieldset style="width: 500px;">
+                <legend>인적사항</legend>
+                이름 :
+                <input type="text" style="width: 100px;" placeholder="ID 입력요망">
+                주민번호 :
+                <input type="text" style="width: 100px;" maxlength="7" minlength="7">
+                -
+                <input type="password" style="width: 100px;" maxlength="7" minlength="7">
+                <br>
                 국적 :
-                <select name = "country" size = "1">
-                    <option value = "내국인(대한민국)" selected = "selected">내국인(대한민국)</option>
-                    <option value = "외국인" selected = "selected">외국인</option>
+                <select name="country" size="1">
+                    <option value="내국인(대한민국)" selected="selected">내국인(대한민국)</option>
+                    <option value="외국인" selected="selected">외국인</option>
                 </select>
                 <br>
                 취득 자격증 :
-                <select name = "license" size = "1">
-                    <option value = "정보처리기사1급" selected = "selected">정보처리기사1급</option>
-                    <option value = "정처기가1급2급구분했던가..."">?</option>
+                <select name="license" size="1">
+                    <option value="정보처리기사1급" selected="selected">정보처리기사1급</option>
+                    <option value="정처기가1급2급구분했던가..." ">?</option>
                 </select>
                 <br>
-        </fieldset>
-        <fieldset style="width: 500px;">
-            <legend>성별 & 학년</legend>
+            </fieldset>
+            <fieldset style="width: 500px;">
+                <legend>성별 & 학년</legend>
                 성별 :
-                <input type = "radio" name = "성별" value = "sex1" id = "s1">
-                    <label for = "s1">남</label>
-                <input type = "radio" name = "성별" value = "sex1" id = "s1">
-                    <label for = "s2">여</label>
+                <input type="radio" name="성별" value="sex1" id="s1">
+                <label for="s1">남</label>
+                <input type="radio" name="성별" value="sex1" id="s1">
+                <label for="s2">여</label>
                 <br>
-                학년 : 
-                <input type = "radio" name = "학년" value = "grade1" id = "g1">
-                    <label for = "g1">1학년</label>
-                <input type = "radio" name = "학년" value = "grade2" id = "g2" checked = "checked">
-                    <label for = "g2">2학년</label>
-                <input type = "radio" name = "학년" value = "grade3" id = "g3">
-                    <label for = "g3">3학년</label>
-                <input type = "radio" name = "학년" value = "grade4" id = "g4">
-                    <label for = "g4">4학년</label>
+                학년 :
+                <input type="radio" name="학년" value="grade1" id="g1">
+                <label for="g1">1학년</label>
+                <input type="radio" name="학년" value="grade2" id="g2" checked="checked">
+                <label for="g2">2학년</label>
+                <input type="radio" name="학년" value="grade3" id="g3">
+                <label for="g3">3학년</label>
+                <input type="radio" name="학년" value="grade4" id="g4">
+                <label for="g4">4학년</label>
                 <br>
-        </fieldset>
-        <fieldset style="width: 500px;">
-            <legend>취미</legend>
-                <input type = "checkbox" value = "취미" name = "hobby1" id = "h1">
-                    <label for = "h1">독서</label>
-                <input type = "checkbox" value = "취미" name = "hobby2" id = "h2">
-                    <label for = "h2">바둑</label>
-                <input type = "checkbox" value = "취미" name = "hobby3" id = "h3">
-                    <label for = "h3">골프</label>
-                <input type = "checkbox" value = "취미" name = "hobby4" id = "h4">
-                    <label for = "h4">등산</label>
-                <input type = "checkbox" value = "취미" name = "hobby5" id = "h5">
-                    <label for = "h5">여행</label>
-                <input type = "checkbox" value = "취미" name = "hobby6" id = "h6">
-                    <label for = "h6">기타</label>
+            </fieldset>
+            <fieldset style="width: 500px;">
+                <legend>취미</legend>
+                <input type="checkbox" value="취미" name="hobby1" id="h1">
+                <label for="h1">독서</label>
+                <input type="checkbox" value="취미" name="hobby2" id="h2">
+                <label for="h2">바둑</label>
+                <input type="checkbox" value="취미" name="hobby3" id="h3">
+                <label for="h3">골프</label>
+                <input type="checkbox" value="취미" name="hobby4" id="h4">
+                <label for="h4">등산</label>
+                <input type="checkbox" value="취미" name="hobby5" id="h5">
+                <label for="h5">여행</label>
+                <input type="checkbox" value="취미" name="hobby6" id="h6">
+                <label for="h6">기타</label>
                 <br>
-        </fieldset>
-        <fieldset style="width: 500px;">
-            <legend>메모사항</legend>
-            <textarea rows = 3 cols = 68>
+            </fieldset>
+            <fieldset style="width: 500px;">
+                <legend>메모사항</legend>
+                <textarea rows="3" cols="68">
 
-            메모글을 남겨주세요
-            </textarea>
-        </fieldset>
-        <br>
-        첨부 서류 : <input type = "file" name = "변수명"><br>
-        <hr>
-        <input type = "submit" value = "저장하기">
-        <input type = "reset" value = "다시 입력하기">
-    </form>
-</body>
+                    메모글을 남겨주세요
+                </textarea>
+            </fieldset>
+            <br>
+            첨부 서류 :
+            <input type="file" name="변수명"><br>
+            <hr>
+            <input type="submit" value="저장하기">
+            <input type="reset" value="다시 입력하기">
+        </form>
+    </body>
 </html>

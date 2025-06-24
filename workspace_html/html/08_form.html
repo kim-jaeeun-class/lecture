@@ -1,80 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form>
-        text(기본값) : <input type = "text"><br>
-        text(value) : <input type = "text" value = "값"><br> <!--입력 박스에 들어가는 기본값 지정-->
-        text(placeholder) : <input type = "text" placeholder="플레이스 홀더"><br> <!--입력박스에 회색 안내문 띄움-->
-        text(readonly) : <input type = "text" value = "값" readonly><br> <!--수정 불가한 값을 입력박스에 보여줌-->
-        text(disabled) : <input type = "text" value = "값" disabled><br> <!--수정 불가한 값을 입력박스에 보여줌. readonly보다 강력.-->
-        
-        password : <input type = "password" name = "pw"><br>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            text(기본값) :
+            <input type="text"><br>
+            text(value) :
+            <input type="text" value="값"><br>
+            <!--입력 박스에 들어가는 기본값 지정-->
+            text(placeholder) :
+            <input type="text" placeholder="플레이스 홀더"><br>
+            <!--입력박스에 회색 안내문 띄움-->
+            text(readonly) :
+            <input type="text" value="값" readonly="readonly"><br>
+            <!--수정 불가한 값을 입력박스에 보여줌-->
+            text(disabled) :
+            <input type="text" value="값" disabled="disabled"><br>
+            <!--수정 불가한 값을 입력박스에 보여줌. readonly보다 강력.-->
 
-        radio :
-        <input type = "radio" name="gender" value = "male">M
-        <input type = "radio" name="gender" value = "female">F
-        <input type = "radio" name="gender" checked = "checked" value = "null">N <br>
+            password :
+            <input type="password" name="pw"><br>
 
-        submit : <input type = "submit" value = "전송"> <br>
+            radio :
+            <input type="radio" name="gender" value="male">M
+            <input type="radio" name="gender" value="female">F
+            <input type="radio" name="gender" checked="checked" value="null">N
+            <br>
 
-        checkbox : 
-        <input type = "checkbox" value = "1"> 1
-        <input type = "checkbox" value = "2"> 2
-        <input type = "checkbox" value = "3" disabled = "disabled"> 3
-        <input type = "checkbox" value = "4" id = "num"> <label for = "num">4 label</label> <br>
+            submit :
+            <input type="submit" value="전송">
+            <br>
 
-        file :
-        <input type = "file"> <br>
+            checkbox :
+            <input type="checkbox" value="1">
+            1
+            <input type="checkbox" value="2">
+            2
+            <input type="checkbox" value="3" disabled="disabled">
+            3
+            <input type="checkbox" value="4" id="num">
+            <label for="num">4 label</label>
+            <br>
 
-        reset :
-        <input type = "reset"> <br>
+            file :
+            <input type="file">
+            <br>
 
-        input button :
-        <input type = "button" value = "버튼 이름"> <br>
-        button : 
-        <button type = "button">버튼명</button> <br>
+            reset :
+            <input type="reset">
+            <br>
+
+            input button :
+            <input type="button" value="버튼 이름">
+            <br>
+            button :
+            <button type="button">버튼명</button>
+            <br>
+        </form>
+
+        <form method="get" action="https://search.naver.com/search.naver">
+            <input type="text" name="query">
+            <input type="submit" value="네이버 검색">
+            <br>
+        </form>
+        <form method="post" action="https://search.naver.com/search.naver">
+            <input type="text" name="query">
+            <input type="submit" value="네이버 검색">
+            <br>
+        </form>
     </form>
+    <form method="get" action="https://www.google.com/search">
+        <input type="text" name="q">
+        <input type="submit" value="구글 검색">
+        <br>
+        hidden :
+        <input type="hidden" name="secret" value="1234">
+        date :
+        <input type="date" value="2025-06-19">
+        <br>
+        color :
+        <input type="color">
+        <br>
+        number :
+        <input type="number">
+        <br>
+        range :
+        <input type="range" min="10" max="100" step="10">
+        <br>
 
-    <form method = "get" action ="https://search.naver.com/search.naver">
-        <input type = "text" name = "query">
-        <input type = "submit" value = "네이버 검색"> <br>
-    </form>
-        <form method = "post" action ="https://search.naver.com/search.naver">
-        <input type = "text" name = "query">
-        <input type = "submit" value = "네이버 검색"> <br>
-    </form>
-    </form>
-        <form method = "get" action ="https://www.google.com/search">
-        <input type = "text" name = "q">
-        <input type = "submit" value = "구글 검색"> <br>
-        hidden : <input type = "hidden" name = "secret" value = "1234">
-        date : <input type = "date" value="2025-06-19"> <br>
-        color : <input type = "color"> <br>
-        number : <input type = "number"> <br>
-        range : <input 
-                    type = "range"
-                    min = "10"
-                    max = "100"
-                    step = "10"
-                > <br>
+        required :
+        <input type="text" required="required" autocomplete="off">
 
-        required : <input type = "text" required = "required" autocomplete = "off">
-
-        <textarea rows = 10 cols ="50">
-            1줄
-2줄
+        <textarea rows="10" cols="50">
+            1줄 2줄
         </textarea>
-        select & option : 
-        <select name = "변수명" size = "2">
+        select & option :
+        <select name="변수명" size="2">
             <!--selected로 처음에 선택되는 값 고정-->
-            <option value = "전달값1" selected>선택1 </option> 
-            <option value = "전달값2">선택2 </option>
-            <option value = "전달값3">선택3 </option>
+            <option value="전달값1" selected="selected">선택1
+            </option>
+            <option value="전달값2">선택2
+            </option>
+            <option value="전달값3">선택3
+            </option>
         </select>
     </form>
     <table>
@@ -84,18 +116,18 @@
             <td></td>
         </tr>
         <tr>
-            <td colspan = 3></td>
+            <td colspan="3"></td>
         </tr>
         <tr>
-            <td colspan = 3></td>
+            <td colspan="3"></td>
             <td></td>
         </tr>
         <tr>
-            <td colspan = 2></td>
+            <td colspan="2"></td>
             <td></td>
         </tr>
         <tr>
-            <td colspan = 3></td>
+            <td colspan="3"></td>
         </tr>
     </table>
 </body>
