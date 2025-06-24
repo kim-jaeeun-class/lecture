@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CoolGuy-Medium';
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2403@1.0/CoolGuy-Medium.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dongle-Regular';
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#p1 {
+    /* 글씨색 및 데코레이션 기본 + 폰트*/
+    color: red;
+    /* text-decoration: line-through; */
+    text-decoration: underline;
+    font-family: DungGeunMo;
+}
+
+#a1 {
+    /* 하이퍼링크 밑줄 삭제*/
+    text-decoration: none;
+    font-family: 'CoolGuy-Medium', 'Arial';
+    font-size: xx-large;
+}
+
+input[type=checkbox]:checked + span {
+    /* 체크박스 체크 시 취소선 및 색 변경*/
+    text-decoration: line-through;
+    color: gray;
+    font-family: 'Dongle-Regular';
+}
+
+.size {
+    font-size: 3em;
+}
+
+.style {
+    font-style: italic;
+}
+
+em {
+    font-style: normal;
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+.fw-2000 {
+    font-weight: 2000;
+}
+.fw-bold {
+    font-weight: bold;
+}
+.f-h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+

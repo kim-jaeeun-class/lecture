@@ -1,0 +1,47 @@
+.align-right {
+    text-align: right;
+    border: 1px solid;
+}
+.align-center {
+    text-align: center;
+    border: 1px solid;
+}
+.align-left {
+    text-align: left;
+    border: 1px solid;
+}
+.align-justify {
+    border: 1px solid;
+    text-align: justify;
+    border: 1px solid;
+}
+.l-spacing {
+    letter-spacing: -0.05em;
+}
+.line-h {
+    line-height: 5em;
+}
+.middle {
+    border: 1px solid;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text {
+    border: 1px solid;
+    width: 200px;
+}
+.word-wrap {
+    word-wrap: break-word;
+}
+.word-break { /* break-all 말곤 div 설명에 있어서 한 번 넣은 것*/
+    word-break: break-all;
+    width: 15em;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
+}

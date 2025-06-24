@@ -1,0 +1,55 @@
+body {
+    background-color: #d9d9d9;
+    text-align: center;
+}
+
+.box {
+    margin: 5% auto;
+    width: 100%;
+    height: 90%;
+/* 
+    display: table; */
+}
+
+.box div {
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 1%;
+}
+
+.box .photo {
+    background-image: url("https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/80f9d9d02af9527ab358c361/pexels-photo-3335367.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 450px;
+    height: 600px;
+
+    padding: 2%;
+}
+
+.box .writing-out {
+    background-color: white;
+    text-align: left;
+
+    width: 450px;
+    height: 600px;
+
+    padding: 2%;
+}
+
+.box .writing-out .writing-in {
+    text-align: left;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    word-wrap: break-word;
+}
+
+.box .writing-out .link {
+    border: 2px solid;
+    padding: 3% 5%;
+
+    color: #333333;
+}

@@ -1,0 +1,53 @@
+.div {
+    border: 5px solid red;
+}
+.block {
+    border: 1px solid;
+    width: 100px;
+    height: 50px;
+    margin: 0 auto;
+}
+.inline {
+    border: 1px solid;
+    /* inline에 너비, 높이 지정 불가 */
+    /* width: 200px;
+    height: 50px; */
+    /* 좌우 margin만 적용 */
+    margin: 30px 50px;
+    /* padding은 좌우 적용 */
+    padding: 40px;
+    /* display: block; */
+}
+.bg_blue {
+    background-color: aqua;
+    /* display: block; */
+}
+.parent {
+    border: 3px dotted #549765;
+    /* width: 200px; */
+    width: 100%;
+}
+.parent div {
+    border: 2px dashed #c6c5f1;
+    /* width: 150px; */
+    /* width: 40%; */
+    width: 300px;
+    height: 50px;
+    /* 이하 display 속성*/
+    display: inline-block;
+    vertical-align: top;
+}
+.hide {
+    display: none;
+}
+.table{
+    display: table;
+}
+.table .td {
+    display: table-cell;
+    border: 1px solid;
+    height: 100px;
+    width: 200px;
+
+    vertical-align: middle;
+}

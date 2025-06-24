@@ -4,70 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* 해당 디스플레이에서 절대적인 값 */
-        #pixel .box1 { /* 후손 선택자 */
-            font-size: 16px; /* 기본 글씨 16px */
-            background-color: rgb(255, 0, 0);
-        }
-        #pixel .box1 .box2 { 
-            font-size: 32px; 
-            background-color: rgba(0, 0, 255, 0.5);
-        }
-        #pixel .box1 .box2 .box3 { 
-            font-size: 16px;
-            background-color: #FFFFFFFF;
-        }
-        /* 해당 디스플레이에서의 상대적인 값 */
-        #percent .box1 {
-            font-size: 150%; 
-            background-color: #A47864;
-        }
-        #percent .box1 .box2 { 
-            font-size: 150%;
-            background-color: #0000ffff;
-        }
-        #percent .box1 .box2 .box3 {
-            font-size: 150%;
-        }
-        #em .box1 {
-            font-size: 1.5em;
-            border: 1px solid rebeccapurple;
-            margin: 10px;
-        }
-        #em .box1 .box2 { 
-            font-size: 1em;
-            border: 1px solid rebeccapurple;
-            margin: 10px;
-        }
-        /* rem : root em**/
-        #em .box1 .box2 .box3 {
-            font-size: 1rem;
-            border: 1px solid rebeccapurple;
-            margin: 10px;
-        }
-        #v1, #v2, #v3, #v4 {
-            border: 1px solid green;
-            margin: 10px;
-        }
-        /* viewport height : 화면 높이를 1/100으로 쪼갠 크기 */
-        #v1 {
-            height: 100vh;
-        }
-        /* viewport width : 화면 너비를 1/100으로 쪼갠 크기 */
-        #v2 {
-            width: 100vw;
-        }
-        /* viewport min : 화면의 너비와 높이 중 작은 값을 1/100으로 쪼갬 */
-        #v3 {
-            height: 100vmin;
-        }
-        /* viewport max : 화면의 너비와 높이 중 큰 값을 1/100으로 쪼갬 */
-        #v3 {
-            height: 100vmax;
-        }
-        
-    </style>
+    <link rel = "stylesheet" href = "asset/02_unit.css">
 </head>
 
 <body>

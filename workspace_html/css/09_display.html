@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Display</title>
+        <link rel="stylesheet" href="asset/09_display.css">
+    </head>
+    <body>
+        test
+        <div class="div"></div>
+        div.block*2
+        <!-- block 사용으로 block2가 block1과 같은 줄로 출력되지 않음-->
+        <!--block1이 혼자 한 자리를 차지-->
+        <div class="block">block1</div>
+        <div class="block">block2</div>
+        <!-- div block와 달리 옆으로 출력됨-->
+
+        <span class="inline">inline1</span>
+        <span class="inline">inline2</span>
+        <!--inline 내 block은 가급적 사용하지 않기-->
+        <span class="inline">
+            <div class="block">inline block</div>
+        </span>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <span class="bg_blue">span1</span>
+        <span class="bg_blue">span2</span>
+        <br>
+        <span class="bg_blue">span1-2</span><span class="bg_blue">span2-2</span>
+        <div class="parent">
+            <div class="child1">
+                list1
+            </div>
+            <div class="child2">
+                list2<br>
+                contents
+            </div>
+        </div>
+        <div class="hide">
+            hidden contents
+        </div>
+        text for testing hidden contents
+        <div class="table">
+            <div class="td">row1 col1</div>
+        </div>
+    </body>
+</html>

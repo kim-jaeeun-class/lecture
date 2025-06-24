@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paragraph</title>
+        <link rel="stylesheet" href="asset/05_paragraph.css">
+    </head>
+    <body>
+        <div class="align-right">text-align-r</div>
+        <div class="align-center">text-align-c</div>
+        <div class="align-left">text-align-l</div>
+        <div class="align-justify">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit eligendi, alias
+            delectus suscipit commodi dolore at odio distinctio harum natus eos inventore
+            numquam quis deserunt, quisquam sit aliquid labore ex?
+        </div>
+        <!--아래는 정렬이 미적용.-->
+        <!-- 이유 : border의 공간 확인-->
+        <a href="asdf" class="align-right">a 태그-정렬 불가</a>
+        <div class="align-right">
+            <a href="asdf">a 태그-정렬 가능</a>
+        </div>
+        <div class="l-spacing">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia tempora
+            similique ullam asperiores corporis, quidem a laudantium minus temporibus rerum
+            earum, vel magnam perspiciatis nam accusamus dignissimos, modi voluptatem
+            aliquam!
+        </div>
+        <div class="line-h">
+            첫 번째 줄<br>
+            두 번째 줄
+        </div>
+        <div class="middle">
+            세로 방향 중앙 정렬
+        </div>
+        <div
+            class="nowrap"
+            title="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio similique consectetur, doloremque quas illum porro ex veritatis quos enim nesciunt dolore? Similique amet delectus ducimus saepe commodi ad numquam quasi.">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio similique
+            consectetur, doloremque quas illum porro ex veritatis quos enim nesciunt dolore?
+            Similique amet delectus ducimus saepe commodi ad numquam quasi.
+        </div>
+        <div class="text word-wrap"> <!-- 띄어쓰기 있으면 여러 클래스-->
+            abcdjkewansfjnakldsfjaklfjveeeeeeeenfoejfoilwj <!-- 이렇게 길어서 단어가 튀어나오는 경우... -->
+            abcd
+            abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd
+        </div>
+        <div class="text word-break"> <!-- 띄어쓰기 있으면 여러 클래스-->
+            abcdjkewansfjnakldsfjaklfjveeeeeeeenfoejfoilwj <!-- 이렇게 길어서 단어가 튀어나오는 경우... -->
+            abcdfdsfasdfsadfsfsf
+            abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd abcd
+        </div>
+    </body>
+</html>

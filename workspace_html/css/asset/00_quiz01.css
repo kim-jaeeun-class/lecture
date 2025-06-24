@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+}
+
+/* 우선 고장값 기준으로 진행 */
+
+.image {
+    display: block;
+
+    background-image: url("https://html5up.net/uploads/demos/tessellate/images/header.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    color: white;
+    text-align: center;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+
+    /* padding: 150px; */
+    padding: 15%;
+
+}
+
+.image .first {
+    /* font-size: 42px; */
+    font-size: 2.8em;
+    font-weight: 100;
+}
+.image .second {
+    /* auto 안 넣어두면 좌우 20px 고정돼서 더 오른쪽으로 밀림*/
+    /* font-size: 22px; */
+    font-size: 1.5em;
+    font-weight: 200;
+    text-align: center;
+
+    margin: 5% auto;
+
+}
+.image .third {
+    background-color: rgba(255, 255, 255, 0.1);
+
+    
+    /* font-size: 18px; */
+    font-size: 1.1em;
+    font-weight: 400;
+
+    margin: 6% auto;
+    padding: 18px 40px;
+
+    border: 1.9px solid white;
+    border-radius: 10px;
+
+    width: 80%
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.image .third:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        transition-duration: 0.5s;
+        transition-delay: 0.1s;
+}
+
+#link1 {
+    color: white;
+    text-decoration: underline dotted 1px;
+}
+#link2 {
+    color: white;
+    text-decoration: none;
+}
