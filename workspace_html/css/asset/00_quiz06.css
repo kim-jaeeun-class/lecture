@@ -1,0 +1,40 @@
+.box {
+    /* display: inline-block;
+    vertical-align: top; */
+}
+
+.listbox {
+    display: inline-block;
+    width : 60px;
+}
+
+.list {
+    margin : 2%;
+
+}
+
+.list:hover {
+    border: 2px solid rgb(32, 32, 156);
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    left: 100px;
+}
+
+.one:hover + .fir {
+    z-index: 999;
+}
+.two:hover + .sec {
+    z-index: 999;
+}
+.three:hover + .thr {
+    z-index: 999;
+}
+.four:hover + .fou {
+    z-index: 999;
+}
+.five:hover + .fif {
+    z-index: 999;
+}

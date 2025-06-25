@@ -15,12 +15,12 @@
 
 .abril-fatface-regular {
     font-family: "Abril Fatface", serif;
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
 }
 
 .box {
-    margin : 3% 10%;
+    margin : 3%;
     text-align: center;
 
     display: inline-block;
@@ -49,9 +49,9 @@
 .title {
     /* 제목 글씨 */
     font-family: "Abril Fatface", serif;
-    font-size: 3rem;
+    font-size: 3em;
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.1em;
     text-align : left;
 }
 .text1 {

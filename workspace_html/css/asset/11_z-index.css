@@ -1,0 +1,85 @@
+.rel {
+    position: relative;
+}
+.rel:hover {
+    z-index: 999;
+}
+.parent {
+    margin: 20px;
+    width: 100px;
+
+    background-color: burlywood;
+}
+div {
+    border: 1px solid;
+    width: 100px;
+}
+.z1 {
+    background-color: rgba(255, 127, 80, 0.7);
+
+    top: 5px;
+    left: 20px;
+}
+.z2 {
+    background-color: rgba(23, 163, 93, 0.7);
+
+    top: -10px;
+    left: -20px;
+
+    z-index: 1;
+}
+.z3 {
+    background-color: rgba(156, 70, 206, 0.7);
+
+    top: -20px;
+    left: -10px;
+
+}
+
+ul.main {
+    background-color: yellowgreen;
+}
+ul.main + ul {
+    position: relative;
+    bottom: 16px;
+    background-color: burlywood;
+
+    display: none;
+}
+ul.main:hover + ul {
+    display: block;
+}
+ul.main + ul:hover {
+    display: block;
+}
+/* ul.main:hover {
+    position: relative;
+    left: 10000px;
+} */
+
+.c1 {
+    position: absolute;
+    top: 19px;
+    right: -1px;
+}
+
+.p1 {
+    position: relative;
+}
+
+.p2{
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+
+    position: relative;
+}
+.c2 {
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+
+    top: calc((200px/2) - (100px/2));
+    left: calc((200px/2) - (100px/2));
+}

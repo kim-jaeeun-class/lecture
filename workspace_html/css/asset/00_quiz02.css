@@ -24,7 +24,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
-    width: 450px;
+    width: 440px;
     height: 600px;
 
     padding: 2%;
@@ -34,7 +34,7 @@ body {
     background-color: white;
     text-align: left;
 
-    width: 450px;
+    width: 440px;
     height: 600px;
 
     padding: 2%;
@@ -42,13 +42,17 @@ body {
 
 .box .writing-out .writing-in {
     text-align: left;
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.8em;
     word-wrap: break-word;
+    color: #333333;
+
+    padding: 10% 3%;
 }
 
 .box .writing-out .link {
     border: 2px solid;
+    margin-left: 3%;
     padding: 3% 5%;
 
     color: #333333;

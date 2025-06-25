@@ -22,11 +22,14 @@ class :
 #title {
     font-size: 3em;
     font-weight: 700;
-    margin: 4% auto;
+
+    line-height: 110%;
+
+    margin: 4% 0;
 }
 
 .product {
-    width: 95%;
+    width: 90%;
     height: 464px;
 
     display: inline-block;

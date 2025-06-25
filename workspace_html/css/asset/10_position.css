@@ -1,0 +1,54 @@
+body {
+    height: 500vh;
+}
+div {
+    border: 1px solid;
+}
+.parent {
+    margin: 20px;
+    width: 100px;
+    background-color: burlywood;
+}
+.child {
+    width: 90px;
+    background-color: rgba(95, 158, 160, 0.5);
+}
+.rel {
+    /* 원래 위치 기준으로 이동
+        top, left, right, bottom
+        원래 내가 가지고 있던 공간 유지
+    */
+    position: relative;
+    top: 10px;
+    left: 50%;
+}
+.abs {
+    /*
+    부모 중 가장 가까운 relative(없으면 body) 기준 이동
+    원래 내가 가지고 있던 공간 소멸
+    */
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+}
+.abs-b {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.fixed {
+    width : 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.sticky {
+    position: sticky;
+    top: 20px;
+}
