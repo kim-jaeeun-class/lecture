@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+}
+
+.all {
+    text-align: center;
+}
+
+.line {
+    background-color: #e4d2c0;
+
+    width: 30%;
+    min-width: 250px;
+    height: 100vh;
+
+    display: inline-block;
+    position: absolute;
+    right: 35%;
+
+}
+.box {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: 12%;
+    left: 12%;
+
+
+    z-index: 1;
+}
+
+.col1 {
+    max-width: 70%;
+    position: relative;
+}
+.col2 {
+    max-width: 70%;
+    position: relative;
+    left: 9.7%;
+    bottom: 6vw;
+    z-index: 2;
+}
+
+.first {
+    background-image: url("https://images01.nicepage.com/c461c07a441a5d220e8feb1a/4583c5e5778759d5bf354095/dfggdf-min.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 40%;
+    height: 40vh;
+    min-width: 340px;
+    min-height: 340px;
+
+    margin-right: 1%;
+
+    display: inline-block;
+    vertical-align: top;
+
+}
+.second {
+    background-image: url("https://images01.nicepage.com/c461c07a441a5d220e8feb1a/fe2b4f4f73b2545cb746601b/spirituality-religion-hands-folded-prayer-holy-bible-church-concept-faith_1150-148781.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 20%;
+    height: 20vw;
+    min-width: 250px;
+    min-height: 250px;
+    max-width: 340px;
+    max-height: 340px;
+
+    margin-left: 1%;
+
+    display: inline-block;
+    vertical-align: top;
+
+}
+.third {
+    background-image: url("https://images01.nicepage.com/c461c07a441a5d220e8feb1a/ea6de3a355c35c3fb5e2e8fb/gfgg.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 20%;
+    height: 20vw;
+    min-width: 250px;
+    min-height: 250px;
+    max-width: 340px;
+    max-height: 340px;
+
+    margin-right: 2%;
+
+    display: inline-block;
+    vertical-align: bottom;
+
+}
+.fourth {
+    color: #ffffff;
+    text-align: left;
+    background-color: #292d33;
+    padding: 2%;
+
+    width: 40%;
+    min-width: 340px;
+    min-height: 340px;
+
+    margin-left: 0%;
+
+    display: inline-block;
+    vertical-align: bottom;
+
+
+}
+
+.text {
+    font-family: "Ubuntu";
+    font-size: 2em;
+    padding: 4% 0;
+
+}
+.origin {
+    font-size: 1.1em;
+    padding: 4% 0;
+
+    word-break: break-all;
+}
+
+#link {
+    color: #d3d3d3;
+}

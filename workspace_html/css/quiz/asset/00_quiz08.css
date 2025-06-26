@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+}
+
+.back {
+    background-color: #6e52c7;
+    width: 60%;
+    height: 100vh;
+    
+    position: fixed;
+    right: 0px;
+
+}
+.middle {
+    background-image: url("https://images03.nicepage.com/c461c07a441a5d220e8feb1a/e1900cdaa5c15cecae8746b6/rtyy-min.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+    width: 50vw;
+    height: 50vw;
+    min-width: 250px;
+    min-height: 250px;
+
+    position: relative;
+
+    top: 15vh;
+    left: 10vw;
+}
+.top {
+    color: #625EC7;
+    background-color: white;
+    width: 25%;
+    min-width: 200px;
+    min-height: 200px;
+    z-index: 2;
+
+    text-align: right;
+
+    position: relative;
+    left: 55%;
+    bottom: 47vh;
+
+    padding: 10% 5%;
+}
+
+.first {
+    font-family: "Roboto";
+    letter-spacing: 0.1em;
+
+    margin;
+}
+.second {
+    font-family: "Merriweather";
+    font-size: 3em;
+    font-weight: 600;
+
+}
+.third {
+    }

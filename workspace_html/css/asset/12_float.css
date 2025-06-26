@@ -1,0 +1,57 @@
+article img {
+    border: 1px solid;
+    float: left;
+}
+
+.box {
+    border: 1px solid sandybrown;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}
+
+.box.left {
+    border: 1px solid rosybrown;
+    float: left;
+}
+
+.box.right {
+    border: 5px solid sandybrown;
+    float: right;
+}
+
+.d1 {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.d2 {
+    /* width: 100%; */
+    background-color: yellow;
+}
+
+.d3 {
+    background-color: aquamarine;
+
+}
+
+.clear {
+    clear: both;
+}
+.clearfix:after {
+    content: "";
+    /* 아래의 조건은 전부 content의 꾸밈 요소 */
+    display: block;
+    clear: both;
+}
+
+.logo {
+    border: 1px solid;
+    width: 300px;
+    background-color:darkolivegreen;
+    text-align: center;
+    display: inline-block;
+}
+
+.menu {
+    text-align: center;
+}
