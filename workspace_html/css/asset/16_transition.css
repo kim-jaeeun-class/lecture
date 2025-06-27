@@ -1,0 +1,16 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: bisque;
+
+    transition: all 0.5s;
+
+    display: inline-block;
+}
+
+div:hover {
+    background-color: coral;
+    width: 200px;
+    border-radius: 20%;
+    
+}

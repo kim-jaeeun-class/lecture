@@ -1,0 +1,404 @@
+/* 구조 및 태그 정리
+1. toolbar : 상단 로그인 버튼 등
+2. header : 카페명 등 헤더 이미지
+3. body : 사이드바와 게시판 모음
+    1) sidebar : 사이드바
+    2) board : 게시판 관련 기능 모음
+        (1) title : 게시판 제목
+        (2) option : 게시판 옵션 설정
+        (3) list : 게시판 목록(테이블도 가능할 듯)
+        (4) select : 페이지 선택
+        (5) search : 하단 검색
+        (6) adv : 하단 광고
+4. footer: 최하단 카페 설명 등
+*/
+
+/* toolbar 요소 */
+.toolbar {
+    width: 100%;
+}
+.naver {
+    background-image: url("https://ssl.pstatic.net/static/cafe/icon_naver_190423.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 52px;
+    height: 10px;
+    margin: 5px;
+
+    float: left;
+}
+.tool {
+    font-size: 0.9em;
+    float: right;
+}
+
+.icon1, .tool1, .tool2, .tool3, .tool4, .tool5, .tool6, .tool7 {
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon1 {
+    background: url("../asset/image/icon_menu.png");
+    width: 20px;
+    height: 20px;
+}
+
+/* header 요소*/
+.header {
+    background-image: url("https://ssl.pstatic.net/static/cafe/cafe_pc/bg_default_title_white_180724.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1080px;
+    height: 180px;
+
+    border: 1px solid #f0f1f2;
+
+    margin: 30px auto;
+}
+.header1 {
+    font-size: 40px;
+    margin-left: 30px;
+
+    word-wrap: break-word;
+}
+.header2 {
+    color: #666666;
+    font-size: 16px;
+    margin-left: 30px;
+}
+.header1,
+.header2 {
+    position: relative;
+    top: 50px;
+}
+
+/* body 요소 - 사이드바 및 게시판*/
+
+.body {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.sidebar {
+    display: inline-block;
+
+    width: 200px;
+    height: 711.5px;
+
+    vertical-align: top;
+
+    margin-right: 10px;
+}
+.board {
+    display: inline-block;
+
+    width: 860px;
+    height: 1117px;
+}
+
+
+.sidebar1 {
+    border-top: 2px solid;
+    border-bottom: 1px solid #d3d3d3;
+
+    font-size: 0.9em;
+    text-align: center;
+
+    padding: 5px 0;
+}
+
+.sidebar2 {
+    border-bottom: 1px solid #d3d3d3;
+    text-align: center;
+}
+.sidebar2-1 {
+    background-image: url("https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_thumb_noimg_55.png");
+    background-size: contain;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 10px;
+
+    display: inline-block;
+}
+.sidebar2-2 {
+    font-size: 0.9em;
+    text-align: left;
+
+    margin: 0 0 0 10px;
+
+    display: inline-block;
+
+    position: relative;
+    right: 5px;
+    bottom: 15px;
+}
+
+.sidebar3 {
+    text-align: left;
+    margin : 10px 0;
+}
+.sidebar3-1 {
+    display: inline-block;
+    overflow: hidden;
+    width: 18px;
+    height: 17px;
+    margin: 0 6px;
+    background: url("https://cafe.pstatic.net/img/section/indi_cafe/ico_sprite_ranktbl.gif") no-repeat;
+    vertical-align: top;
+}
+.sidebar3-2 {
+    font-size: 0.9em;
+
+    display: inline-block;
+}
+
+.sidebar4 {
+    font-size: 0.9em;
+    text-align: left;
+
+    margin: 6px 5px 10px;
+}
+.sidebar4-1 {
+    display: inline-block;
+    margin: 0 6px 0 0;
+}
+.sidebar4-2 {
+    display: inline-block;
+}
+.sidebar4-3 {
+    float: right;
+}
+
+.sidebar5 {
+    background-color: #5a5a5a;
+
+    border: 1px solid #5a5a5a;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 0.9em;
+    line-height: 38px;
+
+    width: 200px;
+    height: 38px;
+
+    margin: 5px 0;
+}
+
+.sidebar6 {
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+
+    color: black;
+    font-size: 0.9em;
+    line-height: 38px;
+
+    width: 200px;
+    height: 38px;
+
+    margin: 5px 0;
+}
+
+.sidebar7 {
+    text-align: left;
+}
+.sidebar7-1 {
+    border: 1px solid #d3d3d3;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    width: 150px;
+    height: 30px;
+
+    display: inline-block;
+
+    position: relative;
+
+}
+.sidebar7-2 {
+    border: 0px solid;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #ffffff;
+    background-color: #03C75A;
+
+    width: 40px;
+    height: 35px;
+
+    display: inline-block;
+
+    position: relative;
+    right: 5px;
+    top: 1px;
+}
+
+.sidebar8 {
+    border-bottom: 1px solid #d3d3d3;
+
+    font-size: 0.9em;
+    text-align: left;
+
+    margin: 10px 0;
+    padding: 10px 2px;
+}
+.sidebar8-1 {
+    margin: 6px 0;
+}
+.sidebar8-1-1 {
+    float: left;
+}
+.sidebar8-1-2 {
+    float: right;
+}
+.sidebar8-2 {
+    margin: 6px 0;
+}
+
+.sidebar9 {
+
+    font-size: 0.9em;
+    text-align: left;
+
+    margin: 10px 0;
+    padding: 5px 2px;
+}
+
+.sidebar10, .sidebar13{
+    border-top: 2px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+
+    font-size: 0.9em;
+    text-align: left;
+
+    margin: 10px 0;
+    padding: 10px 2px;
+}
+
+.last {
+    padding: 0 0 10px 0;
+    border-bottom: 2px solid black;
+}
+
+.sidebar-down {
+    font-size: 0.9em;
+    text-align: left;
+
+    line-height: 1.5em;
+}
+
+.title{
+    text-align: left;
+}
+.title1 {
+    margin-right: 4px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 24px;
+    vertical-align: sub;
+    color: #333333;
+}
+.title2 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(https://ca-fe.pstatic.net/pc/_next/static/media/list-bookmark-off.af4a8767.svg);
+    background-repeat: no-repeat;
+    transform-origin: center center 7px;
+    content: "";
+    margin-top: -2px;
+    vertical-align: middle;
+}
+.icon2 {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 6px 4px 0 0;
+    border-left: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    vertical-align: top;
+}
+
+.option {
+    font-size: 0.9em;
+    text-align: right;
+
+    padding: 20px 0px 10px;
+}
+.btn {
+    width: 20px;
+    height: 20px;
+
+    margin: 0px 1px;
+}
+
+.num {
+    border-radius: 6px;
+    border: 1px solid #d3d3d3;
+    width: 90px;
+    height: 36px;
+
+    padding: 0px 10px;
+    margin-left: 10px;
+}
+.num:hover {
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+
+    background-color: #e6e6e6;
+}
+
+.list {
+    border-top: 1px solid black;
+    font-size: 0.9em;
+
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.table-t, .table-n, .table-d, .table-v, .table-l {
+    padding: 2px;
+    height: 40px;
+} 
+.table-num {
+    width: 80px;
+}
+.table-t {
+    width: 444px;
+}
+.table-n {
+    width: 118px;
+}
+.table-d {
+    width: 82px;
+}
+.table-v {
+    width: 68px;
+}
+.table-l {
+    width: 68px;
+}
+td {
+    height: 37px;
+    padding: 4px 6px;
+}
+
+/* footer 요소 */
+.footer {
+    width: 1080px;
+    height: 67px;
+
+    margin: 0 auto;
+
+    background-color: cornflowerblue;
+}
+
+/* 기타 */
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}

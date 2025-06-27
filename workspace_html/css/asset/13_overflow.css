@@ -1,0 +1,31 @@
+.p {
+    border: 1px solid;
+    height: 85px;
+    width: 100px;
+    margin: 10px;
+}
+
+.hidden {
+    overflow: hidden;
+}
+.scroll {
+    overflow: scroll;
+}
+.auto {
+    overflow: auto;
+}
+
+.parent {
+    border: 1px solid;
+    width: 300px;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.parent div {
+    border: 1px solid lawngreen;
+    width: 100px;
+
+    display: inline-block;
+    margin: 5px;
+}

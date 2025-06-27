@@ -1,0 +1,16 @@
+.box1 {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+
+    box-shadow: 30px 10px;
+    box-shadow: 30px 10px greenyellow;
+    box-shadow: 5px 5px 20px 2px gray;
+}
+.box2 {
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 8px rgb(255, 0, 255);
+
+    background-color: rgb(144, 179, 144);
+}

@@ -1,0 +1,17 @@
+.flex-container {
+    border: 1px solid rgb(204, 235, 157);
+    height: 300px;
+
+    display: inline-flex;
+
+}
+
+.flex-container .flex-item {
+    border: 1px solid salmon;
+    background-color: darksalmon;
+    color:bisque;
+
+    width: 2px;
+
+    align-items: center;
+}

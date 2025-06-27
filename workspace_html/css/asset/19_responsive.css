@@ -1,0 +1,31 @@
+ul {
+    border: 1px solid rgb(255, 180, 127);;
+    background-color: lemonchiffon;
+    list-style: none;
+    padding-left: 0;
+}
+li {
+    border: 1px solid rgb(255, 180, 127);
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+}
+span {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    span {
+        display: inline;
+    }
+    span:hover + ul {
+        display: block;
+    }
+    ul {
+        display: none;
+    }
+    li {
+        display: block;
+        width: 100%;
+    }
+}
