@@ -15,7 +15,8 @@
 
 /* toolbar 요소 */
 .toolbar {
-    width: 100%;
+    width: 1080px;
+    margin: 0 auto;
 }
 .naver {
     background-image: url("https://ssl.pstatic.net/static/cafe/icon_naver_190423.png");
@@ -29,19 +30,31 @@
     float: left;
 }
 .tool {
-    font-size: 0.9em;
+    font-size: 0.8em;
     float: right;
 }
 
-.icon1, .tool1, .tool2, .tool3, .tool4, .tool5, .tool6, .tool7 {
-    margin: 0 5px;
+.tool2, .tool3, .tool4, .tool5, .tool6, .tool7 {
+    border-left: 1px solid #e6e6e6;
+    color: #333333;
+    padding: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon1, .tool1 {
+    color: #333333;
+    padding: 0 5px;
     display: inline-block;
     vertical-align: middle;
 }
 .icon1 {
-    background: url("../asset/image/icon_menu.png");
+    background: url("../asset/image/icon_menu.png") no-repeat;
     width: 20px;
     height: 20px;
+    
+    position: relative;
+    left: 10px;
 }
 
 /* header 요소*/
@@ -135,7 +148,11 @@
 
     position: relative;
     right: 5px;
-    bottom: 15px;
+    bottom: 18px;
+}
+.sidebar2-2-a {
+    font-size: 0.85em;
+    color: #666666;
 }
 
 .sidebar3 {
@@ -359,6 +376,9 @@
     border-bottom: 1px solid #f2f2f2;
 }
 
+th {
+    border-bottom: 1px solid #f2f2f2;
+}
 .table-t, .table-n, .table-d, .table-v, .table-l {
     padding: 2px;
     height: 40px;
@@ -366,8 +386,9 @@
 .table-num {
     width: 80px;
 }
-.table-t {
+.table-title {
     width: 444px;
+    text-align: left;
 }
 .table-n {
     width: 118px;
@@ -382,8 +403,64 @@
     width: 68px;
 }
 td {
-    height: 37px;
+    height: 30px;
     padding: 4px 6px;
+
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.box {
+    border-radius: 6px;
+    
+    width: 860px;
+    height: 136px;
+    margin: 32px 0 0;
+    padding: 31px 0 20px;
+
+    background-color: #f0f6f880;
+}
+
+.select {
+    margin: 0 0 25px;
+}
+.btnnum {
+    font-family: Arial;
+
+    width: 24px;
+    height: 24px;
+
+    margin: 0px 2px;
+    padding: 0px 2px;
+
+    background-color: transparent;
+    border: transparent;
+}
+.selected {
+    border-radius: 6px;
+    background-color: #e5e7ea;
+    font-weight: 700;
+}
+
+.btmser {
+    display: inline-block;
+}
+.btmser-op {
+    width: 200px;
+    height: 36px;
+    padding: 0 36px 0 11px;
+    border-radius: 6px;
+    border-color: #d3d3d3
+}
+
+.bottom1 {
+    width: 260px;
+    height: 36px;
+    padding: 0 12px;
+}
+.bottom2 {
+    height: 36px;
+    position: relative;
+    top: 3px;
 }
 
 /* footer 요소 */
@@ -391,9 +468,35 @@ td {
     width: 1080px;
     height: 67px;
 
+    font-size: 0.9em;
+    line-height: 67px;
+
     margin: 0 auto;
 
-    background-color: cornflowerblue;
+    border-top: 2px solid;
+}
+.footer1 {
+    display: inline-block;
+    margin-right: 10px;
+}
+.footer2 {
+    display: inline-block;
+    vertical-align: center;
+    padding-left: 10px;
+    font-weight: 200;
+    position: relative;
+}
+.footer2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25px; 
+    height: 17px;
+    width: 1px;
+    background-color: #d3d3d3;
+}
+.footer3 {
+    float: right;
 }
 
 /* 기타 */
