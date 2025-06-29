@@ -1,0 +1,152 @@
+/*
+:: 쇼핑몰 설계 ::
+p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/household.html
+>> font : 소소한 건 Open Sans. 이외의 제목, 가격 등 대부분의 요소에 Ubuntu 폰트 사용.
+>>  html & css 구조
+1. fixed
+    1) fixed-left : special offers!
+    2) fixed-search : 상품 검색란
+    3) fixed-cartbtn : 카트 확인란
+    4) fixed-infobtn : 내 정보 버튼. hover 시 login, sing up 등장
+    5) fixed-conbtn : 연결 버튼
+2. header
+    1) logo
+    2) menu
+    3) con-info : 전화 / 메일 총 2개
+3. body
+    1) top-menu
+        (1) category1 : root
+        (2) category2 : root의 자식 카테고리
+    2) sidebar : 총 9개
+        (1) sidebar-hov : hover 적용 시
+        (2) sidebar-child : 하위 메뉴 있을 경우 
+    3) main
+        (1) head : 이미지 파트
+            - head-title : 타이틀란
+            - hed-ani : 애니케이션 효과(깜빡임)
+        (2) h1 : 상품란 타이틀. 하단에 border-bottom 길이 조정돼서 출력.
+        (3) h2 : 상품-카테고리 타이틀(총 3개)
+        (4) product : 상품 목록(총 3개*4). 이중 테에 주의.
+            - pro-img : 상품 이미지
+            - pro-t : 상품 타이틀
+            - pro-p : 상품 가격
+            - pro-add : 카트 추가 버튼
+4. bottom
+    1) bottom1 : 구독란
+        (1) sub1 : 설명
+        (2) sub2 : 이메일 입력
+    2) bottom2 : 정책 인포 등
+        (1) bo-row1
+            - col1 : 1~3열 칼럼
+            - col2 : 트위터 포스트 칼럼
+        (2) bo-row2
+            - payments : paytxt/payimg로 구분
+            - connect : contxt/conimg로 구분
+        (3) bo-row3
+5. up-btn : 최상단 이동 버튼
+*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+    font-family: "Ubuntu";
+    padding: 0;
+    margin: 0;
+}
+
+/* 상단 바 - 고정 */
+.fixed {
+    background-color: #333333;
+
+    width: 100%;
+    height: 40px;
+    margin: 0;
+
+    position: fixed;
+    top: 0px;
+
+    text-align: center;
+}
+.fixed-left {
+    color: #FFFFFF;
+    text-align: center;
+
+    width: 20%;
+    height: 40px;
+
+    background-color: #84C639;
+
+    float: left;
+}
+.fixed-search {
+    display: inline-block;
+    width: 25%;
+}
+.search-txt {
+    width: 80%;
+    height: 33px;
+
+    position: relative;
+    bottom: 2px;
+}
+.search-btn {
+    border: 1px solid #FA1818;
+
+    background-color: #FA1818;
+    width: 15%;
+    height: 38px;
+
+    position: relative;
+    right: 4px;
+    bottom: 1px;
+}
+.fixed-cartbtn {
+    display: inline-block;
+
+    width: 10%;
+}
+.cart-btn {
+    color: #FFFFFF;
+    border: 1px solid #84C639;
+    background: transparent;
+
+    font-size: 1em;
+
+    width: 100%;
+    height: 40px;
+}
+.fixed-infobtn {
+    display: inline-block;
+}
+.fixed-conbtn {
+    color: white;
+    background-color: #FA1818;
+
+    width: 10%;
+    height: 40px;
+    float: right;
+
+}
+/* header 란 */
+.logo {
+    font-size: 1.5em;
+    color: #212121;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    background: url("https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/img-sp.png") no-repeat 54px 6px;
+    line-height: 1;
+    height: 97px;
+}
+span {
+    color: #FA1818;
+    font-size:0.3em;
+}
+
+/* body - top-menu 란 */
+.top-menu {
+    background-color: #84C639;
+
+    width: 100%;
+    height: 7%;
+}
