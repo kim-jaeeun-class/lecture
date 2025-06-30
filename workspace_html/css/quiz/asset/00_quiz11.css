@@ -3,12 +3,12 @@
 p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/household.html
 >> font : 소소한 건 Open Sans. 이외의 제목, 가격 등 대부분의 요소에 Ubuntu 폰트 사용.
 >>  html & css 구조
-1. fixed
-    1) fixed-left : special offers!
-    2) fixed-search : 상품 검색란
-    3) fixed-cartbtn : 카트 확인란
-    4) fixed-infobtn : 내 정보 버튼. hover 시 login, sing up 등장
-    5) fixed-conbtn : 연결 버튼
+1. bar
+    1) bar-left : special offers!
+    2) bar-search : 상품 검색란
+    3) bar-cartbtn : 카트 확인란
+    4) bar-infobtn : 내 정보 버튼. hover 시 login, sing up 등장
+    5) bar-conbtn : 연결 버튼
 2. header
     1) logo
     2) menu
@@ -18,8 +18,9 @@ p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/household.html
         (1) category1 : root
         (2) category2 : root의 자식 카테고리
     2) sidebar : 총 9개
-        (1) sidebar-hov : hover 적용 시
+        (1) sidebar-basic:hov : hover 적용 시
         (2) sidebar-child : 하위 메뉴 있을 경우 
+        (3) sidebar-basic : 기본형
     3) main
         (1) head : 이미지 파트
             - head-title : 타이틀란
@@ -48,105 +49,395 @@ p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/household.html
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 body {
     font-family: "Ubuntu";
     padding: 0;
     margin: 0;
 }
 
-/* 상단 바 - 고정 */
-.fixed {
+/* 상단 바 */
+.bar {
     background-color: #333333;
-
     width: 100%;
-    height: 40px;
-    margin: 0;
-
-    position: fixed;
-    top: 0px;
-
-    text-align: center;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    word-wrap: break-word;
 }
-.fixed-left {
+.bar-left {
     color: #FFFFFF;
     text-align: center;
-
     width: 20%;
-    height: 40px;
 
     background-color: #84C639;
-
-    float: left;
 }
-.fixed-search {
-    display: inline-block;
-    width: 25%;
-}
-.search-txt {
-    width: 80%;
-    height: 33px;
-
-    position: relative;
-    bottom: 2px;
-}
-.search-btn {
-    border: 1px solid #FA1818;
-
-    background-color: #FA1818;
-    width: 15%;
-    height: 38px;
-
-    position: relative;
-    right: 4px;
-    bottom: 1px;
-}
-.fixed-cartbtn {
-    display: inline-block;
-
-    width: 10%;
-}
-.cart-btn {
-    color: #FFFFFF;
-    border: 1px solid #84C639;
+.bar-btn {
+    border: 1px solid transparent;
     background: transparent;
 
+    color: white;
     font-size: 1em;
+    font-family: Ubuntu;
 
     width: 100%;
-    height: 40px;
+    height: 100%;
 }
-.fixed-infobtn {
-    display: inline-block;
+.bar-search {
+    width: 50%; 
+    text-align: center;
 }
-.fixed-conbtn {
+.search-txt {
+    width: 40%;
+    height: 85%;
+}
+.search-btn {
+    background-color: #FA1818;
+    font-size: 1.2em;
+    width: 10%;
+    height: 100%;
+}
+.bar-cart {
+    width: 12%;
+    color: #FFFFFF;
+    border: 1px solid #84C639;
+    height: 80%;
+    margin: 1px;
+}
+.bar-infobtn {
+    color: white;
+    width: 3%;
+}
+.bar-conbtn {
     color: white;
     background-color: #FA1818;
 
-    width: 10%;
-    height: 40px;
-    float: right;
+    width: 8%;
+    height: 100%;
+}
+
+
+/* header 란 */
+.header {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
 
 }
-/* header 란 */
 .logo {
-    font-size: 1.5em;
+    font-size: 3em;
     color: #212121;
     text-decoration: none;
-    text-transform: uppercase;
-    display: block;
-    background: url("https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/img-sp.png") no-repeat 54px 6px;
-    line-height: 1;
-    height: 97px;
+    background: url("https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/img-sp.png") no-repeat 54px 12px;
+    line-height: 0.6em;
+    height: 100px;
+    padding-left: 5%;
+    flex-grow: 2;
+    text-align: left;
 }
 span {
     color: #FA1818;
-    font-size:0.3em;
+    font-size: 0.3em;
 }
+.menu {
+    font-size: 0.9em;
+    flex-grow: 5;
+}
+.menu-link {
+    color: #333333;
+    text-decoration: none;
+
+    margin: 0 5%;
+}
+.con-info {
+    font-size: 0.9em;
+    flex-grow: 2;
+}
+
 
 /* body - top-menu 란 */
 .top-menu {
     background-color: #84C639;
 
+    font-size: 0.9em;
+
     width: 100%;
-    height: 7%;
+    height: 5vh;
+
+    display: flex;
+    align-items: center;
+}
+.t-menu-icon {
+    color: #FA1818;
+    margin-left: 5%;
+}
+.root {
+    color: white;
+    margin: 0 2%;
+}
+.child {
+    margin: 0 2%;
+}
+
+/* body - sidebar란 */
+.body {
+    display: flex;
+}
+.sidebar {
+    font-size: 0.9em;
+    width: 20%;
+}
+.sidebar-basic {
+    border-bottom: 1px dotted #CDCDCD;
+    padding: 5% 0 5% 20%;
+}
+.sidebar-basic:hover {
+    color: white;
+    background-color: #84C639;
+}
+.sidebar-child1, .sidebar-child2, .sidebar-child3 {
+    display: none;
+}
+.parent1:hover + .sidebar-child1 {
+    display: block;
+}
+.sidebar-child:hover {
+    display: block;
+    color: red;
+}
+
+
+/* body - main란 */
+.main {
+    width: 80%;
+    text-align: center;
+}
+.head {
+    background: url("https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/16.jpg") no-repeat 0px 0px;
+    background-position: center center;
+    background-size: cover;
+    min-height: 300px;
+    text-align: center;
+    
+}
+.headtxt {
+    color: #FA1818;
+    font-size: 2em;
+    font-weight: 200;
+
+    background-color: white;
+    padding: 1%;
+
+    display: inline-block;
+}
+.headico {
+    background: url("https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/img-sp.png") no-repeat 1px -116px;
+    width: 50px;
+    height: 50px;
+}
+.h1 {
+    font-size: 2.5em;
+    font-weight: 500;
+
+    margin: 7% 0 4%;
+}
+.h2 {
+    font-size: 1.6em;
+    font-weight: 500;
+    text-align: left;
+}
+.productbox {
+    font-family: Ubuntu;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product {
+    margin: 5% 1%;
+    width: 20%;
+    min-width: 200px;
+    border: 1px solid #CDCDCD;
+}
+.pro-name {
+    word-wrap: break-word;
+    text-align: left;
+    margin: 5%;
+}
+.pro-price {
+    text-align: left;
+    margin: 5%;
+}
+.dis-price {
+    display: inline-block;
+}
+.orig-price {
+    color: #212121;
+    display: inline-block;
+    text-decoration: line-through;
+}
+.add-cartbtn {
+    color: white;
+    font-weight: 200;
+    text-align: center;
+    background-color: #FA1818;
+    width: 60%;
+    height: 15%;
+    min-width: 170px;
+    margin: 5% auto;
+}
+
+
+/* bottom 부분 */
+.bottom {
+    width: 100%;
+}
+.bottom1 {
+    width: 100%;
+    color: white;
+    background-color: #FA1818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 2%;
+}
+.sub1 {
+    font-size: 1.5em;
+    margin: 2%;
+}
+.sub2 {
+    margin: 2%;
+    width: 50%;
+}
+.sub2-1 {
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    font-size: 0.9em;
+    padding: 3%;
+    width: 60%;
+    min-width: 400px;
+    display: inline-block;
+}
+.sub2-1::placeholder {
+    color: white;
+}
+.sub2-2 {
+    color: #FA1818;
+    font-size: 0.9em;
+    border: 1px solid white;
+    background-color: white;
+    padding: 3%;
+    display: inline-block;
+}
+
+.bottom2 {
+    background-color: #212121;
+}
+.bo-row1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 5% 5%;
+}
+.col1, .col2 {
+    color: white;
+    font-size: 1.2em;
+    min-width: 250px;
+}
+.col1-child {
+    color:#999999;
+    font-size: 0.8em;
+    margin: 20% 0;
+}
+.col1-list {
+    margin: 10% 0;
+    padding-left: 2em;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/467/467282.png ");
+    background-position: 0 0;
+    background-size: 1em 1em;
+    background-repeat: no-repeat;
+    filter: opacity(0.5) drop-shadow(0 0 0 #FFFFFF);
+}
+
+.paytxt {
+    color: #84C639;
+
+}
+.payimg {
+    margin: 5% 0;
+}
+
+.contxt {
+    color: white;
+
+}
+.bo-row2 {
+    border-top: 1px solid #999999;
+    color: #999999;
+    text-align: center;
+    width: 100%;
+    line-height: 10em;
+}
+.twt {
+    color: #999999;
+    font-size: 0.8em;
+    font-weight: 200;
+    width: 250px;
+}
+.emoji {
+    display: inline-block;
+    width: 5%;
+}
+.twt-con {
+    display: inline-block;
+    word-wrap: break-word;
 }

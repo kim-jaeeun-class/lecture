@@ -10,79 +10,307 @@
         <link rel="stylesheet" href="asset/00_quiz11.css">
     </head>
     <body>
-        <div class="fixed">
-            <div class="fixed-left">Today's Special Offers!</div>
-            <form class="fixed-search">
+        <div class="bar">
+            <form class="bar-left">
+                <button class="bar-btn" type="button">
+                    Today's Special Offers!
+                </button>
+            </form>
+            <form class="bar-search">
                 <input class="search-txt" type="text" placeholder="Search a product...">
-                <button class="search-btn" type="button">버튼명</button>
+                <button class="search-btn" type="button">⌕</button>
             </form>
-            <form class="fixed-cartbtn">
-                <button class="cart-btn" type="button">View Your Cart</button>
+            <form class="bar-cart">
+                <button class="bar-btn" type="button">View Your Cart</button>
             </form>
-            <div class="fixed-infobtn"></div>
-            <div class="fixed-conbtn">Contact Us</div>
+            <div class="bar-btn bar-infobtn">
+                드롭다운
+            </div>
+            <div class="bar-conbtn">
+                <button class="bar-btn" type="button">
+                    Contact Us
+                </button>
+            </div>
         </div>
         <div class="header">
             <div class="logo">
                 <h1>
-                    <span>Grocery</span><br>
-                    Store
+                    <span>GROCERY</span><br>STORE
                 </h1>
             </div>
-            <div class="menu"></div>
-            <div class="con-info"></div>
-            <div class="con-info"></div>
+            <div class="menu">
+                <a class="menu-link" href="">Events</a>
+                &nbsp;/&nbsp;
+                <a class="menu-link" href="">About Us</a>
+                &nbsp;/&nbsp;
+                <a class="menu-link" href="">Best Deals</a>
+                &nbsp;/&nbsp;
+                <a class="menu-link" href="">Services</a>
+            </div>
+            <div class="con-info">
+                ☎ (+0123) 234 567
+            </div>
+            <div class="con-info">
+                ✉ store@grocery.com
+            </div>
+        </div>
+        <div class="top-menu">
+            <div class="t-menu-icon">☗</div>
+            <div class="root">Home</div>
+            |
+            <div class="child">Households</div>
         </div>
         <div class="body">
-            <div class="top-menu">
-                <div class="root">Home</div>
-                <div class="child">Households</div>
-            </div>
-            <div class="sidebar">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <ul class="sidebar">
+                <li class="sidebar-basic">Branded Foods</li>
+                <li class="sidebar-basic">Households</li>
+                <li class="sidebar-basic parent1">Veggies & Fruits▾</li>
+                <ul>
+                    <li class="sidebar-child1">Vegetables</li>
+                    <li class="sidebar-child1">Fruits</li>
+                </ul>
+                <li class="sidebar-basic">Kitchen</li>
+                <li class="sidebar-basic">Short Codes</li>
+                <li class="sidebar-basic parent2">Beverages▾</li>
+                <ul>
+                    <li class="sidebar-child2">Soft Drinks</li>
+                    <li class="sidebar-child2">Juices</li>
+                </ul>
+                <li class="sidebar-basic">Pet Food</li>
+                <li class="sidebar-basic parent3">Frozen Foods▾</li>
+                <ul>
+                    <li class="sidebar-child3">Frozen Snacks</li>
+                    <li class="sidebar-child3">Frozen Nonveg</li>
+                </ul>
+                <li class="sidebar-basic">Bread & Bakery</li>
+            </ul>
             <div class="main">
-                <div class="head"></div>
-                <div class="h1"></div>
-                <div class="h2"></div>
-                <div class="product"></div>
-                <div class="h2"></div>
-                <div class="product"></div>
-                <div class="h2"></div>
-                <div class="product"></div>
+                <div class="head">
+                    <div class="headtxt">
+                        Best Deals For New Products
+                    </div>
+                    <div class="headico"></div>
+                </div>
+                <div class="h1">
+                    <h1>Household Products</h1>
+                </div>
+                <div class="h2">CLEANING</div>
+                <div class="productbox">
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/17.png" alt=" ">
+                        </div>
+                        <div class="pro-name">dishwash gel, lemon (1.5 ltr)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$8.00</div>
+                            <div class="orig-price">$10.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/18.png" alt=" ">
+                        </div>
+                        <div class="pro-name">dish wash bar (500 gm)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$2.00</div>
+                            <div class="orig-price">$4.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/19.png" alt=" ">
+                        </div>
+                        <div class="pro-name">air freshener (50 gm)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$3.00</div>
+                            <div class="orig-price">$5.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                        
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/20.png" alt=" ">
+                        </div>
+                        <div class="pro-name">toilet cleaner expert (1 ltr)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$6.00 </div>
+                            <div class="orig-price">$7.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                      
+                    </div>
+                </div>
+                <div class="h2">UTENSILS</div>
+                <div class="productbox">
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/21.png" alt=" ">
+                        </div>
+                        <div class="pro-name">princeware packaging container pack (6 no's)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$8.00 </div>
+                            <div class="orig-price">$10.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/22.png" alt=" ">
+                        </div>
+                        <div class="pro-name">signoraware container center press (900 ml)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$5.00</div>
+                            <div class="orig-price">$8.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                    
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/23.png" alt=" ">
+                        </div>
+                        <div class="pro-name">ship stainless steel sauce pan single (1 pc)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$6.00</div>
+                            <div class="orig-price">$8.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                       
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/24.png" alt=" ">
+                        </div>
+                        <div class="pro-name">omega stainless steel puri dabba (1 pc)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$6.00</div>
+                            <div class="orig-price">$8.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                  
+                    </div>
+                </div>
+                <div class="h2">PET FOOD</div>
+                <div class="productbox">
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/25.png" alt=" ">
+                        </div>
+                        <div class="pro-name">food for adult dogs (80 gms)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$3.00</div>
+                            <div class="orig-price">$4.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                    
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/26.png" alt=" ">
+                        </div>
+                        <div class="pro-name">young adult dogs (1.2 kg)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$6.00</div>
+                            <div class="orig-price">$10.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                     
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/27.png" alt=" ">
+                        </div>
+                        <div class="pro-name">cat food ocean fish (1.4 kg)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$6.00</div>
+                            <div class="orig-price">$7.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                        
+                    </div>
+                    <div class="product">
+                        <div class="pro-img">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/28.png" alt=" ">
+                        </div>
+                        <div class="pro-name">chicken in jelly can (400 gm)</div>
+                        <div class="pro-price">
+                            <div class="dis-price">$7.00</div>
+                            <div class="orig-price">$9.00</div>
+                        </div>
+                        <div class="add-cartbtn">ADD TO CART</div>                     
+                    </div>
+                </div>
             </div>
         </div>
         <div class="bottom">
             <div class="bottom1">
-                <div class="sub1"></div>
-                <div class="sub2"></div>
+                <div class="sub1">Sign Up For Our Newsletter</div>
+                <form class="sub2">
+                    <input class="sub2-1" type = "text" placeholder="Email" style="color: white;">
+                    <button class="sub2-2" type = "button">SUBSCRIBE NOW</button>
+                </form>
             </div>
             <div class="bottom2">
                 <div class="bo-row1">
-                    <div class="col1"></div>
-                    <div class="col1"></div>
-                    <div class="col1"></div>
+                    <div class="col1">
+                        INFORMATION
+                        <ul class="col1-child">
+                            <li class="col1-list">Events</li>
+                            <li class="col1-list">About Us</li>
+                            <li class="col1-list">Best Deals</li>
+                            <li class="col1-list">Services</li>
+                            <li class="col1-list">Short Codes</li>
+                        </ul>
+                    </div>
+                    <div class="col1">
+                        POLICY INFO
+                        <ul class="col1-child">
+                            <li class="col1-list">FAQ</li>
+                            <li class="col1-list">Privacy Policy</li>
+                            <li class="col1-list">Terms Of Use</li>
+                        </ul>
+                    </div>
+                    <div class="col1">
+                        WHAT IN STORES
+                        <ul class="col1-child">
+                            <li class="col1-list">Pet Food</li>
+                            <li class="col1-list">Frozen Snacks</li>
+                            <li class="col1-list">Kitchen</li>
+                            <li class="col1-list">Branded Foods</li>
+                            <li class="col1-list">Households</li>
+                        </ul>
+                    </div>
+                    <div class="col2">
+                        TWEET POSTS
+                        <div class="twt">
+                            <div class="emoji">𓅰</div>
+                            <div class="twt-con">
+                                <div class="day">01 day ago</div>
+                                <div class="twt-txt">
+                                    Non numquam<br>
+                                    http://sd.ds/13jklf# eius modi tempora incidunt ut labore et http://sd.ds/1389kjklf#quo nulla.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="twt">
+                            <div class="emoji">𓅰</div>
+                            <div class="twt-con">
+                                <div class="day">02 day ago</div>
+                                <div class="twt-txt">
+                                    Con numquam http://fd.uf/56hfg# eius modi tempora incidunt ut labore et http://fd.uf/56hfg#quo nulla.
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="paytxt">100% Secure Payments</div>
+                        <div class="payimg">
+                            <img src="https://p.w3layouts.com/demos/july-2016/07-07-2016/grocery_store/web/images/card.png">
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="contxt">Connect With Us</div>
+                        <div class="conimg">2</div>
+                    </div>
+                    <div class="col2"></div>
                     <div class="col2"></div>
                 </div>
                 <div class="bo-row2">
-                    <div class="payments">
-                        <div class="paytxt"></div>
-                        <div class="payimg"></div>
-                    </div>
-                    <div class="connect">
-                        <div class="contxt"></div>
-                        <div class="conimg"></div>
-                    </div>
-                </div>
-                <div class="bo-row3">
                     © 2016 Grocery Store. All rights reserved | Design by W3layouts
                 </div>
             </div>

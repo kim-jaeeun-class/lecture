@@ -1,17 +1,21 @@
+/* flex 옵션이 일부 적용 안 되는데 왜 안 되는지 나중에 확인 */
+
 .flex-container {
     border: 1px solid rgb(204, 235, 157);
+    width: 100%;
     height: 300px;
 
-    display: inline-flex;
-
+    display: flex-inline;
+    flex-wrap: wrap;
+    align-items: space-around;
+    align-content: space-around;
 }
 
-.flex-container .flex-item {
+.flex-item {
     border: 1px solid salmon;
     background-color: darksalmon;
     color:bisque;
+    width: 200px;
 
-    width: 2px;
-
-    align-items: center;
 }
+
