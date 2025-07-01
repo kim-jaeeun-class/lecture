@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+        /* java의 arraylist와 유사 */
+        // '배열 = 변수의 집합'으로 index로 관리 가능
+
+        // 배열 선언
+        let arr = [];
+        let arr2 = new Array();
+
+        // 값을 미리 알고 있을 경우
+        arr = [1, "2", 3];
+        arr = new Array(1, 2, 3);
+
+        console.log('arr[0] : ', arr[0]);
+        arr[0] = 10;
+        console.log('arr[0] : ', arr[0]);
+
+        console.log(arr);
+        console.log("arr : ", arr);
+        console.log("arr : " + arr);
+
+        console.log("10의 자리에 값을 넣으면");
+        arr[10] = 10;
+        console.log(arr);
+        // undefined로 출력
+        console.log("arr[20] : ", arr[20]);
+
+        // 변수 자릿값 위치에 문자열을 넣어도 출력됨
+        arr["name"] = "character";
+        console.log(arr);
+        console.log(arr.length);
+
+        const str = "휴먼교육센터";
+        console.log(str[0]);
+        for(let i = 0; i <= 6; i++) {
+            console.log(str[i]);
+        }
+
+        let chinesefood = ['짜장면', '짬뽕', '탕수육'];
+        let westernfood = ['파스타', '피자'];
+        let pasta = ['크림', '오일', '토마토', '로제'];
+        let food = [chinesefood, westernfood, pasta];
+        for(let i = 0; i < food.length; i++) {
+            for(let j = 0; j < food[i].length; j++) {
+                console.log(food[i][j]);
+            }
+        }
+        arr = [1, 2, 3, 4];
+
+        // 자바스크립트에서 배열을 ArrayList처럼 사용하는 메소드 종류
+        // 1. 배열 요소 추가(=add)
+        arr.push(5);
+        console.log(arr);
+        // 2. 배열 요소 추가. 단, 가장 처음 위치에 추가.
+        arr.unshift(0);
+        console.log(arr);
+        // 3. 배열의 가장 앞 요소 제거 후 리턴. shift 메소드를 변수로 지정 시, 제거된 부분을 출력 가능.
+        // 원본 배열이 변경됨
+        // arr.shift();
+        let sft = arr.shift();
+        console.log(arr);
+        console.log(sft);
+        // 4. 배열의 가장 마지막 요소 제거 후 리턴.
+        let pop = arr.pop();
+        console.log(arr);
+        console.log(pop);
+        // 5. 배열 순서를 뒤집기
+        arr.reverse();
+        console.log(arr);
+
+        arr = [2, 0, 8, 3, 1, 4, 6];
+        // 6. 오름차순으로 정렬
+        arr.sort();
+        console.log(arr);
+        arr = [2, 0, 8, 3, 1, 4, 6];
+        // + reverse 없이 함수로 내림차순 출력
+        arr.sort(function(x, y) {
+            return y - x
+        })
+        console.log(arr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
