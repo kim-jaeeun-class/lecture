@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hoisting</title>
+        <script>
+            // 선언된 적이 없음(=not defined) → console.log(a);
+            function test() {
+                if (true) {
+                    var b = 10;
+                    let c = 20;
+                    // d는 script 최상단으로 호이스팅
+                    d = 30;
+                }
+                // 선언된 것으로 취급되어 정상 출력
+                console.log(b);
+                // not defined
+                // console.log(c);
+                console.log(d);
+            }
+            test();
+            console.log(d);
+            console.log(b);
+        </script>
+    </head>
+    <body></body>
+</html>

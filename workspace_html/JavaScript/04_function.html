@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Function</title>
+        <script>
+            // function 키워드로 함수 선언
+            function plus(x, y) {
+                let z = x + y;
+                return z;
+            }
+            let a = plus(5, plus(3, 4));
+            console.log(a);
+
+            // 전달인자가 없으면 초기값, 있으면 전달인자를 사용하는 방어 코딩(plus2, plus3)
+            function plus2(x, y) {
+                if(x == undefined) {    // !x, !y로 쓸 수도 있음(null, NaN, false 등의 가능성 대비)
+                    x = 0;
+                }
+                if(y == undefined) {
+                    y = 0;
+                }
+                return x + y;
+            }
+            function plus3(x = 0, y = 1) {
+                return x + y;
+            }
+            e = plus3(1, 2);
+            console.log(e);
+
+            console.log(1,2,3,4,5,6);
+
+            // spread 연산자
+            function log( ...obj ) {
+                console.log( typeof obj );
+                console.log(obj[1]);
+                console.log(obj);
+            }
+            log(1,2);
+            let f = [10, 20];
+            console.log(...f); // = console.log(f[0], f[1]);
+
+            let g = "console.log(123)";
+            // string을 JavaScript로 변환
+            eval(g);
+
+            function print() {
+                console.log('print 실행');
+            }
+            let p = print;
+            console.log(typeof p);
+            p();
+            let p2 = print();
+            console.log(p2);
+
+            console.log(typeof print);
+
+            function print2() {
+                console.log('print2 실행');
+            }
+            function print2() {
+                console.log('print3 실행');
+            }
+            print2();
+
+            function over(x) {
+                console.log(x);
+            }
+            function over(x,y) {
+                console.log(x,y);
+            }
+            over(1);
+        </script>
+    </head>
+    <body></body>
+</html>

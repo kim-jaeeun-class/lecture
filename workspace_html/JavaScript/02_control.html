@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control</title>
+    <title>Control - If & For</title>
     <script>
         const temp = 42;
         if(temp) {
@@ -12,9 +12,79 @@
         else {
             console.log('거짓입니다');
         }
+
+        const temp1 = -3;
+        if (temp1 > 0) {
+            console.log('영상' + temp1 +'도입니다');
+        }
+        else if (temp1 == 0) {
+            console.log('0도입니다')
+        }
+        else {
+            console.log(`영하 ${temp1 * -1}도 입니다`);
+        }
+
         /* 자바스크립트에서 참은 거짓 아닌 것(=!거짓)
         거짓은 다음이 해당함
         false, 0, null, undefined, NaN */
+
+        let arr = [10, 20, 30];
+        arr[10] = 100;
+        arr['addr'] = '천안시';
+        console.log(arr.length);
+        console.log(arr);
+
+        // for in
+        for (let index in arr) {
+            console.log(index);
+        }
+
+        // let array = [];
+        // array[2] = '1,1';
+        // array[3] = '1,2';
+        // array[3] += '2,1';
+        // if (array[4] == undefined) {
+        //     console.log(array[4]);
+        // }
+        // array[4] += 'abc'
+        // console.log(array[4]);
+
+        // 주사위 2개의 합별 조합
+        let array = [1, 2, 3, 4, 5, 6];
+        let test1 = [];
+        // 우선 모든 조합 출력해보는 테스트
+        for (let i of array) {
+            for (let j of array) {
+                test1[i+j] = [i,j]; // 재할당되지 않도록...
+            }
+        }
+        // console.log(test1[2]);
+
+        // 실제 작성
+        let diceSum = [];
+        for (let i = 1; i <= 6; i++) {
+            for (let j = 1; j <= 6; j++) {
+                if(diceSum[i+j] == undefined) {
+                    diceSum[i+j] = `[${i}, ${j}]`;
+                }
+                else {
+                    diceSum[i+j] += `[${i}, ${j}]`;
+                }
+            }
+        }
+        let diceSum2 = [];
+        for (let i = 1; i <= 6; i++) {
+            for (let j = 1; j <= 6; j++) {
+                if(diceSum2[i+j] == undefined) {
+                    diceSum2[i+j] = '';
+                }
+                    diceSum2[i+j] += `[${i}, ${j}]`;
+            }
+        }
+
+        for(let i in diceSum) {
+            console.log(i, diceSum[i]);
+        }
     </script>
 </head>
 <body>

@@ -83,6 +83,45 @@
             return y - x
         })
         console.log(arr);
+
+        // 7. splice
+        arr=[0, 1, 2, 3, 4, 5];
+        let s = arr.splice(2,3);
+        console.log(s);
+        let s1 = arr.splice(-3);
+        console.log(s1);
+        arr=[0, 1, 2, 3, 4, 5];
+        s = arr.splice(1, 2, '새로넣기');
+        console.log(arr);
+        console.log(s);
+        
+        // index=2 위치 값을 없앤 후, 그 위치에 arr3의 값들을 추가
+        let arr3 = [7, 8, 9];
+        arr.splice(2, 0, ...arr3);
+        console.log(arr);
+
+        // 8. slice : 원본 배열이 변하지 않음
+        arr = [0, 1, 2, 3, 4, 5];
+        s = arr.slice(2,3);
+        console.log(s);
+
+        // 시간을 두 자리로 출력. 12시는 12, 7시는 07로.
+        // 시간 앞에 무조건 0을 붙임.
+        // 12는 012, 7은 07.
+        // 뒤에서 두 자리를 자르는 방식 -> splice(-2, 2)로 구현 가능.
+
+        s = arr.join();
+        s = arr.join('-');
+        console.log(arr);
+        console.log(s);
+
+        let arr4 = s.split('-');
+        console.log(arr4);
+
+        let arr5 = arr.concat(arr4);
+        console.log(arr5);
+
+        // 9. join
     </script>
 </head>
 <body>
