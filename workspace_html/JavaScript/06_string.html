@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+    <script>
+        let str = '맛있는 거...';
+
+        console.log(str.length);
+
+        /*
+            indexOf
+            전달인자와 동일한 글씨가 있으면,
+            첫 번째 만나는 요소의 첫 index 반환
+            동일한 글씨가 없으면 -1
+        */
+        console.log(str.indexOf('.'));
+
+        console.log(str);
+        console.log(str.replace('.', '!'));
+        // replace - 일치하는 모든 것을 대체
+        // g는 전체 문자열에서 검색하는 것
+        let str3 = str.replace(/\./g, '!');
+        console.log(str3);
+
+        let str4 = str.substring(2, 5);
+        console.log(str4);
+
+        let str5 = str.substr(2,3);
+        console.log(str5);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
