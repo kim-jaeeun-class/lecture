@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM : Contents</title>
+    
+</head>
+<body>
+    <div id = "mesg">
+        <span>original </span> text
+    </div>
+    
+    <script>
+        // 코드를 순서대로 읽기 때문에 div id = "mesg" 위로 올라가면 null이 나옴
+        let mesg = document.querySelector('#mesg');
+        console.log(mesg);
+        // textContent
+        // 컨텐츠 영역의 소스 중 text만 그대로 가져옴(위치 포함)
+        console.log(mesg.textContent);
+        // innerText
+        // 계산이 끝나고 실제로 브라우저에서 보이는 그대로를 가져옴
+        console.log(mesg.innerText);
+
+        //innerHTML : html 코드를 전부 그대로 출력
+        console.log(mesg.innerHTML);
+
+        mesg.textContent = "<h1>제목</h1> a  b  c";
+        mesg.innerHTML  = "<h1>제목</h1> a   b  c";
+
+        mesg.innerHTML = mesg.innerHTML + " d";
+        mesg.innerHTML += " e";
+    </script>
+</body>
+</html>

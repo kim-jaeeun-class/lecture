@@ -24,11 +24,93 @@
         let str3 = str.replace(/\./g, '!');
         console.log(str3);
 
+        // 시작부터 끝 바로 앞까지
         let str4 = str.substring(2, 5);
         console.log(str4);
 
-        let str5 = str.substr(2,3);
+        // 시작부터 n개
+        let str5 = str.substr(2, 3);
         console.log(str5);
+
+        // Q1. 어떤 메일이든 id만 뽑아내기
+
+        let mail = "wodmsdl0117@gmail.com";
+
+        let cut = mail.indexOf("@");
+        console.log(cut);
+
+        mail.substring(0, cut);
+        console.log(mail.substring(0, cut));
+        mail.substr(0, cut);
+        console.log(mail.substr(0, cut));
+        mail.slice(0, cut);
+        console.log(mail.slice(0, cut));
+
+        mail.split("@");
+        console.log(mail.split("@"));
+        console.log(mail.split("@")[0]);
+
+        // Q2. 메일 주소 앞 두 자리를 제외한 id는 마스킹 처리
+        
+        // 방법 1.
+        // let cut = mail.indexOf("@"); 위에 있음
+
+        let backId = mail.substring(2, cut);
+        console.log(backId);
+        // 원래 방법 1을 이렇게 함
+        let maskingArea = [];
+        for(i = 2; i < cut; i++) {
+            maskingArea.push("*");
+        }
+        console.log(maskingArea);
+
+        let newMas = maskingArea.toString();
+        console.log(mail.replace(backId, newMas.replace(/,/g, "")));
+
+        // +=로 써서 좀 더 짧게 해볼까 했는데 undefined 출현함...
+        let maskingArea1 = "";
+        for(i = 2; i < cut; i++) {
+            maskingArea1 += "*";
+        }
+        console.log(maskingArea1);
+        console.log(mail.replace(backId, maskingArea1.replace(/,/g, "")));
+
+        // 방법 2. 수업에서 진행
+        let showCnt = 2;
+        let newId = mail.substr(0, showCnt);
+        let count = mail.substring(0, cut).length - showCnt;
+        console.log(count); // 2자리 이후의 아이디 글자 수
+
+        for(let i = 0; i < count; i++) {
+            newId += "*";
+        }
+
+        console.log(mail.substring(cut));
+        newId += mail.substring(cut);
+        console.log(newId);
+
+        // Q3. 인터넷 주소의 2차 도메인 출력
+        // 예시 : comic.naver.com의 naver나, human.or.kr에서의 or
+        let address = "comic.naver.com";
+
+        // 방법 1.
+        console.log(address.indexOf("."));
+        console.log(address.substr(address.indexOf(".")+1));
+
+        let adFirst = address.substr(address.indexOf(".")+1);
+        console.log(adFirst.indexOf("."));
+
+        console.log(adFirst.substring(0, adFirst.indexOf(".")));
+
+        // 방법 2.
+        console.log(address.split("."));
+        console.log(address.split(".")[1])
+
+        // 방법 3.
+        console.log(adFirst.slice(0, adFirst.indexOf(".")));
+
+
+        
     </script>
 </head>
 <body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BOM - Window</title>
+        <script>
+            // 팝업 띄우기. 단, 브라우저에서 팝업 차단 옵션 설정이 되어있으면 보이지 않음.
+            const win = window.open('http://naver.com', '새창변수', 'width = 500', 'height = 700');
+            // 팝업을 지정 시간 이후에 닫히도록 설정(화살표 함수 사용)
+            setTimeout(() => {
+                win.close()
+            }, 5000)
+
+            console.log(location.href);
+            location.href = 'http://naver.com';
+            
+            // 브라우저 뒤로 가기, 안 쓰는 쪽을 권장
+        </script>
+    </head>
+    <body></body>
+</html>

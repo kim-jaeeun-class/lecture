@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #view {color: red;}
+
+        .blue {
+            color: rgb(65, 116, 255);
+        }
+        .big {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">DOM 연습</h1>
+
+    <div id = "view">first view</div>
+    <div id = "view">second view</div>
+
+    <div class = "div2">first div</div>
+    <div class = "div2">second div</div>
+
+    <!-- css : #parent .div2-->
+    <div id = "parent">
+        <div class = "div2 child" data-game="solitaire">inner div2</div>
+    </div>
+    <img alt = "gif" src = "https://i.pinimg.com/originals/6b/a3/4e/6ba34e70469b11ec7dab9ca5bcd42a89.gif">
+    <script>
+        // document : html 문서 전체를 의미
+        // getElementById : 속성 id값을 이용해 dom을 가져옴
+        let title = document.getElementById('title');
+        console.log(title);
+        console.log(""+title);
+
+        // 요소가 없는 경우, null을 반환
+        let test = document.getElementById('test');
+        console.log(test);
+
+        // javascript는 맨 처음 DOM(여기에서는 view) 하나만 인지
+        let view = document.getElementById('view');
+        console.log(view);
+
+        // tag명으로 DOM 찾기
+        // 일치하는 모든 DOM을 배열로 돌려줌
+        let divs = document.getElementsByTagName('div');
+        console.log(divs);
+
+        let h1s = document.getElementsByTagName('h1');
+        console.log(h1s);
+
+        let nones = document.getElementsByTagName('none');
+        console.log(nones);
+
+        let div2s = document.getElementsByClassName('div2');
+        console.log(div2s);
+
+        // 이런 식으로 부모 요소 아래의 특정 클래스 이름인 것만 선택 가능
+        // document(html 문서 전체)를 대체해 변수를 넣을 수 있음을 기억하기
+        // 특정 DOM 안에서 찾는다는 뜻
+        let parent = document.getElementById('parent');
+        console.log(parent);
+        let div2ss = parent.getElementsByClassName('div2');
+        console.log(div2ss);
+        // querySelector : 위에 비해 간편.
+        // CSS 선택자 이용 가능
+        let qs1 = document.querySelector('#parent .div2');
+        console.log(qs1);
+        console.log('-----------------cut-----------------');
+        // 맨 처음 dom만 인지
+        let qs2 = document.querySelector('.div2');
+        console.log(qs2);
+        // 아래는 null 출력
+        console.log(document.querySelector('#div2'));
+        // querySelectorAll : 배열로 반환하며 없을 경우 size가 0인 배열 반환
+        let qs3 = document.querySelectorAll('.div2');
+        console.log(qs3);
+        console.log(document.querySelectorAll('#div2'));
+
+        // class 속성 값 조작
+        let child = document.querySelector('#parent .div2');
+        // class 목록을 배열 형식으로 반환
+        console.log(child.classList);
+        // add : 기존 class 목록에 새 class 추가
+        child.classList.add('blue');
+        child.classList.add('big');
+        // remove : class 목록에서 선택한 class값 삭제
+        child.classList.remove('big');
+        // toggle : 있으면 remove, 없으면 add;
+        child.classList.toggle('big');
+        // contains : 클래스 목록에 지정한 클래스가 있는지 확인
+        let isBlue = child.classList.contains('blue');
+        console.log(isBlue);
+        // DOM.className : 모든 class를 문자로 돌려줌
+        console.log(child.className);
+        child.className = 'big';
+
+        if(isBlue) {
+            child.classList.remove('blue');
+        }
+        else {
+            child.classList.add('blue');
+        }
+
+        document.querySelector('[data-game=solitaire]');
+
+        let img = document.querySelector('img');
+        console.log(img);
+
+        // 속성명이 있는지 검사
+        let isSrc = img.hasAttribute('src');
+        console.log(isSrc);
+
+        // 속성값을 가져오고, 없을 경우 null 출력
+        let src = img.getAttribute('src');
+        console.log(src);
+        let src2 = img.getAttribute('src2');
+        console.log(src2);
+
+        // setAttribute(속성명, 속성값).
+        // 이미 있는 속성명, 다른 속성값이면 덮어씀.
+        img.setAttribute('data-gif', 'anime-aesthetic');
+        setTimeout(function() {
+            img.setAttribute('src', 'https://gifsec.com/wp-content/uploads/2022/10/aesthetic-gif-1.gif')
+        }, 1000)
+        
+        // 속성 지우기
+        img.removeAttribute('data-gif');
+
+
+        // 태그 자체를 지움
+        img.remove();
+    </script>
+</body>
+</html>
