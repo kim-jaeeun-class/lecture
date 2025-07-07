@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DOM - Form</title>
+    </head>
+    <body>
+        <input type = "text" id = "id" value = "text"><br>
+
+        <input type = "password" id = "pw"><br>
+
+        <input type= "date" id = "date"><br>
+
+        <label><input type= "radio" name = "ai" value = 1>ChatGPT</label>
+        <label><input type= "radio" name = "ai" value = 2>Gemini</label>
+        <label><input type= "radio" name = "ai" value = 3>Bing</label>
+        <label><input type= "radio" name = "ai" value = 3>Perplexity</label>
+        <br>
+
+        <label><input type= "checkbox" class = "room" value = 1>에어컨</label>
+        <label><input type= "checkbox" class = "room" value = 2>식기세척기</label>
+        <label><input type= "checkbox" class = "room" value = 3>로봇청소기</label>
+        <br>
+
+        <select id = 'select'>
+            <option value = "1">JavaScript</option>
+            <option value = "2">JAVA</option>
+            <option value = "3">html</option>
+            <option value = "4">SQL</option>
+        </select>
+        <br>
+
+        <textarea id = "textarea">초기값</textarea>
+
+        <div id = "view"></div>
+
+        <script>
+            // 4초간 입력한 내용이 인지되는 형태
+            setTimeout(function() {
+                const text = document.querySelector('#id');
+                console.log(text.value);
+                // 이런 식으로 n초 뒤 답 바꾸기도 가능
+                text.value = 1234;
+
+                const pw = document.querySelector('#pw');
+                console.log(pw.value);
+                pw.value = "fakePW";
+
+                const date = document.querySelector('#date');
+                console.log(date.value);
+                // date.value = '1997-01-17';
+                date.value = new Date().toISOString().split('T')[0];
+
+                // let radio = document.querySelector('[name="ai"]:checked');
+                // console.log(radio.value);
+                let radios = document.querySelectorAll('[name = "ai"]')
+                radios[1].checked = true;
+
+                let checkboxes = document.querySelectorAll('.room');
+                for(let i = 0; i < checkboxes.length; i++) {
+                    console.log(checkboxes[i].value, checkboxes[i].checked);
+                }
+                
+                checkboxes[1].checked = true;
+
+                // 아래는 true인 것만 가져옴
+                let checkboxes2 = document.querySelectorAll('.room:checked');
+                for(let i = 0; i < checkboxes2.length; i++) {
+                    console.log(checkboxes2[i].value, checkboxes2[i].checked);
+                }
+                console.log(checkboxes2.value);
+
+                const select = document.querySelector('#select');
+                console.log(select.value);
+
+                const option = document.querySelector('#select option:checked');
+                console.log(option, option.innerText);
+
+                select.value = 2;
+
+                const textarea = document.querySelector('#textarea');
+                console.log(textarea.value);
+                textarea.value = 'changed\nnextLine';
+
+                const view = document.querySelector('#view');
+                view.innerHTML = textarea.value.replace(/\n/g, '<br>');
+                console.log(view);
+            }, 1000 * 4);
+
+        </script>
+    </body>
+</html>

@@ -85,6 +85,69 @@
         for(let i in diceSum) {
             console.log(i, diceSum[i]);
         }
+
+        // 09까지 학습 후 진행
+        console.log('~여기부터~');
+        
+        const arr3 = ["a1", "b1", "c1", "d1"];
+        // forEach : 각 항목 별로 함수 실행 가능
+        // 함수 전달 인자 : 현재 값, 현재 index, 전체 배열
+        // 배열 개수만큼 반복되는 상황
+        // a = element(el), b = index, c = array
+        arr3.forEach(function(a, b, c, d) {
+            console.log(a); // 위치에 따른 값
+            console.log(b); // index
+            console.log(c); // 원본 배열
+            console.log(d); // 이후는 없음
+        });
+
+        const movies = [
+            '노이즈',
+            'F1 더 무비',
+            '쥬라기 월드 : 새로운 시작',
+            '드래곤 길들이기',
+            '엘리오'
+        ]
+        // map : 각 항목 별로 함수 실행 후, return 값으로 구성된 새 배열을 돌려줌
+        // 함수 전달 인자 : 현재 값, 현재 index, 전체 배열
+        let len3 = movies.map(function (el, i, arr) {
+            console.log(el, i, arr);
+            console.log(el.length);
+
+            return el.length;
+        });
+        console.log(len3);
+
+        // len2는 len3처럼 쓰일 수 있음(화살표 함수 참고)
+        let len2 = movies.map(function(el) {
+            return el.length;
+        })
+        console.log(len2);
+
+        let len = movies.map( el => el.length );
+        console.log(len);
+
+        // filter : 
+
+        let filtered = movies.filter( function(el, i, arr){
+            console.log(el, i, arr);
+
+            // 이 코드는
+            let len = el.length;
+            if (len > 4) {
+                return true;
+            }
+            else {
+                return false;
+            }
+            // ~와 같음
+            return el.length > 4;
+        })
+        // 위의 el.length 쪽과 동일
+        let filtered2 = movies.filter( e => e.length > 4);
+        
+        console.log(filtered);
+        console.log(filtered2);
     </script>
 </head>
 <body>

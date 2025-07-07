@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM : Contents</title>
-    
+    <style>
+        h1 {
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
     <div id = "mesg">
         <span>original </span> text
     </div>
-    
+    <div id = "tag">test test</div>
+        <!-- <tr>
+            <td></td>
+        </tr> -->
+    <table>
+        <tbody id = "tb"></tbody>
+    </table>
+    <hr>
+    <table>
+        <tbody id = "tb_quiz1">
+            <!-- <tr>
+                <td>Title1</td>
+                <td>Name1</td>
+            </tr>
+            <tr>
+                <td>Title2</td>
+                <td>Name2</td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <h1 id = "h1">Style Test</h1>
+
     <script>
         // 코드를 순서대로 읽기 때문에 div id = "mesg" 위로 올라가면 null이 나옴
         let mesg = document.querySelector('#mesg');
@@ -25,11 +51,156 @@
         //innerHTML : html 코드를 전부 그대로 출력
         console.log(mesg.innerHTML);
 
-        mesg.textContent = "<h1>제목</h1> a  b  c";
-        mesg.innerHTML  = "<h1>제목</h1> a   b  c";
+        // mesg.textContent = "<h1>제목</h1> a  b  c";
+        // mesg.innerHTML  = "<h1>제목</h1> a   b  c";
 
-        mesg.innerHTML = mesg.innerHTML + " d";
-        mesg.innerHTML += " e";
+        // mesg.innerHTML = mesg.innerHTML + " d";
+        // mesg.innerHTML += " e";
+
+        // createElement : DOM 요소 생성
+        let div = document.createElement("div");    // 현재 코드로 <div></div>가 메모리에 생긴 것
+        div.setAttribute('id', 'menu');
+        div.setAttribute('style', 'color : blue; font-size: 1.5em;');
+        div.textContent = '테스트용';
+
+        let div2 = document.createElement("div2");    // 현재 코드로 <div></div>가 메모리에 생긴 것
+        div2.setAttribute('id', 'menu');
+        div2.setAttribute('style', 'color : blue; font-size: 1.5em;');
+        div2.textContent = '테스트용2';
+
+        let div3 = document.createElement("div3");    // 현재 코드로 <div></div>가 메모리에 생긴 것
+        div3.setAttribute('id', 'menu');
+        div3.setAttribute('style', 'color : blue; font-size: 1.5em;');
+        div3.textContent = '테스트용3';
+        
+        const tag = document.querySelector('#tag');
+
+        // test test를 덮어쓰지 않고 아래에 자식 요소로 추가
+        // ~얕은 복사?
+        // append : 마지막 자식 요소로 추가
+        // 글씨도 넣을 수 있음
+        // DOM을 넣을 수 있음
+        // 태그를 넣어도 텍스트로만 삽입
+        tag.append(div);
+        tag.append('<strong>just text</strong>');
+
+        // 이 경우, mesg의 html 자리로 이동됨
+        tag.append(mesg);
+
+        // appendChild : 마지막 자식 요소로 추가됨
+        // DOM만 넣을 수 있음(append와의 차이점)
+        tag.appendChild(div2);
+        // tag.appendChild('text');
+
+        // tag.prepend(div3);
+
+        // before / after : 다음 형제 요소로 삽입 추가
+        tag.after(div3);
+        tag.before(div3);
+
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        // td의 글씨 바꾸기
+        td.textContent = "td 글씨 변경";
+        tr.append(td);
+        document.querySelector('#tb').append(tr);
+
+        tr.innerHTML = '<td>td 글씨 변경-방식 2</td>'
+        document.querySelector('#tb').append(tr);
+
+        document.querySelector('#tb')
+        .innerHTML = "<tr> <td> 세 번째 방식 </td> </tr>";
+
+
+        let row1 = ['Title1', 'Name1'];
+        let row2 = ['Title2', 'Name2'];
+        let row3 = ['Title3', 'Name3'];
+        let row4 = ['Title4', 'Name4'];
+        let row5 = ['Title5', 'Name5'];
+        let row = [];
+        row.push(row1);
+        row.push(row2);
+        row.push(row3);
+        row.push(row4);
+        row.push(row5);
+
+        console.log(row);
+        /*
+        <tr>
+            <td>Title1</td>
+            <td>Name1</td>
+        </tr>
+        */
+        // 테이블 만들기 방식 1
+        const tb_quiz1 = document.querySelector('#tb_quiz1')
+        /* for(let i = 0; i < row.length; i++) {
+            const html = `
+                <tr>
+                    <td>${row[i][0]}</td>
+                    <td>${row[i][1]}</td>
+                </tr>
+            `
+            tb_quiz1.innerHTML += html;
+        } */
+        
+        // 테이블 만들기 방식 2
+        /* let html = '';
+
+        for(let i = 0; i < row.length; i++) {
+            html += `
+                <tr>
+                    <td>${row[i][0]}</td>
+                    <td>${row[i][1]}</td>
+                </tr>
+            `
+        }
+        tb_quiz1.innerHTML += html; */
+        
+        // 테이블 만들기 방식 3
+        for (let i = 0; i < row.length; i++) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                    <td>${row[i][0]}</td>
+                    <td>${row[i][1]}</td>
+            `;
+            tb_quiz1.append(tr);
+        }
+
+        const h1 = document.getElementById('h1');
+        h1.setAttribute('style', 'color: red; background-color: salmon;');
+
+        h1.style.color = 'cornflowerblue';
+        // 연결어는 - 로 쓰지 않는 점 주의
+        // js의 height에는 값이 없어서 두 번째 console.log는 출력되지 않음(undefined는 아님)
+        console.log('bg color : ', h1.style.backgroundColor);
+        console.log('height : ', h1.style.height);
+
+        // 이렇게 해두면 출력됨!
+        h1.style.height = 150 + 'px';
+        console.log('height : ', h1.style.height);
+        
+        h1.style.backgroundColor = "burlywood";
+
+        // 기존 js에서 지정한 background-color 등의 속성을 전부 없애고 덮어씀.
+        // css에서 지정한 속성은 유지됨
+        h1.style.cssText = 'font-size: 1.2em';
+
+        let w = window.getComputedStyle(h1, null).getPropertyValue("width");
+        console.log(w);
+        h1.style.width = (w - 100) + 'px'; // 안 바뀌는데... 안 바뀌는 이유 생각해보기.
+
+        // js로 <script> 삽입하는 방법
+        const script = document.createElement('script');
+        script.innerHTML = 'alert(1)';
+        h1.after(script);
+        
+        // 함수 선언과 동시에 실행이 가능한 코드
+        // 이유 : 실행의 괄호()가 뒤에 붙어 있기 때문에
+        (
+        function a() {
+            console.log(1111);
+        }
+        )()
     </script>
 </body>
 </html>
