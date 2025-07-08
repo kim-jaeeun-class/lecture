@@ -60,20 +60,45 @@ function bind() {
     // }
 
     // 쌤 답안
-lo.addEventListener('click', function () {
+//     lo.addEventListener('click', function () {
+//         const id = document.querySelector('#id').value;
+//         const pw = document.querySelector('#pw').value;
+//         if (id == "") {
+//             msg.innerHTML += '<br>아이디는 필수입니다'
+//         } else if (pw == "") {
+//             msg.innerHTML += '<br>비밀번호는 필수입니다'
+//         } else {
+//             msg.innerHTML += `<br>${id}, ${pw}`;
+//         }
+
+//         // debugger;
+//     }
+// )
+
+    // 위 두 코드 기반으로 발전시킨 것
+    lo.addEventListener('click', function () {
     const id = document.querySelector('#id').value;
     const pw = document.querySelector('#pw').value;
-        if (id == "") {
-            msg.innerHTML += '<br>아이디는 필수입니다'
-        } else if (pw == "") {
-            msg.innerHTML += '<br>비밀번호는 필수입니다'
-        } else {
-            msg.innerHTML += `<br>${id}, ${pw}`;
-        }
+    const msg = document.querySelector('#con');
 
-        // debugger;
+    // Java에서 Scanner 쓸 때 생각나서 이렇게 넣어봤는데 
+    // 이러니까 중복으로 안 쌓이는 듯???
+    // 그런데 무슨 원리로????? if문에서 쓴 것과 달리 +=가 아니라서?
+    msg.innerHTML = '';
+
+
+    if (id == "" || pw == "") {
+        if (id == "") {
+            msg.innerHTML += '<br>아이디는 필수입니다';
+        }
+        if (pw == "") {
+            msg.innerHTML += '<br>비밀번호는 필수입니다';
+        }
+    } else {
+        msg.innerHTML += '<br>' + id + ', ' + pw;
     }
-)
+});
+
 }
 
 window.addEventListener('resize', function() {
