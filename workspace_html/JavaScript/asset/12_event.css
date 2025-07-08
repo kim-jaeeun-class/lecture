@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    height : 3000px;
+}
+.styleTest {
+    display: flex;
+}
+
+#btnTop {
+    width : 50px;
+    height : 50px;
+    color : white;
+    background-color: black;
+    border: 1px solid;
+    border-radius: 10%;
+    position : fixed;
+    bottom :2%;
+    right : 2%;
+    font-weight: 700;
+}
+
+#game {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height : 100px;
+    width: 100px;
+}
