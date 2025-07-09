@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ownglyph_corncorn-Rg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: #e3e4e6;
+
+    color: #313131;
+}
+
+.head {
+    background-color: #f6d9d5;
+    text-align: center;
+    padding: 2% 0;
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+    font-size: 1.2em;
+    border : 5px dashed #f7d0cb;
+}
+#form {
+    margin: 2%;
+    text-align: center;
+}
+.quiz1 {
+    margin: 2%;
+}
+
+#keyword {
+    border: 1px dotted #f7d0cb;
+    width : 30%;
+    height : 3vh;
+    font-size: 1em;
+    font-family: 'Ownglyph_corncorn-Rg';
+}
+#site {
+    height : 3.5vh;
+    border: 1px dotted #f7d0cb;
+    font-family: 'Ownglyph_corncorn-Rg';
+    font-size: 1em;
+}
+.button {
+    border: 1px dotted #f7d0cb;
+    border-radius: 10%;
+    background-color: #f7d0cb;
+    color: 	#f9fafc;
+    height : 3.5vh;
+    font-family: 'Ownglyph_corncorn-Rg';
+    font-size: 1em;
+}
+
+.quiz1 {
+    border: 1px dotted	#f7d0cb;
+    background-color: #f9fafc;
+    font-family: 'Ownglyph_corncorn-Rg';
+    padding: 1%;
+}
+
+.toppingSel {
+    padding: 1% 0;
+}
+
+.list {
+    border-top: 1px dotted	#f7d0cb;
+    line-height: 2em;
+    padding-top: 1%;
+}
+
+.sticker {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+}

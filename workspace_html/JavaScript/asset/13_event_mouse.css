@@ -1,0 +1,71 @@
+@font-face {
+    font-family: '양진체';
+    src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #e2e5e8;
+    font-family: 'SUIT-Regular';
+    padding: 0;
+    margin: 0;
+}
+.head {
+    width: 100vw;
+    background-color: azure;
+    text-align: center;
+    font-family: '양진체';
+    color: #333333;
+    padding: 1% 0;
+    margin-bottom: 2%;
+    border: 1px dotted #708090;
+    font-size: 1.3em;
+}
+.wrap {
+    display: flex;
+    color: #333333;
+}
+.mouse {
+    border: 1px solid #708090;
+    border-radius: 10%;
+    width: 70px;
+    height: 70px;
+
+    line-height: 70px;
+    text-align: center;
+    background-color: slategrey;
+    color:azure;
+    font-weight: 600;
+    font-family: '양진체';
+}
+
+#view {
+    width: 50%;
+    border: 1px dotted slategrey;
+    margin: 0 2%;
+    background-color: azure;
+}
+
+#cursor {
+    width: 128px;
+    height: 128px;
+
+    position: absolute;
+}
+#cursor2 {
+    width: 64px;
+    height: 64px;
+
+    position: absolute;
+}
+
+#drag {
+    position: absolute;
+}

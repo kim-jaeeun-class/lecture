@@ -112,6 +112,8 @@ window.addEventListener('scroll', function() {
     // document.documentElement.scrollTop = 140;
 })
 
+document.querySelector('#pw').addEventListener('click', btnClick);
+document.querySelector('#pw').removeEventListener('click', btnClick);
 
 function btnClick() {
     const msg = document.querySelector('#con');
