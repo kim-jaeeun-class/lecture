@@ -1,6 +1,179 @@
-#cursor {
-    width: 128px;
-    height: 128px;
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    position: absolute;
+body {
+    background-color: #F5F4F9;
+    margin: 0;
+}
+
+strong {
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #9DCEF6;
+    border-bottom: 1px dotted #9DCEF6;
+}
+hr {
+    border: 0.1px solid #9DCEF6;
+    margin: 5% auto;
+}
+
+.head {
+    background-color: #9DCEF6;
+    color: #F5F4F9;
+    text-align: center;
+    font-family: 'Cafe24Ssurround';
+    font-size: 1.5em;
+    padding: 2% 0;
+    border-bottom: 5px dashed #FBF4BE;
+}
+
+.q1, .q2, .q3, .q4, .q5, .q6 {
+    font-family: 'S-CoreDream-3Light';
+    font-weight: 100;
+    font-size: 0.9em;
+    background-color: #FBF4BE;
+    color: #1e2830;
+
+    margin: 2% auto;
+    padding: 2%;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 15px;
+    border: 2px solid rgb(157, 206, 246);
+    box-shadow: 1px 1px 7px rgba(107, 206, 246, 0.5);
+}
+.inText {
+    border: 2px dotted #D0E4F9;
+    background-color: #F5F4F9;
+    color: #1e2830;
+    font-family: 'S-CoreDream-3Light';
+    width: 60%;
+    padding: 1%;
+}
+
+
+.firstInForm {
+    margin: 5% auto;
+}
+#firstIn, #firstView {
+    margin-top: 4%;
+}
+
+.button {
+    border: 2px dotted #D0E4F9;
+    background-color: #9DCEF6;
+    color: #1e2830;
+    font-family: 'S-CoreDream-3Light';
+    font-weight: 700;
+    padding: 1%;
+}
+.view {
+    border: 1px dotted #D0E4F9;
+    background-color: #F5F4F9;
+    color: #1e2830;
+    font-size: 0.85em;
+    padding: 1.5%;
+}
+
+
+.secondInForm {
+    margin: 5% auto;
+    font-size: 0.9em;
+}
+.secondInText {
+    margin: 1% auto;
+}
+.nameTag {
+    width: 140px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5% auto;
+}
+.menuChild {
+    border: 1px dotted #D0E4F9;
+    border-radius: 5px;
+    padding: 1% 2%;
+    background-color: #9DCEF6;
+    box-shadow: 1px 1px 7px #9DCEF6;
+}
+
+.fourthIn {
+    text-align: center;
+    margin: 5% auto;
+}
+#fourthPic {
+    width: 90%;
+    border: 1px dotted #9DCEF6;
+    box-shadow: 1px 1px 7px #9DCEF6;
+    margin: 3% auto;
+}
+
+.fifthInForm {
+    margin: 5% auto;
+}
+.option {
+    margin: 4% auto;
+}
+.optionName {
+    font-weight: 600;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+.optionSel {
+    display: flex;
+    gap : 0 5%;
+}
+select {
+    border: 2px dotted #D0E4F9;
+    background-color: #F5F4F9;
+    color: #1e2830;
+    font-family: 'S-CoreDream-3Light';
+}
+.fifthView {
+    margin: 4% auto;
+}
+
+
+.sixthInForm {
+    margin: 5% auto;
+}
+.sixthIn {
+    text-align: center;
+    margin: 5% auto;
+    width: 90%;
+}
+#sixthInput {
+    width: 75%;
+}
+.sixthView {
+    width: 90%;
+    border: 1px dotted #D0E4F9;
+    background-color: #F5F4F9;
+    color: #1e2830;
+    margin: 1% auto;
+}
+.viewChk {
+    width: 16%;
+    text-align: center;
+}
+.viewDelete {
+    width: 16%;
+    text-align: center;
+}
+.viewIndex {
+    background-color: #D0E4F9;
+    text-align: center;
 }

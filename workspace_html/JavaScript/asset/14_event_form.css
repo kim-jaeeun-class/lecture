@@ -17,12 +17,15 @@ body {
     background: linear-gradient(135deg, #f9f9f9, #f7d0cb);
 
     color: #6b3a4a;
+
+    height: 100vh;
 }
 
 .head {
     background-color: #f7d0cb;
     text-align: center;
     padding: 2% 0;
+    margin-bottom: 5%;
     font-family: "Cafe24Supermagic-Bold-v1.0";
     font-size: 1.2em;
     border: 4px dotted #cf7c7c;
@@ -42,8 +45,18 @@ body {
     flex-direction: column;
     gap: 1em;
 }
+
 .quiz1 {
-    margin: 2%;
+    margin: 2% auto;
+    padding: 1em;
+    width: 90%;
+    max-width: 480px;
+    background-color: #f9f9f9; 
+    border-radius: 15px;
+    border: 2px solid #f7a8b8;
+    box-shadow: 1px 1px 7px rgba(247, 168, 184, 0.5);
+    font-family: 'Ownglyph_corncorn-Rg';
+    
 }
 
 #keyword, #site {
@@ -84,20 +97,13 @@ body {
     transform: scale(1.05);
 }
 
-.quiz1 {
-    border: 1px dotted	#f7d0cb;
-    background-color: #f9fafc;
-    font-family: 'Ownglyph_corncorn-Rg';
-    padding: 1%;
-}
-
 .toppingSel {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
     justify-content: center;
     line-height: 1.2em;
-    padding-bottom: 1%;
+    padding-bottom: 4%;
 }
 
 .toppingSel label {
@@ -119,14 +125,34 @@ body {
 .list {
     border-top: 2px dotted #f7a8b8;
     padding-top: 1em;
-    font-family: 'Ownglyph_corncorn-Rg', sans-serif;
+    font-family: 'Ownglyph_corncorn-Rg';
     font-size: 1em;
     color: #7a4f57;
 }
 
+#parent {
+    margin: 2% auto;
+    padding: 1em;
+    width: 90%;
+    max-width: 480px;
+    background-color: #f9f9f9; 
+    border-radius: 15px;
+    border: 2px solid #f7a8b8;
+    box-shadow: 1px 1px 7px rgba(247, 168, 184, 0.5);
+    font-family: 'Ownglyph_corncorn-Rg';
+    color: #7a4f57;
+}
+#child1{
+    background-color: #f7a8b8;
+    padding: 1%;
+}
+#child2{
+    background-color: #a44f69;
+    padding: 1%;
+}
+
 .sticker {
     position: fixed;
-    bottom: 1.5%;
-    right: 1.5%;
-    padding: 0.5em 1em;
+    bottom: 1%;
+    right: 0;
 }
