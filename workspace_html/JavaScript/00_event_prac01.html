@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice 01</title>
     <link rel = "stylesheet" href = "asset/00_event_prac01.css">
-    <script src="asset/js/00_event_prac01.js"></script>
 </head>
 <body>
     <div class = "head">문제 풀이</div>
@@ -43,9 +42,7 @@
             </form>
             <hr>
             <strong style = "border: none; font-size: 1em;">신청 내용<br></strong>
-            <div class = "view" id = "firstView">
-                여기에 내용 출력
-            </div>
+            <div class = "view" id = "firstView"></div>
         </div>
         <div class = "q2">
             <strong>2번</strong>
@@ -79,10 +76,8 @@
         </div>
         <div class = "q4">
             <strong>4번</strong>
-            <div class = "fourthIn">
-            썸네일 클릭 혹은 mouseover 시, 큰 그림 변경 및 유지<br>
-            하단 이미지는 작업 시 사용할 이미지<br>
-                <img id = "fourthPic" src="https://www.sanrio.co.jp/wp-content/uploads/2022/06/gallery-pochacco4.png">
+            <div class="imgZoom" id="fourthPic">
+                <div id="result"></div>
             </div>
         </div>
         <div class = "q5">
@@ -118,6 +113,7 @@
                         <option name = "dough" value = "5"> 스파이시 갈릭 치즈롤 </option>
                     </select>
                     <br>
+                    <input type="button" class="button" id="fifthBtn" value="주문 확인">
                 </div>
                 <hr>
                 <strong style = "border: none; font-size: 1em;">주문 정보<br></strong>
@@ -134,22 +130,19 @@
                 <strong style = "border: none; font-size: 1em;">ToDoList<br></strong>
                 <div class = "sixthIn">
                     <input type = "text" class = "inText" id="sixthInput" placeholder="할 일을 입력해주세요"> 
-                    <input type="button" class="button" id="firstBtn" value="입력">
+                    <input type="button" class="button" id="sixthBtn" value="입력">
+                    <input type="button" class="button" id="sixthDelBtn" value="삭제">
                 </div>
                 <hr>
                 <table class = "sixthView">
                     <tr class = "viewIndex">
                         <td class = "chk">완료 여부</td>
                         <td class = "tdInfo">할 일 이름</td>
-                        <td class = "delete">선택 삭제</td>
-                    </tr>
-                    <tr>
-                        <td class = "viewChk">
-                            <input type = "checkbox" value = "0" name = "finished">
-                        </td>
-                        <td class = "viewTdInfo">할 일 1</td>
-                        <td class = "viewDelete">
-                            <input type = "checkbox" value = "0" name = "delete">
+                        <td class = "delete">
+                            <label>
+                                선택 삭제
+                                <input type="checkbox" id="deleteAll">
+                            </label>
                         </td>
                     </tr>
                 </table>

@@ -83,6 +83,7 @@ hr {
     color: #1e2830;
     font-size: 0.85em;
     padding: 1.5%;
+    min-height: 50px;
 }
 
 
@@ -108,18 +109,53 @@ hr {
     padding: 1% 2%;
     background-color: #9DCEF6;
     box-shadow: 1px 1px 7px #9DCEF6;
+
+    transition: transform 0.2s ease, 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+/* 주는 김에 hover에도 */
+.menuChild:hover {
+    transform: translateY(-3px);
+    box-shadow: 2px 2px 9px rgba(157, 206, 246, 0.6);
+}
+/* active : hover보다 더 위로, 강조 색상 + 진한 그림자 */
+.menuChild.active {
+    background-color: #FBF4BE;
+    font-weight: bold;
+    transform: translateY(-6px);
+    box-shadow: 2px 4px 12px rgba(157, 206, 246, 0.85);
 }
 
-.fourthIn {
-    text-align: center;
+.imgZoom {
+    width: 90%;
+    height: 40vw;
+    max-height: 1365px;
+    background-image: url('https://www.sanrio.co.jp/wp-content/uploads/2022/06/gallery-pochacco4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px dotted #9DCEF6;
+    overflow: hidden;
+    position: relative;
     margin: 5% auto;
 }
-#fourthPic {
-    width: 90%;
-    border: 1px dotted #9DCEF6;
-    box-shadow: 1px 1px 7px #9DCEF6;
-    margin: 3% auto;
+
+/* 확대 박스 */
+#result {
+    display: none;
+    position: absolute;
+    border: 1px solid #9DCEF6;
+    width: 40%;
+    height: 20vw;
+    max-height: 300px;
+    background-repeat: no-repeat;
+    background-size: 640px 640px;
+    box-shadow: 1px 1px 7px rgba(157, 206, 246, 0.7);
+    border-radius: 10px;
+    z-index: 1000;
 }
+
 
 .fifthInForm {
     margin: 5% auto;
@@ -141,6 +177,9 @@ select {
     background-color: #F5F4F9;
     color: #1e2830;
     font-family: 'S-CoreDream-3Light';
+}
+#fifthBtn {
+    margin: 5% auto;
 }
 .fifthView {
     margin: 4% auto;
