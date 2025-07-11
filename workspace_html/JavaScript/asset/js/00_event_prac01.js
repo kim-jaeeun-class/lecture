@@ -43,12 +43,13 @@ function bind() {
     for (let i = 0; i < menus.length; i++) {
         menus[i].addEventListener('click', function () {
             // 모든 메뉴에서 강조 제거한 뒤에
+            // forEach로도 가능
             for (let j = 0; j < menus.length; j++) {
                 menus[j].classList.remove('active');
             }
 
             // 클릭한 메뉴에만 강조 클래스 추가
-            // console.log(this); 지금 this는 memuChild
+            // console.log(this); 지금 this는 menuChild
             this.classList.add('active');
         });
 }
@@ -62,7 +63,7 @@ function bind() {
     const result = document.querySelector('#result');
 
     // 확대 배율. 우선 2배로.
-    const zoomScale = 1.5;  
+    const zoomScale = 2;  
 
     // 확대 박스의 너비와 높이. offset으로 해도 되나???
     const zoomWidth = result.offsetWidth;
@@ -141,32 +142,32 @@ function bind() {
     });
 
 
-    // 5번 문제
-// 5번 문제 js!!!
 
-// 버튼
-const fifthBtn = document.querySelector('#fifthBtn');
+    // 5번 문제 js!!!
 
-// 출력(view)
-const fifthView = document.querySelector('.fifthView .view');
-const fifthSum = document.querySelector('.fifthView .sum');
+    // 버튼
+    const fifthBtn = document.querySelector('#fifthBtn');
 
-// 버튼 클릭 시
-fifthBtn.addEventListener('click', function () {
-    // 1. 사이즈 선택
-    const sizeRadios = document.querySelectorAll('[name="pizzaMenu"]');
-    let size = '';
-    let sizePrice = 0;
-    // 수퍼 파파스 기준... 먹고 싶다.
-    for (let i = 0; i < sizeRadios.length; i++) {
-        if (sizeRadios[i].checked) {
-            size = sizeRadios[i].parentNode.textContent;
-            if (sizeRadios[i].value === '1') sizePrice = 19900;
-            else if (sizeRadios[i].value === '2') sizePrice = 28500;
-            else if (sizeRadios[i].value === '3') sizePrice = 33900;
-            else if (sizeRadios[i].value === '4') sizePrice = 42500;
+    // 출력(view)
+    const fifthView = document.querySelector('.fifthView .view');
+    const fifthSum = document.querySelector('.fifthView .sum');
+
+    // 버튼 클릭 시
+    fifthBtn.addEventListener('click', function () {
+        // 1. 사이즈 선택
+        const sizeRadios = document.querySelectorAll('[name="pizzaMenu"]');
+        let size = '';
+        let sizePrice = 0;
+        // 수퍼 파파스 기준... 먹고 싶다.
+        for (let i = 0; i < sizeRadios.length; i++) {
+            if (sizeRadios[i].checked) {
+                size = sizeRadios[i].parentNode.textContent;
+                if (sizeRadios[i].value === '1') sizePrice = 19900;
+                else if (sizeRadios[i].value === '2') sizePrice = 28500;
+                else if (sizeRadios[i].value === '3') sizePrice = 33900;
+                else if (sizeRadios[i].value === '4') sizePrice = 42500;
+            }
         }
-    }
 
     // 2. 토핑 선택
     const toppingChecks = document.querySelectorAll('[name="topping"]');
@@ -228,12 +229,25 @@ fifthBtn.addEventListener('click', function () {
                 <td class="viewDelete">
                     <input type="checkbox" name="delete">
                 </td>
+                <td class="viewDelBtn">
+                    <input type="button" id="viewDelBtn" class="button" name="viewDelBtn" value="삭제">
+                </td>
             `;
 
             // 자식 요소로
             table.appendChild(newRow);
             // 진짜 혹시 모르니 넣어둠
             input.value = '';
+
+            // 삭제 버튼 (테이블, 개별)
+            // ***** 오늘 자 하이라이트 : document로 줄 생각 하지 말기....
+            newRow.querySelector('#viewDelBtn').addEventListener('click', function(event) {
+                const test = event.target.parentNode;
+                // 이걸로 tr을 잡을 수 있음
+                // console.log(test.parentNode);
+                // 문제점 : 맨 앞 하나만 remove됨 -> 해결함
+                test.parentNode.remove();
+            })
         }
     });
         // 위 코드로 그냥 합침
@@ -288,7 +302,7 @@ fifthBtn.addEventListener('click', function () {
                     if (delBoxes[i].checked) checkedCount++;
                 }
 
-                allBox.checked = (checkedCount === delBoxes.length && delBoxes.length > 0);
+                // allBox.checked = (checkedCount === delBoxes.length && delBoxes.length > 0);
             }
         });
 
@@ -304,27 +318,29 @@ fifthBtn.addEventListener('click', function () {
     //     input.value = '';
     // });
 
-    // 삭제 버튼!!!
-    document.querySelector('#deleteBtn').addEventListener('click', function () {
+    // 삭제 버튼!!! (상단, 체크박스로 일괄 삭제 가능)
+    document.querySelector('#sixthDelBtn').addEventListener('click', function () {
         const delBoxes = document.querySelectorAll('.sixthView input[name="delete"]');
+        // const delState = [];
 
-        for (let i = delBoxes.length - 1; i >= 0; i--) {
+        for (let i = 0; i < delBoxes.length; i++) {
             if (delBoxes[i].checked) {
                 delBoxes[i].closest('tr').remove();
             }
         }
 
-        // 삭제 후 전체 선택 박스 해제
-        document.querySelector('#deleteAll').checked = false;
+        // // 삭제 후 전체 선택 박스 해제
+        // document.querySelector('#deleteAll').checked = false;
     });
-    // 전체 삭제 체크박스 기능
-    document.querySelector('#deleteAll').addEventListener('click', function () {
-        const isChecked = this.checked;
-        const delBoxes = document.querySelectorAll('.sixthView input[name="delete"]');
 
-        for (let i = 0; i < delBoxes.length; i++) {
-            delBoxes[i].checked = isChecked;
-        }
-    });
+    // // 전체 삭제 체크박스 기능
+    // document.querySelector('#deleteAll').addEventListener('click', function () {
+    //     const isChecked = this.checked;
+    //     const delBoxes = document.querySelectorAll('.sixthView input[name="delete"]');
+
+    //     for (let i = 0; i < delBoxes.length; i++) {
+    //         delBoxes[i].checked = isChecked;
+    //     }
+    // });
 
 }

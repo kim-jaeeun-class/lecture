@@ -56,7 +56,7 @@
                 <input type = "text" class = "inText secondInText" id = "inNum" placeholder="전화번호"> 
                 <hr>
                 <strong style = "border: none; font-size: 1em;">배송 정보<br></strong>
-                <label><input type="checkbox">주문 정보와 같음</label><br>
+                <label><input type="checkbox" name = "orderInfo" style = "margin: 3% auto 2% auto;">&nbsp;주문 정보와 같음</label><br>
                 <span class = "nameTag">이름 : </span>
                 <input type = "text" class = "inText secondInText" id = "delName" placeholder="이름"><br>
                 <span class = "nameTag">주소 : </span>
@@ -68,6 +68,7 @@
         <div class = "q3">
             <strong>3번</strong>
             <div class = "menu">
+                <!-- 메뉴 ul로도 줄 수 있음 -->
                 <div class = "menuChild" id = "thirdM1">메뉴1</div>
                 <div class = "menuChild" id = "thirdM2">메뉴2</div>
                 <div class = "menuChild" id = "thirdM3">메뉴3</div>
@@ -136,15 +137,28 @@
                 <hr>
                 <table class = "sixthView">
                     <tr class = "viewIndex">
-                        <td class = "chk">완료 여부</td>
+                        <td class = "tdChk">완료</td>
                         <td class = "tdInfo">할 일 이름</td>
                         <td class = "delete">
-                            <label>
-                                선택 삭제
-                                <input type="checkbox" id="deleteAll">
-                            </label>
+                            <!-- <label> -->
+                                선택
+                                <!-- <input type="checkbox" id="deleteAll"> -->
+                            <!-- </label> -->
                         </td>
+                        <td class = "tdDelBtn">삭제</td>
                     </tr>
+                    <!-- <tr class = "nonView">
+                        <td class="viewChk">
+                            <input type="checkbox" name="finished">
+                        </td>
+                        <td class="viewTdInfo"></td>
+                        <td class="viewDelete">
+                            <input type="checkbox" name="delete">
+                        </td>
+                        <td class="viewDelBtn">
+                            <input type="button" id="viewDelBtn" class="button" name="viewDelBtn" value="삭제">
+                        </td>
+                    </tr> -->
                 </table>
             </form>
         </div>
