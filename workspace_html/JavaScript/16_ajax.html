@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <style>
+        @font-face {
+            font-family: 'BagelFatOne-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_JAMO@1.0/BagelFatOne-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-color: #F9DCD5;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 3%;
+            
+        }
+        button {
+            border: none;
+            border-radius: 10px;
+            background-color: #E2B39C;
+            color: #f1f1f1;
+            width: 15%;
+            min-width: 80px;
+            height: 30px;
+            line-height: 30px;
+            
+            font-family: 'BagelFatOne-Regular';
+            font-size: 1.1em;
+            text-align: center;
+
+            box-shadow: 1px 1px 7px #A47864;
+        }
+        hr {
+            border: 1px dotted #A47864;
+            border-radius: 50px;
+            margin: 5%;
+        }
+        .wrap {
+            background-color: #f1f1f1;
+            border: 1px dotted #A47864;
+            border-radius: 10px;
+            width: 70%;
+            min-width: 400px;
+            padding: 2%;
+
+            box-shadow: 1px 1px 7px #E2B39C;
+
+            font-weight: 300;
+            text-align: center;
+        }
+        .buttonList {
+            margin: 5% auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+    <script src="asset/js/16_ajax.js"></script>
+</head>
+<body>
+    <div class = "wrap">
+        <div class = "buttonList">
+            <button type="button" id="btn1">ajax</button>
+            <button type="button" id="btn2">weather</button>
+            <!-- 버튼 새로 만들 일 있으면 그때 주석 해제 
+            <button type="button" id="btn3">finance</button> -->
+            <button type="button" id="btn4">HJobs</button>
+        </div>
+        <hr>
+        <div class = "view">view</div>
+        <div style = "font-size: 0.8em; font-weight: 100; margin: 5%;">:: Mocha Mousse Mood ::</div>
+    </div>
+</body>
+</html>

@@ -234,8 +234,10 @@ function bind() {
                 </td>
             `;
 
-            // 자식 요소로
-            table.appendChild(newRow);
+            // 자식 요소로.
+            // append 써도 문제없이 돼서
+            // appendChild에서 수정해둠
+            table.append(newRow);
             // 진짜 혹시 모르니 넣어둠
             input.value = '';
 
@@ -246,7 +248,11 @@ function bind() {
                 // 이걸로 tr을 잡을 수 있음
                 // console.log(test.parentNode);
                 // 문제점 : 맨 앞 하나만 remove됨 -> 해결함
-                test.parentNode.remove();
+                // 아래처럼 confirm을 써서 삭제 전 확인 메시지 띄우기 가능
+                const isDel = confirm('정말로 삭제하시겠습니까?');
+                if(isDel) {
+                    test.parentNode.remove();
+                }
             })
         }
     });
@@ -292,6 +298,7 @@ function bind() {
                 td.style.textDecoration = event.target.checked ? 'line-through' : 'none';
             }
 
+            // 전체 선택 버튼 만들려다가 만 것
             if (event.target.name === 'delete') {
                 const delBoxes = document.querySelectorAll('.sixthView input[name="delete"]');
                 const allBox = document.querySelector('#deleteAll');
@@ -325,7 +332,9 @@ function bind() {
 
         for (let i = 0; i < delBoxes.length; i++) {
             if (delBoxes[i].checked) {
-                delBoxes[i].closest('tr').remove();
+                // closest 써도 되지만 아래처럼 표현 가능
+                // delBoxes[i].closest('tr').remove();
+                delBoxes[i].parentNode.parentNode.remove();
             }
         }
 
