@@ -58,21 +58,78 @@
             display: flex;
             justify-content: space-evenly;
         }
+        table {
+            
+            border-radius: 10px;
+            font-size: 0.9em;
+            margin: auto;
+        }
+        td {
+            width: 15%;
+        }
+        .idx, .idx1 {
+            font-weight: 600;
+            color: #7e5745;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #A47864;
+        }
+        .view {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .idx1 {
+            width: 70px;
+        }
+        .new1 {
+            font-size: 0.9em;
+            line-height: 2em;
+        }
     </style>
-    <script src="asset/js/16_ajax.js"></script>
 </head>
 <body>
     <div class = "wrap">
         <div class = "buttonList">
             <button type="button" id="btn1">ajax</button>
             <button type="button" id="btn2">weather</button>
-            <!-- 버튼 새로 만들 일 있으면 그때 주석 해제 
-            <button type="button" id="btn3">finance</button> -->
-            <button type="button" id="btn4">HJobs</button>
+            <button type="button" id="btn3">HJobs</button>
+            <button type="button" id="btn4">fetch</button> 
         </div>
         <hr>
-        <div class = "view">view</div>
+        <h4 style = "color: #7e5745">공공정보 출력 01</h4>
+        <div class = "view">
+            <table class = "test1">
+                <tr>
+                    <td class = "idx1">시간</td>
+                    <td class = "idx1">온도</td>
+                </tr>
+            </table>
+            <table class = "test2">
+                <tr>
+                    <td class = "idx1">시간</td>
+                    <td class = "idx1">강수량</td>
+                </tr>
+            </table>
+            <table class = "test3">
+                <tr>
+                    <td class = "idx1">시간</td>
+                    <td class = "idx1">습도</td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <h4 style = "color: #7e5745">공공정보 출력 02</h4>
+        <div class = "view2">
+            <table class = "lastT">
+                <tr>
+                    <td class = "idx">시간</td>
+                    <td class = "idx">온도</td>
+                    <td class = "idx">강수량</td>
+                    <td class = "idx">습도</td>
+                </tr>
+            </table>
+        </div>
         <div style = "font-size: 0.8em; font-weight: 100; margin: 5%;">:: Mocha Mousse Mood ::</div>
     </div>
+    <script src="asset/js/16_ajax.js"></script>
 </body>
 </html>
