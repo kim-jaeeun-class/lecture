@@ -1,3 +1,5 @@
+let _contents = [];
+
 window.addEventListener('load', bind);
 
 function bind() {
@@ -32,7 +34,7 @@ function bind() {
         url += '&numOfRows=1000';
         url += '&pageNo=1';
         url += '&dataType=JSON';
-        url += '&base_date=20250715';
+        url += '&base_date=20250716';
         url += '&base_time=0500';
         url += '&nx=63';
         url += '&ny=110';
@@ -242,4 +244,95 @@ document.querySelector('#btn4').addEventListener('click', function() {
     }).catch(function(error){
         console.log(error);
     });
+})
+
+$('#btn5').off('click').on('click', function() {
+    $.ajax({
+        url : 'http://ssg.com/service/emart/dvstore.ssg',
+        type: 'get',
+        // 성공 시
+        success: function(data) {
+            // json이면 json으로 바꿔줌
+            console.log(data);
+        },
+        // 실패 시
+        error: function(data) {
+            console.log('실패')
+            console.log('ERROR', data);
+        },
+        // 무조건 실행
+        complete: function() {
+            console.log('무조건 실행');
+        }
+    })
+})
+
+// // 상단의 success-error-complete와 유사함
+// try {
+//     console.log(1, '실행')
+//     throw new Error('FakeError');
+//     console.log(2, 'error X');
+// }
+// catch (err) {
+//     console.log(3, 'catch');
+//     console.log(4, err);
+// }
+// finally {
+//     console.log('finally');
+// }
+
+$('#btn6').off('click').on('click', function() {
+    $.ajax({
+        url : 'http://ssg.com/service/emart/dvstore.ssg',
+        type: 'get'        
+    }).done(function(data){
+        console.log('success');
+        console.log(data);
+    }).fail(function(err){
+        console.log('fail');
+        console.log(data);
+    }).always(function(){
+        console.log('must be done');
+    })
+})
+
+$('#btn7').on('click', function() {
+    let msg = $('#msg').val().replace(/\n/g, '%0a');
+    $.ajax({
+        url: 'https://api.telegram.org/bot8110172897:AAERKnDO5-Q7Q_68wWnNxLAADMkBFTVad6U/sendMessage?chat_id=7747891723&text=' + msg,
+        type: 'get'
+    })
+})
+$('#btn8').on('click', function() {
+    let msg = $('#msg2').val();
+    const key = 'AIzaSyD_3kNTYTZkcMszvz4n__nhvv5SRfy26N0';
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + key;
+    _contents.push({
+            role: 'user',
+            parts: [{
+                text: msg
+            }]
+        });
+    const data = {
+        contents: _contents
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send( JSON.stringify(data));
+    xhr.onload = function() {
+        console.log('Answer : ');
+        console.log(xhr.responseText);
+        const res = JSON.parse(xhr.responseText);
+        const ans = res.candidates[0].content.parts[0].text;
+        $('#gemini').html(ans.replace(/\n/g, '<br>'));
+
+            _contents.push({
+            role: 'model',
+            parts: [{
+                text: msg
+            }]
+        });
+    }
 })

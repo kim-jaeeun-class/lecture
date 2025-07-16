@@ -8,84 +8,34 @@
             src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
             crossorigin="anonymous"></script>
-        <script>
-            // window.addEventListener('load', ()=>{})
-            // 아래의 jQuery와 같은 의미
-            $(()=> {
-                init()
-            })
-            function init() {
-                const list_h1 = $('h1');
-                // jQuery 배열 객체
-                console.log(list_h1);
-                // pure jsi
-                console.log(list_h1[0]);
-                // 아무것도 없으면 0개짜리 배열이 옴
-                console.log($('#human'));
-
-                $('h1').text('. 앞 부분 = querySelectorAll, text() = innerText');
-                // html() = innerHTML
-                $('h1').html('<a href="javascript:void(0)">a tag</a>');
-
-                console.log($('#parent'));
-
-                // 클래스 추가 : id가 parent인 곳에 class c1, c2, c3 추가
-                $('#parent').addClass('c1');
-                $('#parent').addClass('c2 c3');
-                // 클래스 삭제 : c1, c2 삭제
-                $('#parent').removeClass('c1 c2');
-                // 토글 : 클래스가 있으면 제거, 없으면 추가
-                $('#parent').toggleClass('c2');
-                // 클래스 확인 : 현재 해당 클래스가 있는지 확인 (true/false로)
-                console.log($('#parent').hasClass('c2'));
-                // 속성값 가져오기 : .attr() = getAttribute()
-                let human = $('#chk').attr('data-human');
-                console.log(human);
-                // 전달인자가 2개면 : .attr() = setAttribute()
-                $('#chk').attr('data-human', '123');
-                $('#chk').attr('data-game', 'newGame');
-
-                // data-속성에서 속성명만 사용하면 하위 속성을 가져옴
-                console.log($('#chk').data('game'));
-                // html 수정 없이 추가 가능
-                // 개발자 도구에서 확인 불가한 속성 추가(나중에 따로 한 번 더 확인하기)
-                $('#chk').data('dinner', 'stew');
-                console.log($('#chk').data('dinner'));
-
-                // 속성 삭제 : removeAttr() = removeAttribute()
-                $('#chk').removeAttr('data-game');
-
-                // 속성 추가 : $() 내에 태그 넣기 = createElement
-                let child2 = $('<div>child2</div>');
-                // child2[0]은 pure js라 append 가능
-                console.log(child2[0]);
-
-                // 자식의 마지막에 요소 추가
-                $('#parent').append(child2);
-                $('#parent').prepend('<div class = "child3">child3</div>');
-
-                // 내용 비우기
-                // $('#parent')[0].innerHTML = "";
-                // $('#parent').html('');
-                $('#parent').empty();
-
-                // tag 삭제 : html 자체 삭제
-                $('#parent').remove();
-            }
-        </script>
+        <script src="asset/js/18_jQuery.js"></script>
     </head>
     <body>
         <h1>first</h1>
         <h1>second</h1>
         <h1>third</h1>
-
-        <div id = "parent">
+        <div id="parent">
             parent
-            <div class = "child">
+            <div class="child">
                 child
             </div>
         </div>
-        <input type = "checkbox" id = "chk" class = "cb1" value = "1"
-            data-human = "값" checked="checked"><br>
+        <input
+            type="checkbox"
+            id="chk"
+            class="cb1"
+            value="1"
+            data-human="값"
+            checked="checked"><br>
+        <input type="text" id="input1">
+        <input type="button" ,="," id="btn1" value="버튼1">
+        <input type="button" ,="," id="btn2" class="btn" value="버튼2">
+        <input type="button" ,="," id="btn3" class="btn" value="버튼3">
+        <div id="parent10">
+            parent10
+            <div class="child10" style = "border: 1px solid #717171; background: coral; height: 50px;">
+                child10
+            </div>
+        </div>
     </body>
 </html>

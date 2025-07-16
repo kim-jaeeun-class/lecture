@@ -11,7 +11,6 @@
             font-weight: normal;
             font-style: normal;
         }
-
         body {
             background-color: #F9DCD5;
             display: flex;
@@ -56,6 +55,7 @@
         .buttonList {
             margin: 5% auto;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-evenly;
         }
         table {
@@ -85,6 +85,10 @@
             line-height: 2em;
         }
     </style>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
 </head>
 <body>
     <div class = "wrap">
@@ -93,6 +97,8 @@
             <button type="button" id="btn2">weather</button>
             <button type="button" id="btn3">HJobs</button>
             <button type="button" id="btn4">fetch</button> 
+            <button type="button" id="btn5">jQuery1</button> 
+            <button type="button" id="btn6">jQuery2</button> 
         </div>
         <hr>
         <h4 style = "color: #7e5745">공공정보 출력 01</h4>
@@ -128,6 +134,18 @@
                 </tr>
             </table>
         </div>
+        <hr>
+        <h4 style = "color: #7e5745">TELEGRAM</h4>
+        <textarea id = "msg" style = "margin: 3%; width: 60%;"></textarea>
+        <br>
+        <button id = "btn7">send</button>
+        <hr>
+        <h4 style = "color: #7e5745">GEMINI</h4>
+        <textarea id = "msg2" style = "margin: 3%; width: 60%;"></textarea>
+        <br>
+        <button id = "btn8" style = "margin: 0 5% 5% 5%;">send</button>
+        <br>
+        <div id = "gemini" style="width: 80%; margin: auto; text-align: left;"></div>
         <div style = "font-size: 0.8em; font-weight: 100; margin: 5%;">:: Mocha Mousse Mood ::</div>
     </div>
     <script src="asset/js/16_ajax.js"></script>
