@@ -6,6 +6,8 @@ public class ExtendsExam {
 		// Child 생성 후,
 		// printName 실행
 		Child test = new Child();
+		System.out.println("--------------------------");
+		test.printName();
 		test.printName();
 		
 		// 이런 식으로 부모 클래스의 것을 실행 가능
