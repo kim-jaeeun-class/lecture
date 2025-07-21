@@ -1,6 +1,13 @@
 package quiz01.cafe;
 
-public class Alba {
+public class Arbeit {
+	Cafe cafe;
+	
+	// 생성자
+	Arbeit(Cafe cafe) {
+		this.cafe = cafe;
+	}
+	
 	void albaOrder(Cafe cafe) {
 		cafe.order();
 	}
