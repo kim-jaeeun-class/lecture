@@ -23,6 +23,9 @@ public class OrderExam {
 		m3.name = "이름3";
 		m3.age = 29;
 		
+		System.out.println(m1);
+		toString(m1);
+		
 		List list = new ArrayList();
 		list.add(m1);
 		list.add(m2);
@@ -49,6 +52,11 @@ public class OrderExam {
 			MemberDTO dto = (MemberDTO) list.get(i);
 			System.out.println(dto.age);
 		}
+		
+	}
+
+	private static void toString(MemberDTO m1) {
+		// TODO Auto-generated method stub
 		
 	}
 
