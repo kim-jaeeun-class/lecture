@@ -138,7 +138,7 @@ public class StringExam {
 		System.out.println(rRealTest2 + masking + rRealTest1);
 		
 		
-		// 문제4 : query가 맨 마지막에 있는 경우까지.
+		// 문제4 : query가 맨 마지막에 있는 경우까지. split으로도 가능.
 		String q4 = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=1oiioasi";
 		
 		// 일단 길이 구하기
@@ -155,8 +155,7 @@ public class StringExam {
 
 		// query가 마지막일 때
 		if (andIndex == -1) {
-			String testCut = test.substring(0);
-			System.out.println(testCut);
+			System.out.println(test);
 		}
 		// 중간에 있을 때
 		else {
@@ -165,8 +164,37 @@ public class StringExam {
 		}
 		
 		
-
+		String s5 = "   앞글씨          뒤글씨       ";
+		System.out.println("[" + s5.trim() + "]");
 		
+		// 가비지 콜렉터 호출
+		System.gc();
+		
+		String menu = "김밥,라면,돈까스,제육덮밥";
+		String[] tester = menu.split(",");
+		for(String m : tester) {
+			System.out.println(m);
+		}
+		
+		String url = "blog.naver.com";
+		String[] urls = url.split(".");
+		System.out.println(urls.length);
+		
+		String a = "a";
+		a += "b";
+		a = a + "c";
+		System.out.println(a);
+		
+		StringBuffer sb = new StringBuffer("a");
+		sb.append("b");
+		sb.append("c");
+		String d = sb.toString();
+		System.out.println(d);
+		
+		StringBuilder sB = new StringBuilder("a");
+		sB.append("b");
+		String d2 = sB.toString();
+		System.out.println(d2);
 		
 	
 	}
