@@ -6,9 +6,9 @@
     </head>
     <body>
         <form>
-            <input type="number" name="number1">
-            <input type="number" name="number2">
-            <input type="button" id="button1" name="button1" value="sum">
+            <input type="number" id = "numberC1" name = "numberC1">
+            <input type="number" id = "numberC2" name = "numberC2">
+            <input type="button" id="button1" name="buttonC" value="sum">
         </form>
         <div class = "result">
             <h1>result</h1>
@@ -18,13 +18,21 @@
         </div>
         <script>
             document.querySelector('#button1').addEventListener('click', () => {
-                const xhr = new XMLHttpRequest();
-                xhr.open('get', 'calc');
-                xhr.send();
+                const n1 = document.querySelector('#numberC1').value;
+                const n2 = document.querySelector('#numberC2').value;
+            	
+                const formData = new FormData();
+                formData.append('numberC1', n1);
+                formData.append('numberC2', n2);
+                
+            	const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'calc');
+                xhr.send(formData);
                 xhr.onload = () => {
-                    console.log(xhr.responseText);
                     const data = JSON.parse(xhr.responseText);
-                    console.log(data);
+                    document.querySelector('.num1').textContent = `Number1: ${data.num1}`;
+                    document.querySelector('.num2').textContent = `Number2: ${data.num2}`;
+                    document.querySelector('.sum').textContent = `Sum: ${data.sum}`;
                 }
             })
         </script>
