@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>title</title>
+</head>
+<body>
+<h1>parameter 연습</h1>
+<!-- <form method = "get" action = "http://192.168.0.58:8080/proj2_request/req"> -->
+<form method = "get" action = "/proj2_request/req">
+	num1 : <input type = "text" name = "num1" value = "abcd"><br>
+	pw : <input type = "password" name = "pw"><br>
+	<input type = "checkbox" name = "check" value = "check1"> check1
+	<input type = "checkbox" name = "check" value = "check2"> check2
+	<input type = "checkbox" name = "check" value = "check3"> check3<br>
+	
+	<input type = "hidden" name = "hidden1" value = "hival"><br>
+	<input type = "button" name = "btn5" value = "btn1"><br>
+	<input type = "radio" name = "radio1" value = "r1" checked>
+	<input type = "radio" name = "radio2" value = "r2"><br>
+	
+	<input type = "date" name = "date1" value = "2025-08-12"><br>
+	<input type = "number" name = "number1">
+	
+	<div name = "div11" value = div22>div</div> <br>
+	<input type = "submit" value = "form 요소 X">
+	<select name = "select1" value = "select11">
+		<option value = "o1">1</option>
+		<option value = "o2">2</option>
+		<option value = "o3">3</option>
+	</select>
+<!-- 	textarea는 엔터가 \n으로 -->
+	<textarea name = "textarea1"></textarea>
+</form>
+<form method = "post" action = "req">
+	<input type = "text" name = "num2">
+	<input type = "submit" value = "post 전송">
+</form>
+</body>
+</html>
