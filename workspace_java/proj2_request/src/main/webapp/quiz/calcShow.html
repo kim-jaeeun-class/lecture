@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+    </head>
+    <body>
+        <form method="post" action="../calc">
+<!--         절대 주소, 위는 상대 주소<form method="post" action="/proj2_request/calc"> -->
+            <input type="number" id = "numberC1" name = "numberC1">
+            <input type="number" id = "numberC2" name = "numberC2">
+            <input type="submit" id="buttonC" name="buttonC" value="sum">
+        </form>
+<!-- 		<form method = "get" action = "../calc"> -->
+<!-- 			<input type = "text" name = "num1"> -->
+<!-- 			<input type = "text" name = "num2"> -->
+<!-- 			<input type = "submit" name = "btn"> -->
+<!-- 		</form> -->
+        <div class = "result">
+            <h1>result</h1>
+            <div class = "num1"></div>
+            <div class = "num2"></div>
+            <div class = "sum"></div>
+        </div>
+        <script>
+            document.querySelector('#buttonC').addEventListener('click', () => {
+                const n1 = document.querySelector('#numberC1').value;
+                const n2 = document.querySelector('#numberC2').value;
+            	
+                const formData = new FormData();
+                formData.append('numberC1', n1);
+                formData.append('numberC2', n2);
+                
+            	const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'calc');
+                xhr.send(formData);
+                xhr.onload = () => {
+                    const data = JSON.parse(xhr.responseText);
+                    document.querySelector('.num1').textContent = `Number1: ${data.num1}`;
+                    document.querySelector('.num2').textContent = `Number2: ${data.num2}`;
+                    document.querySelector('.sum').textContent = `Sum: ${data.sum}`;
+                }
+            })
+        </script>
+    </body>
+</html>

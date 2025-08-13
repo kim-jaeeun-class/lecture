@@ -18,6 +18,11 @@ public class RequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/req doGet");
 		
+		// 요청 시 한글 깨짐 방지 구문
+		request.setCharacterEncoding("utf-8");
+		// 응답 시 한글 깨짐 방지 구문
+		response.setContentType("text/html;charset=utf-8;");
+		
 		// 전달받은 파라미터의 키를 적어 해당 값 얻어오기
 		String num1 = request.getParameter("num1");
 		System.out.println("num1: " + num1);
