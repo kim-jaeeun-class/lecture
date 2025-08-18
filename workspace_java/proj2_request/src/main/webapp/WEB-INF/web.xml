@@ -18,4 +18,12 @@
 	<servlet-name>is</servlet-name>
 	<url-pattern>/ip</url-pattern>
   </servlet-mapping>
+	<servlet>
+	    <servlet-name>SignUpQuiz</servlet-name>
+	    <servlet-class>quiz.SignUpQuiz</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SignUpQuiz</servlet-name>
+	    <url-pattern>/quiz/su</url-pattern>
+	</servlet-mapping>
 </web-app>

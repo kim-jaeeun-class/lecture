@@ -31,7 +31,7 @@
     </head>
     <body>
         <h1>회원가입 정보 입력</h1>
-        <form method="post" action="../su">
+        <form method="post" action="su">
             <div class="block">
                 <div>아이디
                 </div>
@@ -64,10 +64,7 @@
             window.addEventListener('load', bind);
 
             function bind() {
-                const inIdVal = document.querySelector('#id').value.trim();
-                const inPwVal = document.querySelector('#pw').value.trim();
-                const inPwChVal = document.querySelector('#pwCheck').value.trim();
-
+        
                 const inId = document.querySelector('#id');
                 const inPw = document.querySelector('#pw');
                 const inPwCh = document.querySelector('#pwCheck');
@@ -75,9 +72,10 @@
                 const suBtn = document.querySelector('.submit');
                     
                 inId.addEventListener('blur', () => {
+                const inIdVal = document.querySelector('#id').value.trim();
                 if(inIdVal.length == 0) {
                         inId.style.backgroundColor = '#db8974';
-                        inId.setAttribute('placeholder', '아이디가 입력되지 않았습니다.');
+                        inId.setAttribute('placeholder', '필수 입력 확인');
                 }
                 else {
                 	inId.style.backgroundColor = 'white';
@@ -85,22 +83,24 @@
                 })
 
                 inPw.addEventListener('blur', () => {
+                const inPwVal = document.querySelector('#pw').value.trim();
 	                if(inPwVal.length == 0) {
 	                        inPw.style.backgroundColor = '#db8974';
-	                        inPw.setAttribute('placeholder', '비밀번호가 입력되지 않았습니다.');
+	                        inPw.setAttribute('placeholder', '필수 입력 확인');
 	                }
 	                else {
-	                	inId.style.backgroundColor = 'white';
+	                	inPw.style.backgroundColor = 'white';
 	                }
                 })
 
                 inPwCh.addEventListener('blur', () => {
+                	const inPwChVal = document.querySelector('#pwCheck').value.trim();
                     if(inPwChVal.length == 0) {
                         inPwCh.style.backgroundColor = '#db8974';
-                        inPwCh.setAttribute('placeholder', '비밀번호 확인이 입력되지 않았습니다.');
+                        inPwCh.setAttribute('placeholder', '필수 입력 확인');
                     }
                     else {
-                    	inId.style.backgroundColor = 'white';
+                    	inPwCh.style.backgroundColor = 'white';
                     }
                 })
             }

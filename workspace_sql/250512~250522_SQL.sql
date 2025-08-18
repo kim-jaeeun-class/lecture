@@ -2046,3 +2046,21 @@ select
 from dept d , emp e
 where e.deptno = d.deptno
 group by d.deptno;
+
+create table tbl_todo (
+	tno number primary key,
+    title varchar2(4000) not null,
+    dueDate date,
+    finished number(1)
+);
+
+select * from tbl_todo;
+
+create sequence seq_tbl_todo;
+
+insert into tbl_todo (tno, title, duedate)
+            values (seq_tbl_todo.nextval, 'test4', to_date('2525-08-20', 'yyyy-mm-dd'));
+            
+alter table tbl_todo modify (finished number(1) default 0);
+
+commit;

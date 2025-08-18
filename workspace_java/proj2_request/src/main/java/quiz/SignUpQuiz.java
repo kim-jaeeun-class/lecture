@@ -20,16 +20,17 @@ public class SignUpQuiz extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String pwCheck = request.getParameter("pwCheck");
 		
+		// 이쪽에선 경로 web.xml 사용
 		try {
-			if(id.equals("") || pw.equals("") || pwCheck.equals("")) {
-				request.getRequestDispatcher("quiz/signUp.jsp").forward(request, response);
+			if(id.trim().length() == 0 || pw.trim().length() == 0 || pwCheck.trim().length() == 0) {
+				request.getRequestDispatcher("/quiz/signUp.jsp").forward(request, response);
 			}
 			else {
 				request.setAttribute("id", id);
 				request.setAttribute("pw", pw);
 				request.setAttribute("pwCheck", pwCheck);
 				
-				request.getRequestDispatcher("quiz/signUpResult.jsp").forward(request, response);
+				request.getRequestDispatcher("/quiz/signUpResult.jsp").forward(request, response);
 			}
 
 		}
