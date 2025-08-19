@@ -8,7 +8,30 @@ import todo.DTO.TodoDTO;
 public class TodoService {
 	public List<TodoDTO> getList() {
 		TodoDAO todoDAO = new TodoDAO();
-		return todoDAO.selectAll();
-		
+		return todoDAO.selectAll();	
 	}
+	
+	public int addTodo(TodoDTO todoDTO) {
+		if(todoDTO.getTitle() == null) {
+			return -1;
+		}
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.insert(todoDTO);
+	}
+	
+	public int removeTodo(TodoDTO todoDTO) {
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.delete(todoDTO);
+	}
+	
+	public TodoDTO getTodo(TodoDTO todoDTO) {
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.select(todoDTO);
+	}
+	
+	public int modifyTodo(TodoDTO todoDTO) {
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.update(todoDTO);
+	}
+	
 }

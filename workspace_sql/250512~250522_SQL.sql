@@ -2064,3 +2064,23 @@ insert into tbl_todo (tno, title, duedate)
 alter table tbl_todo modify (finished number(1) default 0);
 
 commit;
+
+delete from tbl_todo
+where title in ('testtest');
+
+commit;
+
+select * from tbl_todo
+where tno = 9;
+
+update tbl_todo
+set title = '바꾸기',
+    duedate = '2025-01-01',
+    finished = 1
+where tno = 8;
+
+update tbl_todo
+set title = '바꾸기2',
+    duedate = '2025-01-02',
+    finished = 1
+where tno = 10;
