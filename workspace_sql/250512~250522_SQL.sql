@@ -2084,3 +2084,18 @@ set title = '바꾸기2',
     duedate = '2025-01-02',
     finished = 1
 where tno = 10;
+
+
+create table emp2 as select * from emp;
+
+select * from emp2;
+
+select * from emp2 where empno = 7369;
+
+delete from emp2 where empno = 7369;
+
+insert into emp2 values (7369, 'SMITH', 'CLERK', 7902, '80/12/17', 800, NULL, 20);
+
+select * from emp where empno = 7369;
+
+commit;

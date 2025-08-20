@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+    </head>
+    <style>
+        @font-face {
+            font-family: 'CHOGOONCHICKENSCRATCHV7';
+            src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/CHOGOONCHICKENSCRATCHV7.woff2") format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        table {
+            border: 1px dotted;
+            font-family: 'CHOGOONCHICKENSCRATCHV7';
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+    </style>
+    <body>
+        <h1>EMP2 회원 가입</h1>
+        <form method="post" action="add">
+            <table>
+                <tr>
+                    <td>empno</td>
+                    <td>
+                        <input type = "text" name = "empno">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>ename</td>
+                    <td>
+                        <input type = "text" name = "ename">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>job</td>
+                    <td>
+                        <input type = "text" name = "job">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>mgr</td>
+                    <td>
+                        <input type = "text" name = "mgr">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>hiredate</td>
+                    <td>
+                        <input type = "text" name = "hiredate">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>sal</td>
+                    <td>
+                        <input type = "text" name = "sal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>comm</td>
+                    <td>
+                        <input type = "text" name = "comm">
+                    </td>
+                </tr>
+                <tr>
+                    <td>deptno</td>
+                    <td>
+                        <input type = "text" name = "deptno">
+                    </td>
+                </tr>
+            </table>
+            <input type = "submit" value = "수정">
+        </form>
+    </body>
+</html>
