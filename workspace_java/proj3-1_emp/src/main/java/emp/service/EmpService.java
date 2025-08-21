@@ -22,4 +22,12 @@ public class EmpService {
 	public int removeEmp(EmpDTO empDTO) {
 		return empDAO.deleteEmp(empDTO);
 	}
+	
+	public int addEmp(EmpDTO empDTO) {
+		return empDAO.insertEmp(empDTO);
+	}
+	
+	public int editEmp(EmpDTO empDTO) {
+		return empDAO.updateEMP(empDTO);
+	}
 }

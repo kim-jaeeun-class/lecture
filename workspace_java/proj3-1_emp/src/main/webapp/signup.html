@@ -11,67 +11,80 @@
             font-weight: normal;
             font-style: normal;
         }
+        h1 {
+        	font-family: 'CHOGOONCHICKENSCRATCHV7';
+        }
         table {
             border: 1px dotted;
             font-family: 'CHOGOONCHICKENSCRATCHV7';
             font-size: 0.9em;
-            font-weight: 300;
+        }
+        span {
+            font-weight: bold;
+            color: darkred;
+        }
+        div {
+            font-family: 'CHOGOONCHICKENSCRATCHV7';
+            font-size: 0.9em;
+            color: #333;
         }
     </style>
     <body>
         <h1>EMP2 회원 가입</h1>
+        <div>*는 필수 기입 항목입니다.</div>
         <form method="post" action="add">
             <table>
                 <tr>
-                    <td>empno</td>
                     <td>
-                        <input type = "text" name = "empno">
-                    </td>                    
+                        <span>* </span>empno</td>
+                    <td>
+                        <input type="text" name="empno">
+                    </td>
                 </tr>
                 <tr>
                     <td>ename</td>
                     <td>
-                        <input type = "text" name = "ename">
-                    </td>                    
+                        <input type="text" name="ename">
+                    </td>
                 </tr>
                 <tr>
                     <td>job</td>
                     <td>
-                        <input type = "text" name = "job">
-                    </td>                    
+                        <input type="text" name="job">
+                    </td>
                 </tr>
                 <tr>
                     <td>mgr</td>
                     <td>
-                        <input type = "text" name = "mgr">
-                    </td>                    
+                        <input type="text" name="mgr">
+                    </td>
                 </tr>
                 <tr>
                     <td>hiredate</td>
                     <td>
-                        <input type = "text" name = "hiredate">
-                    </td>                    
+                        <input type="date" name="hiredate" style="font-family: 'CHOGOONCHICKENSCRATCHV7';">
+                    </td>
                 </tr>
                 <tr>
                     <td>sal</td>
                     <td>
-                        <input type = "text" name = "sal">
+                        <input type="text" name="sal">
                     </td>
                 </tr>
                 <tr>
                     <td>comm</td>
                     <td>
-                        <input type = "text" name = "comm">
+                        <input type="text" name="comm">
                     </td>
                 </tr>
                 <tr>
                     <td>deptno</td>
                     <td>
-                        <input type = "text" name = "deptno">
+                        <input type="text" name="deptno">
                     </td>
                 </tr>
             </table>
-            <input type = "submit" value = "수정">
+            <input type="submit" value="삽입">
         </form>
     </body>
 </html>

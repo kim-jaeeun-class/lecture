@@ -2099,3 +2099,36 @@ insert into emp2 values (7369, 'SMITH', 'CLERK', 7902, '80/12/17', 800, NULL, 20
 select * from emp where empno = 7369;
 
 commit;
+
+alter table emp2 modify (empno number not null);
+
+alter table emp2 add constraint constraint_name primary key (empno);
+
+create table movie
+    (movieid number(3) primary key not null,
+     title varchar2(4000),
+     imgurl varchar2(4000),
+     opendate date);
+     
+insert into movie values
+    (001, '좀비딸', 'https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202507/22648_201_1.jpg', '25/07/30');
+insert into movie values
+    (002, 'F1 더 무비', 'https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202506/22711_201_1.jpg', '25/06/25');
+insert into movie values
+    (003, '악마가 이사왔다', 'https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202508/22849_201_1.jpg', '25/08/13');
+insert into movie values
+    (004, '로마의 휴일', 'https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202508/23124_201_1.jpg', '25/08/20');
+insert into movie values
+    (005, '첫사랑 엔딩', 'https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202508/23017_201_1.jpg', '25/08/27');
+    
+select * from movie;
+
+commit;
+
+select deptno, sum(sal) from emp group by deptno
+union all
+select null, sum(sal) from emp order by 1 asc;
+
+select distinct job, deptno from emp;
+
+select empno, ename, deptno, sum(sal) over (partition by deptno) from emp;

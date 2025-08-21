@@ -55,9 +55,13 @@ public class EmpDetailController extends HttpServlet {
 			out.println("	<tr><td>Deptno: </td><td>" + empDTO2.getDeptno() + "</td></tr>");
 			out.println("</table>");
 			
+			out.println("<form method = 'get' action = 'edit'>");
+			out.println("	<input type = 'hidden' name = 'empno' value =" + empDTO2.getEmpno() +">");
+			out.println("	<input type = 'submit' value = '수정'>");            
+            out.println("</form>");
 			out.println("<form method = 'post' action = 'remove'>");
 			out.println("	<input type = 'hidden' name = 'empno' value =" + empDTO2.getEmpno() +">");
-			out.println("	<input type = 'submit' value = '삭제'>");
+			out.println("	<input type = 'submit' value = '삭제'>");  
 			out.println("</form>");
 		}
 		catch (Exception e) {
