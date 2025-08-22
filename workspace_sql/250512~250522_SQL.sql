@@ -2132,3 +2132,20 @@ select null, sum(sal) from emp order by 1 asc;
 select distinct job, deptno from emp;
 
 select empno, ename, deptno, sum(sal) over (partition by deptno) from emp;
+
+create table test as select * from emp;
+
+select distinct job, deptno from test;
+
+select empno, ename, sum(sal) over (partition by deptno) from test;
+
+select grouping(job), deptno, count(*) cnt from test group by grouping sets ((job, deptno));
+select job, deptno from test group by rollup(job, deptno);
+
+select deptno, empno, ename, sal,
+       sum(sal) over (partition by deptno) as dept_total,
+       row_number() over (partition by deptno order by sal desc) as rn
+from test;
+
+select distinct deptno, first_value(sal) over (partition by deptno order by sal desc) as fv from test;
+select deptno, ename, sal, lag(sal, 2, 0) over (partition by deptno order by sal desc) as lag_test from test;
