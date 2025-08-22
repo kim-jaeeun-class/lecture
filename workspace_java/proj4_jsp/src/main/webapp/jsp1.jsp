@@ -13,8 +13,9 @@
     language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
+    
 %>
-
+<%--     import = "emp.dto.EmpDTO" --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,10 @@
     <% 
         int a = 10; 
         String name = request.getParameter("name");
+        EmpDTO dto = (EmpDTO)requerst.getAttribute("dto");
+        
     %>
+    ename : <%= dto.getEmane() %>
     a: <% out.println(a); %>
     name: <% out.println(name); %> <br>
 
