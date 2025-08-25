@@ -2149,3 +2149,7 @@ from test;
 
 select distinct deptno, first_value(sal) over (partition by deptno order by sal desc) as fv from test;
 select deptno, ename, sal, lag(sal, 2, 0) over (partition by deptno order by sal desc) as lag_test from test;
+
+select * from emp2;
+
+select * from test;

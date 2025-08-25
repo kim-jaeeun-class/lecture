@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${login ne true}">
+	<c:redirect />
+</c:if>
+
 <!DOCTYPE html>
 <html>
     <head>
