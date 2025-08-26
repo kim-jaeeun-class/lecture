@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="loginEMP.DTO.LoginEMPDTO %>
+<%@ page import="java.util.*"%>
+<%@ page import="loginEMP.DTO.LoginEMPDTO" %>
 <%@ page import="loginEMP.service.LoginEMPService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,14 +14,14 @@
     <title>회원 목록</title>
 </head>
 <body>
-
-    <%
-        LoginEMPService service = new LoginEMPService();
-		List<LoginEMPDTO> list = service.getAll();
-    %>
-
-    <c:forEach var="list" value="<%= list%>" scope="page">
-            <br>테스트 : ${list[0].empno}
+	실행되는지 테스트용 텍스트
+	<%
+		Object mem = request.getAttribute("list");
+		// 더 써야 함...
+	%>
+    <c:forEach var="m" items="${list}">
+        <br>테스트1 : ${list[m].empno}
+        <br>테스트2 : ${list[m].ename}
     </c:forEach>
 </body>
 </html>

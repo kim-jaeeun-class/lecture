@@ -17,7 +17,6 @@ public class LoginEMPDAO {
 	private Connection getConn() {
 		Connection conn = null;
 		try {
-			
 			// JNDI : 글씨로 자원을 가져오는 방식
 			Context ctx = new InitialContext();
 			DataSource dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
@@ -31,7 +30,7 @@ public class LoginEMPDAO {
 		return conn;
 	}
 	
-	public List<LoginEMPDTO> selectAll() {
+	public List<LoginEMPDTO> getAll() {
 		List<LoginEMPDTO> list = new ArrayList<LoginEMPDTO>();
 		
 		try {
@@ -39,23 +38,13 @@ public class LoginEMPDAO {
 			Connection conn = getConn();
 			
 			// SQL 준비
-			String query = "select * from test";
+			String query = "select ename, empno from test";
 			PreparedStatement ps = conn.prepareStatement(query);
 			
 			// SQL 실행
 			ResultSet rs = ps.executeQuery();
 			
 			// 결과 활용
-			while(rs.next()) {
-				LoginEMPDTO dto = new LoginEMPDTO();
-				
-				// dto 만들기
-				dto.setEmpno(rs.getInt("empno"));
-				dto.setEname(rs.getString("ename"));
-				
-				list.add(dto);
-				
-			}
 			
 			rs.close();
 			ps.close();
@@ -66,4 +55,40 @@ public class LoginEMPDAO {
 		}
 		return list;
 	}
+	
+	public LoginEMPDTO findIdPw(String id, int pw) {
+		LoginEMPDTO dto = null;
+		
+		try {
+			// DB 접속 : 상단에서 생성해둠
+			Connection conn = getConn();
+			
+			// SQL 준비
+			String query = "select ename, empno from test where ename = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, dto.getEname());
+			
+			// SQL 실행
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				dto = new LoginEMPDTO();
+				
+				dto.setEname(rs.getString("ename"));
+				dto.setEmpno(rs.getInt("empno"));
+				
+				// 더 써야 함...
+			}
+			
+			ps.close();
+			rs.close();
+			conn.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
 }

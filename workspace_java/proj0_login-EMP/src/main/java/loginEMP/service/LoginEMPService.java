@@ -9,7 +9,11 @@ public class LoginEMPService {
 	LoginEMPDAO loginEMPDAO = new LoginEMPDAO();
 	
 	public List<LoginEMPDTO> getAll() {
-		List<LoginEMPDTO> list = loginEMPDAO.selectAll();
+		List<LoginEMPDTO> list = loginEMPDAO.getAll();
 		return list;
+	}
+	
+	public LoginEMPDTO login(String id, int pw) {
+		return loginEMPDAO.findIdPw(id, pw);
 	}
 }

@@ -1,51 +1,51 @@
+이게 아니면 뭐... 어쩔 수 없다
+**역할 구분 : mgr 여부, king 이름으로.
+
 1. LoginEMPController
-	1) doGet() :
-		- 로그인 페이지(main.jsp)로 포워딩
-		- 세션/쿠키 체크해서 팝업 보일지 말지 결정
-	2) doPost() :
-
-		- request.getParameter("id"), request.getParameter("pw") 값 받기
+	1) doGet()
+		- 로그인 페이지(main.jsp)로 포워딩 (o?)
+		- 세션/쿠키 체크해서 팝업 보일지 말지 결정 : ????? 고민은 할 수 있음.
+	2) doPost()
+		- request.getParameter("id"), request.getParameter("pw") 값 받기(o)
 		- LoginEMPService.login(id, pw) 호출
-
-		로그인 성공 → 세션에 사용자 정보 저장 (userType: admin/member)
-		로그인 실패 → 에러 메시지 전달 후 다시 main.jsp로 포워딩
-
-		- logout() : 세션 무효화 후 로그인 페이지로 이동
+			로그인 성공 → 세션에 사용자 정보 저장 (userType: admin/member)
+			로그인 실패 → 에러 메시지 전달 후 다시 main.jsp로 redirect!!
+				response.sendRedirect("main.jsp");
+		- logout() : 세션 무효화 후 로그인 페이지로 이동(command로 구분)
 		- cookieCheck() : “1분간 팝업 안 보이기” 쿠키 유효성 검사
+		
++. MemEMPController
+	1) doPost() : list를 받아 setAttribute(). memberList.jst에 전달.
 
 2. LoginEMPService
 	1) login(String id, String pw)
 		- DAO 호출해서 사용자 조회
 		- 존재 여부, 비밀번호 일치 여부 확인
 		- 권한 구분(관리자/일반회원) 후 LoginEMPDTO 반환
-
 	2) getAll() : 관리자 계정일 때만 DAO 호출해서 모든 회원 목록 가져오기
 
 3. LoginEMPDAO
-
-	1) findByIdAndPw(String id, String pw)
+	1) findIdPw(String id, String pw) : 뭔가 한 듯?
+		- return -1로 잡고
 		- DB test 테이블 조회
-		- 일치하는 사용자가 있으면 LoginEMPDTO 반환
-		- 없으면 null 반환
-
-	2) getAll() : 전체 사용자 목록 반환 (관리자 전용)
+		- 일치하는 사용자가 있으면... ??? : DTO로... null이면 로그인 X.
+		- 없으면 -1 반환
+	2) getAll() : 전체 사용자 목록 반환 (관리자 전용) (o)
 
 4. LoginEMPDTO
-	1) 필드
+	1) 필드 (o)
 		- private String ename; (id 역할)
 		- private String empno; (pw 역할)
-		- private String role; (admin / member 구분)
 		- Getter/Setter
-	2) 생성자 (id/pw/role 초기화용)
 
 5. main.jsp
-	1) 폼 제출 → LoginEMPController POST 요청
+	1) 폼 제출 → LoginEMPController POST 요청 (o)
 	2) 공지 팝업
-		- JS에서 쿠키(noShowPopup) 확인
+		- JS에서 쿠키(noShow) 확인(그냥 여기에서 다 끝내버려도 ok)
 		- 쿠키 없으면 팝업 표시, 체크하면 쿠키 저장 (유효시간 1분)
 
 6. memberList.jsp
-	1) 세션에서 role 확인 (admin 아니면 접근 차단)
+	1) 로그인 정보에 따라 권한 표시
 	2) JSTL <c:forEach> 로 회원 목록 출력
 	3) 컨트롤러가 request.setAttribute("list", list); 전달해야 함
 	4) JSP에서는 <c:forEach var="m" items="${list}"> 형태로 사용

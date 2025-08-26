@@ -1,6 +1,7 @@
 package loginEMP.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,29 +22,22 @@ public class LoginEMPController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8;");
 		
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("k", "v");
-		
-		String id = request.getParameter("empno");
-		String pw = request.getParameter("ename");
-		
-		if("KING".equals(id)) {
-			
-		}
-		else if() {
-			
-		}
-		
+		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8;");
 		
-		LoginEMPService service = new LoginEMPService();
-		List<LoginEMPDTO> list = service.getAll();
+		String id = request.getParameter("id");
+		int pw = Integer.parseInt(request.getParameter("pw"));
 		
+		LoginEMPService service = new LoginEMPService();
+		
+		LoginEMPDTO login = service.login(id, pw);
+		
+		login.getEname();
+		login.getEmpno();
 	}
 
 }

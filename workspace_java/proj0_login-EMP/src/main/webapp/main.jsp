@@ -20,13 +20,38 @@
             }
         </style>
         <script>
-            window.addEventListener('load', () => {
+        window.addEventListener('load', () => {
+            function showPopup() {
+                const cookies = document.cookie.split('; ');
 
+                // of 반복문 사용 가능
+                for(let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].split('=');
+                    const name = cookie[0];
+                    const value = cookie[1];
 
-                document.querySelector('.noShow').addEventListener('click', (event) => {
-                    
-                })
+                    if(name == 'noShow' && value == 'true') {
+                        document.querySelector('.popup').style.display = "none";
+                    }
+                }
+            }
+
+            document.querySelector('.noShow').addEventListener('click', (event) => {
+
+                // 쿠키 가져오기
+                console.log(document.cookie);
+
+                const isCheck = event.target.checked;
+                if(isCheck) {
+                    // 10초 뒤의 시간 가져오기
+                    const now = new Date(); // 현재 시각
+                    const after60s = now.getSeconds() + 60;
+                    now.setSeconds(after60s);   // 초 단위로 재설정
+
+                    document.cookie = 'noShow=true;expires=' + now.toGMTString();
+                }
             })
+        })
         </script>
     </head>
     <body>

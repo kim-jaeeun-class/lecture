@@ -48,7 +48,7 @@ public class EmpDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			// 결과 활용
-			while(rs.next()) {
+			if(rs.next()) {
 				EmpDTO dto = new EmpDTO();
 				
 				// dto 만들기
@@ -57,7 +57,6 @@ public class EmpDAO {
 				dto.setSal(rs.getInt("sal"));
 				
 				list.add(dto);
-				
 			}
 			
 			
