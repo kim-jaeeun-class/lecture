@@ -2153,3 +2153,51 @@ select deptno, ename, sal, lag(sal, 2, 0) over (partition by deptno order by sal
 select * from emp2;
 
 select * from test;
+
+select * from test order by hiredate desc;
+
+select t1.*
+from
+    (select rownum r, t.*
+     from (select * 
+           from test
+           order by hiredate desc) t) t1
+where r = 3;
+
+select * 
+from (select test.*, row_number() over(order by hiredate desc) as r from test)
+where r>=3 and r<=6;
+
+truncate table test;
+
+select * from test;
+
+INSERT INTO test (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+SELECT 
+    e.empno + lvl AS empno,
+    lvl || '_' || e.ename AS ename,
+    e.job, 
+    e.mgr,
+    e.hiredate + lvl AS hiredate,                           
+    e.sal + lvl AS sal,                                     
+    e.comm, 
+    e.deptno
+FROM emp e
+JOIN (
+    SELECT LEVEL AS lvl 
+    FROM dual 
+    CONNECT BY LEVEL <= 21
+) l
+ON 1=1;
+
+commit;
+
+select count(*) from test;
+
+select t1.*
+from
+    (select rownum r, t.*
+     from (select * 
+           from test
+           where lower(ename) like lower('%a%')
+           order by hiredate desc) t) t1;

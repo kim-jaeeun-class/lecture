@@ -49,7 +49,7 @@
     <% 
         int a = 10; 
         String name = request.getParameter("name");
-        EmpDTO dto = (EmpDTO)requerst.getAttribute("dto");
+        EmpDTO dto = (EmpDTO)request.getAttribute("dto");
         
     %>
     ename : <%= dto.getEmane() %>
