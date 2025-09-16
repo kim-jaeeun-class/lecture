@@ -31,11 +31,16 @@
         type="javax.sql.DataSource"
         driverClassName="oracle.jdbc.driver.OracleDriver"
         url="jdbc:oracle:thin:@125.181.132.133:51521:xe"
-        username="scott4_1"
+        username="J2P4"
         password="tiger"
         maxTotal="50"
         maxWaitMillis="-1"
     />
+    
+    
+    <Environment name="crypto/AESKey"
+             value="DOlbGBNf7Fa4ai0jcZrfIaZBxEz4fQHOySrmxYyxd+Y="
+             type="java.lang.String"/>
     <!-- 
     	name : jdbc명. 변경 가능.
     	auth : 컨테이너를 자원 관리자로 지정
