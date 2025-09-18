@@ -5,6 +5,7 @@ public class MemberDTO {
 	private String pw;
 	private String name;
 	private int age;
+	private String tel;
 	
 	public String getId() {
 		return id;
@@ -31,9 +32,17 @@ public class MemberDTO {
 		this.age = age;
 	}
 	
+	
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", age=" + age + "]";
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", age=" + age + ", tel=" + tel + "]";
 	}
 	
 }
