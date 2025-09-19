@@ -1,48 +1,19 @@
 package kr.or.human3;
 
+import lombok.Data;
+
+//@Getter
+//@Setter
+//@ToString
+//@RequiredArgsConstructor	// 아래의 전달 인자를 받을 수 있는 생성자를 만듦
+//@EqualsAndHashCode
+@Data	// 위의 모든 것을 한 번에 처리하는 annotation
 public class MemberDTO {
 	private String id;
 	private String pw;
 	private String name;
 	private int age;
 	private String tel;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPw() {
-		return pw;
-	}
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
-	
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	
-	@Override
-	public String toString() {
-		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", age=" + age + ", tel=" + tel + "]";
-	}
-	
+	private String addr;
+
 }

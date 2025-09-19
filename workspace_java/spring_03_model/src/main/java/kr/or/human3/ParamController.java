@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,6 +43,7 @@ public class ParamController {
 	// join2와 동일
 	@RequestMapping("/join3.do")
 	public ModelAndView joinForm3() {
+		System.out.println("join3.do");
 		ModelAndView mav = new ModelAndView("join");
 		return mav;
 	}
@@ -81,6 +85,7 @@ public class ParamController {
 		int age = Integer.parseInt(sAge);
 		
 		System.out.println(id);
+		System.out.println("join3");
 		
 		// 아이디 담아서 result로 보냄
 //		request.setAttribute("id", id);
@@ -91,6 +96,34 @@ public class ParamController {
 		mav.addObject("pw", pw);
 		mav.addObject("name", name);
 		mav.addObject("age", age);
+		return mav;
+	}
+	
+	@RequestMapping("/join4")
+	public ModelAndView join4(HttpServletRequest request) {
+		
+		MemberDTO memberDTO = new MemberDTO();
+		
+		try {
+			String id = request.getParameter("id");
+			System.out.println("id : "+ id);
+			String pw = request.getParameter("pw");
+			String sAge = request.getParameter("age");
+			int age = Integer.parseInt(sAge);
+			
+			memberDTO.setId(id);
+			memberDTO.setPw(pw);
+			memberDTO.setAge(age);
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+//		request.setAttribute("id", id);
+		
+		ModelAndView mav = new ModelAndView("result");
+		mav.addObject("memberDTO", memberDTO);
 		return mav;
 	}
 	
@@ -167,5 +200,94 @@ public class ParamController {
 	@RequestMapping("/join7") 
 	public void join7(String id, MemberDTO dto){
 		
+	}
+	
+	// /1이 /{month}보다 우선순위가 높음. 사유 : 구체성
+	@RequestMapping("/calendar/1") 
+	public void cal(){
+		System.out.println("1월 달력!!!");
+	}
+	
+	@RequestMapping("/calendar/{month}") 
+	public void cal2(
+				@PathVariable("month")	// 경로 변수 : 괄호 잊지 말자...
+				int mon		
+			){
+		System.out.println(mon + "월 달력");
+	}
+	
+	@RequestMapping("/lunch/{store}/order/{menu}/start") 
+	public void store(
+				@PathVariable("store")
+				String store,
+				
+				@PathVariable("menu")
+				String menu
+			){
+		System.out.print(store + " - ");
+		System.out.println(menu);
+	}
+	
+	// forward 방식
+	@RequestMapping("join8")
+	public String join8() {
+		return "join";
+	}
+	
+	// redirect 방식 사용법 : 앞에 'redirect:' 붙여주기
+	@RequestMapping("join9")
+	public String join9() {
+		return "redirect:join3.do";
+	}
+	
+	// 8과의 차이
+	// 8: viewResolver로 가서 jsp를 찾아줌
+	// 10: dispatcherServlet가 다시 controller로 보냄(viewResolver로 바로 가지 않음)
+	@RequestMapping("/join10")
+	public String join10() {
+//		joinForm3();
+		return "forward:join3.do";
+	}
+	
+	// 얕은 복사 개념. Model model 부분이 포인터랑 유사 개념.
+	// 이렇게 하면 ModelAndView를 사용할 필요가 사라짐
+	@RequestMapping("/join11")
+	public String join11(String id, Model model) {
+		
+		System.out.println("join11 실행, id: " + id);
+		
+		model.addAttribute("id", id);
+		
+		return "result";
+	}
+	
+	@RequestMapping("/join12")
+	public String join12(String id, Model model) {
+		
+		return "join";
+	}
+	
+	// 
+	@RequestMapping({"/join13", "/join14"})
+	public String join13(String id, Model model) {
+		
+		return "join";
+	}
+	
+	// 여기의 method가 다른 경우, value=""의 주소가 같아도 오류 X
+	@RequestMapping(value="/join15", method=RequestMethod.POST)
+	public String doPost(String id, Model model) {
+		
+		return "join";
+	}
+	@RequestMapping(value="/join15", method=RequestMethod.GET)
+	public String doGet(String id, Model model) {
+		
+		return "join";
+	}
+	@RequestMapping(value="/join16", method= {RequestMethod.GET, RequestMethod.POST})
+	public String join16(String id, Model model) {
+		
+		return "join";
 	}
 }
