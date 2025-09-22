@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp">
+	<!-- resultType는 단순 파일명만이 아니라 전부 적어야 함 : kr.or.human4.dto.EmpDTO -->
+	<!-- 만약 resultType 줄이고 싶다면... 
+		 modelConfig의 typeAliases 영역에서 alias(as) 사용해서
+		 줄이기 가능-->
+	<select id="selectEmp" resultType = "empDTO">
+		<!-- where 조건이 없어서 2줄 이상 나오면 500 에러 발생 -->
+		select * from emp2
+		where empno = 7788
+	</select>
+	
+	<!-- resultType : java.util.HashMap와 아래는 동일 -->
+	<select id="selectOneEmpMap" resultType = "hashMap">
+		select * from emp2
+		where empno = 7788
+	</select>
+	
+	<select id="selectEmpno" resultType="empDTO" parameterType="int">
+		select * from emp2
+		where empno = #{_parameter} <!-- #{_parameter}가 dao의 ?와 같은 역할 -->
+	</select>
+	
+	<select id="selectEname" resultType="empDTO" parameterType="string">
+		select * from emp2
+		where upper(ename) like upper('%' || #{_parameter} || '%')
+	</select>
+</mapper>

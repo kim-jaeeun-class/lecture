@@ -290,4 +290,9 @@ public class ParamController {
 		
 		return "join";
 	}
+	
+	@RequestMapping("/join")
+	public void join17() {
+		System.out.println("/join 실행");
+	}
 }
