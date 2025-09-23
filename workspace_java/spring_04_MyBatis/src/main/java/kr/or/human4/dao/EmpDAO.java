@@ -12,4 +12,11 @@ public interface EmpDAO {
 	public Map selectOneEmpMap();
 	public List selectEmpno(int empno);
 	public List selectEname(String ename);
+	public List selectEmpnoEname(EmpDTO dto);
+	public int insertData(EmpDTO dto);
+	public List selectDetail(int empno);
+	public int updateData(EmpDTO dto);
+	public int deleteData(EmpDTO dto);
+	
+	public List<EmpDTO> selectEmp(EmpDTO dto);
 }

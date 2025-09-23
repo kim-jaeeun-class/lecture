@@ -7,14 +7,19 @@
 	<!-- 만약 resultType 줄이고 싶다면... 
 		 modelConfig의 typeAliases 영역에서 alias(as) 사용해서
 		 줄이기 가능-->
-	<select id="selectEmp" resultType = "empDTO">
+
+	<select id="selectEmp" resultType="kr.or.human4.dto.EmpDTO">
+		select * from emp2
+	</select>
+	
+	<select id="selectOneEmp" resultType="empDTO">
 		<!-- where 조건이 없어서 2줄 이상 나오면 500 에러 발생 -->
 		select * from emp2
 		where empno = 7788
 	</select>
 	
 	<!-- resultType : java.util.HashMap와 아래는 동일 -->
-	<select id="selectOneEmpMap" resultType = "hashMap">
+	<select id="selectOneEmpMap" resultType="hashMap">
 		select * from emp2
 		where empno = 7788
 	</select>
@@ -28,4 +33,93 @@
 		select * from emp2
 		where upper(ename) like upper('%' || #{_parameter} || '%')
 	</select>
+	
+	<select id="selectJob" resultType="empDTO" parameterType="string">
+		select * from emp2
+		<!-- 
+			 #{} : ''를 자동으로 붙임
+			 	where ename = 'KING'
+			 	where empno = 1234
+			 ${} : ''를 붙이지 않음
+			 	where ename = KING
+			 	-> where ename = '${_parameter}'
+		-->
+		where job = #{_parameter}
+	</select>
+	<select id="selectEmpnoEname" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+		where empno = #{empno} and ename = #{ename}
+		<!-- 여기의 #{empno}, #{ename}은 getter를 사용하는 것 -->
+	</select>
+	
+	<select id="getSeqEmp2" resultType = "int">
+		select seq_emp2.nextval from dual
+	</select>
+	
+	<!-- empno는 시퀀스에서 따오고, 나머지 정보를 넣는 insert 완성 -->
+	<insert id="insertEmp2" parameterType="empDTO">
+		insert into emp2
+			(empno, 
+			ename, job, mgr, hiredate, sal, comm, deptno)
+		values(
+			seq_emp2.nextval,
+			#{ename}, #{job}, #{mgr}, #{hiredate},
+			#{sal}, #{comm}, #{deptno}
+		)
+	</insert>
+	
+	<!-- detail용 -->
+	<select id="selectDetail" resultType="empDTO" parameterType="int">
+		select * from emp2
+		where empno = #{_parameter} <!-- #{_parameter}가 dao의 ?와 같은 역할 -->
+	</select>
+	
+	<!-- 아직 하단 코드 미구현 -->
+	<!-- detail-삭제용 -->
+	<delete id="deleteOne" parameterType="empDTO">
+		delete from emp2
+		where empno=${empno}
+	</delete>
+	
+	<!-- detail = 수정용 -->
+	<update id="updateDetail" parameterType="empDTO">
+		update emp2
+		set	ename=#{ename}
+			job=#{job}
+			mgr=#{mgr}
+			hiredate=#{hiredate}
+			sal=#{sal}
+			comm=#{comm}
+			deptno=#{deptno}
+		where empno=${empno}
+	</update>
+	
+	<insert id = "insertEmp2" parameterType="empDTO">
+		<!-- keyproperty의 empno가 empdto에 자동으로 채워짐 -->
+		<selectKey resultType="int" keyProperty="empno" order="BEFORE">
+			select seq_emp2.nextval from dual
+		</selectKey>
+		<!-- 위의 insert와 달리 nextVal 사용할 필요가 없음 -->
+		insert into emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	<insert id = "insertEmp3" parameterType="empDTO">
+
+		<selectKey resultType="int" keyProperty="empno" order="BEFORE">
+			select seq_emp2.nextval from dual
+		</selectKey>
+
+		insert into emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+
+	<insert
+		id = "insertEmp4" parameterType="empDTO"
+		useGeneratedKeys="true" keyProperty="empno">
+		
+		insert into emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+
 </mapper>

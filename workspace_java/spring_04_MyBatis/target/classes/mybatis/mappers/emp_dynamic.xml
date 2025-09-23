@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp.dynamic">
+	
+<!-- 	<select id="selectEmpAll" resultType="empDTO" parameterType="empDTO"> -->
+<!-- 		select * from emp2 -->
+<!-- 	</select> -->
+<!-- 	<select id="selectEmpEname" resultType="empDTO", parameterType="empDTO"> -->
+<!-- 		select * from emp2 -->
+<!-- 		where ename = #{ename} -->
+<!-- 	</select> -->
+<!-- 	<select id="selectEmpJob" resultType="empDTO", parameterType="empDTO"> -->
+<!-- 		select * from emp2 -->
+<!-- 		where ename = #{job} -->
+<!-- 	</select> -->
+	
+	<!-- 위 코드들과 달리, 아래 코드는 sql을 동적으로 사용 가능 -->
+	<select id="selectEmp" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+<!-- 		where 1=1 : 이 코드는 sql문이 오류 나도 제대로 안 보이는 문제가 있음 -->
+		<!-- 이를 해결하기 위한 where 태그 : 조건이 있는지에 따라 유동적으로 처리 -->
+		<where>
+			<if test="ename != null and ename != '' ">
+				and lower(ename) like lower( '%' || #{ename} || '%')
+			</if>
+			<if test="job != null and job != '' ">
+				and lower(job) like lower( '%' || #{job} || '%')
+			</if>
+			<if test="type != null and type = '1' and keyword=!=''">
+				and lower(ename) like lower( '%' || #{ename} || '%')
+			</if>
+			<if test = "sal != -1">
+				<!-- CDATA로 감싸주지 않으면 <= 사용 불가 -->
+				and sal <![CDATA[<=]]> #{sal}
+			</if>
+		</where>
+	</select>
+	
+	<select id="choose" resultType="empDTO" parameterType="empDTO">
+		select * from emp2;
+		<where>
+			<choose>
+				<when test="ename != null and ename != ''">
+					and lower(ename) like lower( '%' || #{ename} || '%')
+				</when>
+				<when test="job != null and job != ''">
+					and lower(job) like lower( '%' || #{job} || '%')
+				</when>
+				<otherwise>
+					and mgr is null
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+</mapper>
