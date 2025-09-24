@@ -118,4 +118,15 @@ public class EmpDAOImpl implements EmpDAO {
 		return resultList;
 	}
 	
+	// choice 못 친 건지 안 친 건지 애매함
+	
+	@Override
+	public List<EmpDTO> foreach(EmpDTO dto) {
+		List<EmpDTO> resultList = null;
+		
+		resultList = sqlSession.selectList("mapper.emp.dynamic.foreach", dto);
+		
+		return resultList;
+	}
+	
 }

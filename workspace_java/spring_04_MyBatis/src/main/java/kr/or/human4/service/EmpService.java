@@ -25,4 +25,6 @@ public interface EmpService {
 	
 	// 조건 검색
 	public List<EmpDTO> selectEmp(EmpDTO dto);
+	
+	public List<EmpDTO> foreach(EmpDTO dto);
 }

@@ -3,10 +3,11 @@ package kr.or.human4.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.human4.dto.EmpDTO;
@@ -14,6 +15,28 @@ import kr.or.human4.service.EmpService;
 
 @Controller
 public class EMPController {
+	
+	private static final Logger Logger = LoggerFactory.getLogger(EMPController.class);
+	
+	static final int isDebug = 3;
+	
+	@SuppressWarnings("unused")
+	@RequestMapping("/log4j")
+	public String log4j() {
+		
+		Logger.info("logger.info");
+		Logger.warn("logger.warn");
+		Logger.error("logger.error");
+		
+		if(isDebug >= 2) {
+			
+		}
+		if(isDebug >= 4) {
+			
+		}
+		
+		return "emp";
+	}
 	
 	@Autowired
 	EmpService empService;
@@ -135,4 +158,28 @@ public class EMPController {
 		model.addAttribute("list", list);
 		return "emp";
 	}
+
+//	나중에 코드 확인해서 수정하기
+//	@RequestMapping("/choice")
+//	public String choice(
+//  		@ModelAttribute
+//  		EmpDTO dto
+//  		) {
+//		for(String empno : empnoes1) {
+//			System.out.println(empnoes1);
+//		}
+//  			System.out.println(empnoes2);
+//  			return "emp";
+//  		}
+	
+	@RequestMapping("/foreach")
+	public String foreach(Model model, EmpDTO dto) {
+		
+		List<EmpDTO> list = empService.foreach(dto);
+		
+		model.addAttribute("list", list);
+		return "emp";
+	}
+
+
 }

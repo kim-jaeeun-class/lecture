@@ -23,6 +23,7 @@ public class EmpDTO {
 	private String keyword;
 	private String type;
 	
+	// DTO foreach 영역 빼둔 게 있음
 
 	
 }

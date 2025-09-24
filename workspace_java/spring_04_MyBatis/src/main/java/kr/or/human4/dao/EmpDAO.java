@@ -19,4 +19,5 @@ public interface EmpDAO {
 	public int deleteData(EmpDTO dto);
 	
 	public List<EmpDTO> selectEmp(EmpDTO dto);
+	public List<EmpDTO> foreach(EmpDTO dto);
 }
