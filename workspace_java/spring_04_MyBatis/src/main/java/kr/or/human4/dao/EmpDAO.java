@@ -17,6 +17,7 @@ public interface EmpDAO {
 	public List selectDetail(int empno);
 	public int updateData(EmpDTO dto);
 	public int deleteData(EmpDTO dto);
+	public EmpDTO selectOneEmpno(int empno);
 	
 	public List<EmpDTO> selectEmp(EmpDTO dto);
 	public List<EmpDTO> foreach(EmpDTO dto);

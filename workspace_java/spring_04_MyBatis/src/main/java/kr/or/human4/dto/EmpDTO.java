@@ -1,6 +1,7 @@
 package kr.or.human4.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -20,10 +21,9 @@ public class EmpDTO {
 	private int page;
 	private int start;
 	private int end;
+	
 	private String keyword;
 	private String type;
 	
-	// DTO foreach 영역 빼둔 게 있음
-
-	
+	private List empnos;
 }

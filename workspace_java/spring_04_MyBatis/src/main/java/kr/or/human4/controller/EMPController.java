@@ -8,31 +8,31 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.human4.dto.EmpDTO;
 import kr.or.human4.service.EmpService;
-
 @Controller
 public class EMPController {
 	
-	private static final Logger Logger = LoggerFactory.getLogger(EMPController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmpController.class);
 	
 	static final int isDebug = 3;
 	
-	@SuppressWarnings("unused")
 	@RequestMapping("/log4j")
 	public String log4j() {
 		
-		Logger.info("logger.info");
-		Logger.warn("logger.warn");
-		Logger.error("logger.error");
+		logger.info("이거 info임");
+		logger.warn("이거 warning임");
+		logger.error("이거 error임");
 		
-		if(isDebug >= 2) {
-			
+		if(isDebug >= 2 ) {
+//			System.out.println(list.size());
 		}
 		if(isDebug >= 4) {
-			
+//			System.out.println(list);
 		}
 		
 		return "emp";
@@ -41,15 +41,11 @@ public class EMPController {
 	@Autowired
 	EmpService empService;
 	
-	// 지금 listEmp는 emp.xml에 코드가 없으므로 안 나오는 게 정상
 	@RequestMapping("/listEmp")
 	public String listEmp(Model model) {
 		List<EmpDTO> list = empService.getEmpList();
 		model.addAttribute("list", list);
-		
-		// =========================================
-		
-		
+
 		return "emp";
 	}
 	
@@ -120,23 +116,33 @@ public class EMPController {
 	// 상세 조회 : empno로
 	@RequestMapping("/empDetail")
 	public String empDetail(Model model, int empno) {
-		List detail = empService.getDetail(empno);
+		EmpDTO dto = empService.getOneEmpno(empno);
 		
-		model.addAttribute("detail", detail);
+		// 이쪽 jsp에서 detail 이름 확인해보기
+		model.addAttribute("detail", dto);
 		return "deatil";
 	}
 	
 	// 회원 가입으로 이동
 	@RequestMapping("/join")
-	public String v() {
-		return "";
+	public String join() {
+		return "join";
 	}
 	
 	// 상세 - 수정
 	@RequestMapping("/editData")
 	public String editData(Model model, EmpDTO dto) {
+		EmpDTO empDTO = empService.getOneEmpno(dto.getEmpno());
+		model.addAttribute("empDTO", empDTO);
+		
+		return "editData";
+	}
+	
+	// 상세 - 수정 후 목록으로
+	@RequestMapping("/editData")
+	public String editEmp(Model model, EmpDTO dto) {
 		int result = empService.editData(dto);
-		System.out.println(result);
+		System.out.println("결과: " + result);
 		
 		return "redirect:/listEmp";
 	}
@@ -160,17 +166,29 @@ public class EMPController {
 	}
 
 //	나중에 코드 확인해서 수정하기
-//	@RequestMapping("/choice")
-//	public String choice(
-//  		@ModelAttribute
-//  		EmpDTO dto
-//  		) {
-//		for(String empno : empnoes1) {
-//			System.out.println(empnoes1);
-//		}
-//  			System.out.println(empnoes2);
-//  			return "emp";
-//  		}
+	@RequestMapping("/choice")
+	public String choice(Model model,
+			@RequestParam("empnoes")
+			String[] empnoes1,
+			
+			@RequestParam("empnoes")
+			List empnoes2,
+			
+			@ModelAttribute
+			EmpDTO empDTO
+  		) {
+		System.out.println("String[] : ");
+		for(String empno : empnoes1) {
+			System.out.println(empno);
+		}
+		
+		System.out.println("List : "+ empnoes2);
+		System.out.println("EmpDTO : "+ empDTO);
+		
+		List<EmpDTO> list = empService.foreach(empDTO);
+		model.addAttribute("list", list);
+		return "emp";
+  		}
 	
 	@RequestMapping("/foreach")
 	public String foreach(Model model, EmpDTO dto) {

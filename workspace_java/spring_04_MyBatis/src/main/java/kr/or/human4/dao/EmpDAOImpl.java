@@ -52,6 +52,11 @@ public class EmpDAOImpl implements EmpDAO {
 	}
 	
 	@Override
+	public EmpDTO selectOneEmpno(int empno) {
+		return sqlSession.selectOne("mapper.emp.selectEmpno", empno);
+	}
+	
+	@Override
 	public List selectEname(String ename) {
 		System.out.println(ename);
 		return sqlSession.selectList("mapper.emp.selectEname", ename);
@@ -87,8 +92,7 @@ public class EmpDAOImpl implements EmpDAO {
 		return sqlSession.delete("mapper.emp.deleteDetail", dto);
 	}
 	// java로 구헌
-	private void testSequence() {
-		EmpDTO dto = new EmpDTO();
+	private void testSequence(EmpDTO dto) {
 		// insert 전 sequence 따오기
 		int seq_empno = sqlSession.selectOne("mapper.emp.getSeqEmp2");
 		// DTO에 저장하기
@@ -118,7 +122,7 @@ public class EmpDAOImpl implements EmpDAO {
 		return resultList;
 	}
 	
-	// choice 못 친 건지 안 친 건지 애매함
+	// choice 못 친 건지 안 친 건지 애매함 -> 원래 안 친 게 맞음
 	
 	@Override
 	public List<EmpDTO> foreach(EmpDTO dto) {

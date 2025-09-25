@@ -57,6 +57,11 @@ public class EmpServiceImpl implements EmpService {
 	}
 	
 	@Override
+	public EmpDTO getOneEmpno(int empno) {
+		return empDAO.selectOneEmpno(empno);
+	}
+	
+	@Override
 	public List getDetail(int empno) {
 		return empDAO.selectDetail(empno);
 	}
