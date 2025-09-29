@@ -69,6 +69,8 @@ Thumbs.db
 
 # Binaries and Debug build outputs
 obj/
+*.exe
+*.pdb
 
 # User-specific files
 *.suo
@@ -82,3 +84,25 @@ TestResults/
 
 # Local user-specific configurations
 *.local
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+
+# Unreal/Unity or game asset packages
+*.pak
+*.unitypackage
+*.asset
+*.meta
+
+# C# DLL files (ignore all, except specific folders)
+*.dll
+
+# Include only necessary DLLs (e.g., third-party or hand-crafted)
+!Libs/*.dll
+!Plugins/*.dll
+
+# VS Code project settings (optional)
+.vscode/
