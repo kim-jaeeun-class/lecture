@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'RoundedFixedsys';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+body {
+    font-size: 1.2em;
+    font-family: 'RoundedFixedsys';
+    /* background-image: url('https://i.pinimg.com/originals/33/8f/49/338f49b3120e286bb0db61abd98e9439.gif');*/
+    background-color: rgb(204, 237, 238);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+
+.calc-basic {
+    width: 200px;
+    margin: 50px auto;
+    padding: 10px;
+    border: 1px solid #666666;
+    background-color: rgba(238, 238, 238, 0.7);
+    background-image: url('https://giffiles.alphacoders.com/202/20237.gif');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.result-show {
+    width: 198px;
+    padding: 0;
+    height: 50px;
+    text-align: right;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #ececec;
+}
+
+.input-line {
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+
+.number, .btn, .equal {
+    border: 1px solid #666666;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    margin: 2px; 
+}
+
+.input-line > .number {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.input-line > .btn {
+    background-color: rgba(160, 203, 204, 0.9);
+}
+
+.input-line > .equal {
+    width: 100px;
+    padding: 0 1px;
+    background-color: rgba(95, 158, 160, 0.9);
+}
