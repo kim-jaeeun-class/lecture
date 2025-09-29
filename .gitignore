@@ -66,3 +66,19 @@ Thumbs.db
 
 # Visual Studio temporary files
 .vs/
+
+# Binaries and Debug build outputs
+obj/
+
+# User-specific files
+*.suo
+*.user
+
+# Rider (e.g.) configuration files
+.idea/
+
+# Test runner output
+TestResults/
+
+# Local user-specific configurations
+*.local
